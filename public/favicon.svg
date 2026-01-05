@@ -1,0 +1,6 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top chevron - Orange/Yellow, elongated, angled upwards and to the right -->
+  <path d="M3 3 L22 3 L16 14 L3 14 Z" fill="#f97316" />
+  <!-- Bottom chevron - Deep Green, elongated, angled downwards and to the right -->
+  <path d="M3 14 L16 14 L22 29 L3 29 Z" fill="#16a34a" />
+</svg>
