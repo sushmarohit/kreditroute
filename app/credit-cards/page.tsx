@@ -2,7 +2,12 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { CreditCard, Gift, Plane, ShoppingBag, TrendingUp, ArrowRight, CheckCircle, Percent, Star, Shield } from 'lucide-react'
+import { CreditCard, Gift, Plane, ShoppingBag, TrendingUp, ArrowRight, CheckCircle, Percent, Star, Shield, Zap, Clock, Globe, Users } from 'lucide-react'
+import { FeatureHighlightsTable } from '@/components/FeatureHighlightsTable'
+import { EligibilityTable } from '@/components/EligibilityTable'
+import { ProcessSteps } from '@/components/ProcessSteps'
+import { DocumentsChecklist } from '@/components/DocumentsChecklist'
+import { FAQAccordion } from '@/components/FAQAccordion'
 
 export default function CreditCardsPage() {
   const cardTypes = [
@@ -64,159 +69,402 @@ export default function CreditCardsPage() {
     }
   ]
 
+  const featureHighlights = [
+    { feature: 'Credit Limit', details: '₹10,000 – ₹10 Lakhs' },
+    { feature: 'Interest Rate', details: '24% – 42% p.a.' },
+    { feature: 'Annual Fee', details: '₹0 – ₹15,000' },
+    { feature: 'Joining Fee', details: '₹0 – ₹15,000' },
+    { feature: 'Reward Rate', details: 'Up to 10% cashback' },
+    { feature: 'Eligibility', details: 'Salaried & Self Employed' },
+    { feature: 'CIBIL Score', details: '650+ preferred' },
+    { feature: 'Age Requirement', details: '18 - 70 years' },
+    { feature: 'Approval Time', details: 'Instant – 7 Days' }
+  ]
+
+  const eligibilityCriteria = [
+    { criterion: 'Age', requirement: '18 - 70 years' },
+    { criterion: 'Employment', requirement: 'Salaried / Self-Employed' },
+    { criterion: 'Income', requirement: 'Min. ₹12,000/month' },
+    { criterion: 'Credit Score', requirement: '650+' },
+    { criterion: 'Work Experience', requirement: '6 months+' }
+  ]
+
+  const keyFeatures = [
+    {
+      icon: Globe,
+      title: 'Global Acceptance',
+      description: 'Use your card anywhere in the world with wide acceptance.'
+    },
+    {
+      icon: Clock,
+      title: '24/7 Concierge Service',
+      description: 'Personal travel assistance anytime, anywhere.'
+    },
+    {
+      icon: Gift,
+      title: 'Accelerated Rewards',
+      description: 'Double points on flight & hotel bookings.'
+    },
+    {
+      icon: Shield,
+      title: 'Secure Transactions',
+      description: 'Advanced security features to protect your transactions.'
+    }
+  ]
+
+  const whyChooseUs = [
+    {
+      icon: Gift,
+      title: 'Best Rewards',
+      description: 'Earn maximum rewards and cashback on every purchase.'
+    },
+    {
+      icon: CheckCircle,
+      title: 'Quick Approval',
+      description: 'Get instant approval and start using your card immediately.'
+    },
+    {
+      icon: Shield,
+      title: 'Secure & Safe',
+      description: 'Advanced security features to protect your transactions.'
+    },
+    {
+      icon: Zap,
+      title: 'Zero Credit Score Impact',
+      description: 'Check eligibility without affecting your credit score.'
+    },
+    {
+      icon: Clock,
+      title: 'Instant Activation',
+      description: 'Activate and start using your card within minutes of approval.'
+    },
+    {
+      icon: Users,
+      title: '24/7 Customer Support',
+      description: 'Round-the-clock support for all your card-related queries.'
+    }
+  ]
+
+  const documents = [
+    {
+      title: 'Common Documents (Required for All Applicants)',
+      documents: [
+        'PAN Card (Copy)',
+        'Aadhaar Card (Copy - for ID & Address Proof)',
+        'Recent Passport-sized Photographs',
+        'Bank Account Statement (last 3 months)'
+      ]
+    },
+    {
+      title: 'For Salaried Applicants',
+      documents: [
+        'Latest Salary Slips (last 3 months)',
+        'Form 16 or Income Tax Returns (Latest)',
+        'Employment ID Card / Proof of Employment'
+      ]
+    },
+    {
+      title: 'For Self-Employed Applicants',
+      documents: [
+        'Income Tax Returns of the last 2 years',
+        'Bank Account Statements (last 6 months)',
+        'Proof of Business Existence (GST Registration, etc.)'
+      ]
+    }
+  ]
+
+  const faqs = [
+    {
+      question: 'Who can apply for a credit card from KreditRoute?',
+      answer: 'Anyone between 18 and 70 years old can apply through KreditRoute. You can be eligible if you are salaried or self-employed and your income meets the basic limit of ₹12,000/month. You are also required to have a minimum credit score of 650.'
+    },
+    {
+      question: 'How much is a CIBIL score needed for a credit card?',
+      answer: 'Most lenders consider a CIBIL score of at least 650. A higher score may help you get better credit card offers with higher limits and lower interest rates.'
+    },
+    {
+      question: 'Are credit cards accessible to students or first-time applicants?',
+      answer: 'Students may not qualify if they don\'t have regular income. First-time applicants can apply if they meet the income and credit score requirements. A secured credit card or a co-applicant with a good profile can improve your chances.'
+    },
+    {
+      question: 'How much credit limit can I get?',
+      answer: 'You may be eligible to receive a credit limit from ₹10,000 to ₹10 Lakhs depending on your profile, income, credit score, and the lender\'s policy.'
+    },
+    {
+      question: 'What are the fees and charges for a credit card?',
+      answer: 'There\'s an annual fee (₹0 to ₹15,000) and a joining fee (₹0 to ₹15,000). Some cards also have charges for cash advances, late payments, and other services. We don\'t hide charges. You\'ll see all costs before you apply.'
+    },
+    {
+      question: 'How long does the approval and card delivery take?',
+      answer: 'The process is fast. You can apply with KreditRoute to fast-track your application. After successfully passing the eligibility test, you can get approval within 1-7 days, and card delivery typically takes 7-14 days.'
+    }
+  ]
+
   return (
     <div className="pt-16 md:pt-20 min-h-screen bg-gradient-to-br from-primary-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Credit Cards
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Choose from India's best credit cards with exciting rewards, cashback, and exclusive benefits. Apply now and get instant approval.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {cardTypes.map((card, index) => {
-            const Icon = card.icon
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                whileHover={{ 
-                  y: -10,
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
-                }}
-                animate={{
-                  y: [0, -6, 0],
-                  opacity: 1
-                }}
-                transition={{
-                  default: { duration: 0.6, delay: index * 0.1 },
-                  y: {
-                    duration: 3.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: index * 0.2,
-                    repeatType: "reverse"
-                  }
-                }}
-              >
-                <Link
-                  href={card.href}
-                  className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full group"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <motion.div 
-                      className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center"
-                      whileHover={{ 
-                        rotate: [0, -15, 15, -15, 0],
-                        scale: 1.15,
-                        transition: { duration: 0.5 }
-                      }}
-                    >
-                      <Icon className="w-7 h-7 text-primary-600" />
-                    </motion.div>
-                    {card.badge && (
-                      <motion.span 
-                        className="text-xs font-semibold bg-accent-100 text-accent-700 px-3 py-1 rounded-full"
-                        whileHover={{ scale: 1.1 }}
-                        animate={{
-                          scale: [1, 1.05, 1],
-                        }}
-                        transition={{
-                          scale: {
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }
-                        }}
-                      >
-                        {card.badge}
-                      </motion.span>
-                    )}
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">{card.title}</h3>
-                  <p className="text-gray-600 mb-4 text-sm">{card.description}</p>
-
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-sm text-gray-700">
-                      <Percent className="w-4 h-4 text-primary-600" />
-                      <span className="font-medium">{card.cashback}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700">
-                      <CreditCard className="w-4 h-4 text-primary-600" />
-                      <span>Joining Fee: {card.joiningFee}</span>
-                    </div>
-                  </div>
-
-                  <div className="border-t border-gray-200 pt-4 mb-4">
-                    <div className="flex flex-wrap gap-2">
-                      {card.features.slice(0, 2).map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-1 text-xs text-gray-600">
-                          <CheckCircle className="w-3 h-3 text-primary-600" />
-                          <span>{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <motion.div 
-                    className="flex items-center text-primary-600 font-semibold"
-                    whileHover={{ x: 4 }}
-                  >
-                    <span>Apply Now</span>
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </motion.div>
-                </Link>
-              </motion.div>
-            )
-          })}
+      {/* Hero Section */}
+      <section className="relative py-12 md:py-20 bg-gradient-to-br from-accent-600 via-accent-500 to-primary-600 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
         </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              Smart Credit Cards Designed For You
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 opacity-90">
+              Explore top credit card options suited to your spending and goals. KreditRoute assists you in comparing, choosing, and applying online.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link href="/apply">
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-white text-accent-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors"
+                >
+                  Apply Now
+                </motion.button>
+              </Link>
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-white/20 backdrop-blur-sm text-white rounded-lg font-bold text-lg hover:bg-white/30 transition-colors"
+              >
+                Explore More
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Benefits Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="bg-gradient-to-r from-primary-600 to-accent-600 rounded-2xl p-8 md:p-12 text-white"
-        >
-          <h2 className="text-3xl font-bold mb-6 text-center">Why Choose KreditRoute Credit Cards?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Gift className="w-8 h-8" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Best Rewards</h3>
-              <p className="text-sm opacity-90">Earn maximum rewards and cashback on every purchase</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Quick Approval</h3>
-              <p className="text-sm opacity-90">Get instant approval and start using your card immediately</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Secure & Safe</h3>
-              <p className="text-sm opacity-90">Advanced security features to protect your transactions</p>
-            </div>
+      {/* Card Types Grid */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Choose Your Credit Card Type
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Select from a wide range of credit cards designed to match your lifestyle and spending habits
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {cardTypes.map((card, index) => {
+              const Icon = card.icon
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                >
+                  <Link
+                    href={card.href}
+                    className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full group"
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <motion.div
+                        className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center"
+                        whileHover={{ rotate: [0, -15, 15, -15, 0], scale: 1.15 }}
+                      >
+                        <Icon className="w-7 h-7 text-primary-600" />
+                      </motion.div>
+                      {card.badge && (
+                        <span className="text-xs font-semibold bg-accent-100 text-accent-700 px-3 py-1 rounded-full">
+                          {card.badge}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+                      {card.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4 text-sm">{card.description}</p>
+                    <div className="space-y-2 mb-4">
+                      <div className="flex items-center gap-2 text-sm text-gray-700">
+                        <Percent className="w-4 h-4 text-primary-600" />
+                        <span className="font-medium">{card.cashback}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-gray-700">
+                        <CreditCard className="w-4 h-4 text-primary-600" />
+                        <span>Joining Fee: {card.joiningFee}</span>
+                      </div>
+                    </div>
+                    <div className="border-t border-gray-200 pt-4 mb-4">
+                      <div className="flex flex-wrap gap-2">
+                        {card.features.slice(0, 2).map((feature, idx) => (
+                          <div key={idx} className="flex items-center gap-1 text-xs text-gray-600">
+                            <CheckCircle className="w-3 h-3 text-primary-600" />
+                            <span>{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <motion.div
+                      className="flex items-center text-primary-600 font-semibold"
+                      whileHover={{ x: 4 }}
+                    >
+                      <span>Apply Now</span>
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </motion.div>
+                  </Link>
+                </motion.div>
+              )
+            })}
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </section>
+
+      {/* Feature Highlights Table */}
+      <FeatureHighlightsTable
+        title="KreditRoute Edge: Credit Card Highlights"
+        subtitle="Get an instant overview of everything about credit cards that deliver value and convenience."
+        features={featureHighlights}
+      />
+
+      {/* Key Features Section */}
+      <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Smart Credit Cards Designed For You
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Explore top credit card options suited to your spending and goals.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {keyFeatures.map((feature, index) => {
+              const Icon = feature.icon
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -8, scale: 1.05 }}
+                  className="bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-xl transition-all text-center"
+                >
+                  <motion.div
+                    className="w-16 h-16 bg-gradient-to-br from-accent-500 to-primary-500 rounded-xl flex items-center justify-center mx-auto mb-4"
+                    whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
+                  >
+                    <Icon className="w-8 h-8 text-white" />
+                  </motion.div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
+                  <p className="text-sm text-gray-600">{feature.description}</p>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Eligibility Table */}
+      <EligibilityTable
+        title="Do You Qualify? See Credit Card Eligibility Criteria Below"
+        subtitle="A quick overview of the credit card eligibility criteria."
+        criteria={eligibilityCriteria}
+      />
+
+      {/* Why Choose Us */}
+      <section className="py-12 md:py-16 bg-gradient-to-br from-accent-600 via-accent-500 to-primary-600 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Why Is KreditRoute Your Ideal Credit Card Partner?
+            </h2>
+            <p className="text-lg opacity-90 max-w-3xl mx-auto">
+              We're working to make your credit card journey effortless and satisfying. Here's how:
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {whyChooseUs.map((item, index) => {
+              const Icon = item.icon
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -8, scale: 1.05 }}
+                  className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all"
+                >
+                  <motion.div
+                    className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4"
+                    whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
+                  >
+                    <Icon className="w-6 h-6" />
+                  </motion.div>
+                  <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                  <p className="text-sm opacity-90">{item.description}</p>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Steps */}
+      <ProcessSteps />
+
+      {/* Documents Checklist */}
+      <DocumentsChecklist
+        title="Credit Card Documents You Need"
+        subtitle="A quick checklist of the necessary paperwork for your KreditRoute credit card."
+        categories={documents}
+      />
+
+      {/* FAQ Section */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Have Questions? We've Got Answers!
+            </h2>
+            <p className="text-lg text-gray-600">
+              Find quick answers to common questions about our credit card products and processes.
+            </p>
+          </motion.div>
+          <FAQAccordion faqs={faqs} />
+        </div>
+      </section>
     </div>
   )
 }
-
