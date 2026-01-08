@@ -24,15 +24,41 @@ export function CTA() {
             {description}
           </p>
           <motion.div
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ 
+              scale: 1.05,
+              y: -2,
+              transition: { duration: 0.2 }
+            }}
             whileTap={{ scale: 0.95 }}
+            animate={{
+              y: [0, -3, 0],
+            }}
+            transition={{
+              y: {
+                duration: 2.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                repeatType: "reverse"
+              }
+            }}
           >
             <Link
               href={button.href}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-600 rounded-lg text-lg font-semibold hover:bg-gray-50 transition-colors shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-600 rounded-lg text-lg font-semibold hover:bg-gray-50 transition-colors shadow-lg hover:shadow-xl relative overflow-hidden group"
             >
-              {button.text}
-              <ArrowRight className="w-5 h-5" />
+              <motion.span
+                className="absolute inset-0 bg-gradient-to-r from-primary-600/10 to-accent-600/10"
+                initial={{ x: "-100%" }}
+                whileHover={{ x: "100%" }}
+                transition={{ duration: 0.5 }}
+              />
+              <span className="relative z-10">{button.text}</span>
+              <motion.div
+                className="relative z-10"
+                whileHover={{ x: 4 }}
+              >
+                <ArrowRight className="w-5 h-5" />
+              </motion.div>
             </Link>
           </motion.div>
         </motion.div>

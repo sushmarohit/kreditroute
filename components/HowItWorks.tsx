@@ -30,18 +30,56 @@ export function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ 
+                y: -8,
+                scale: 1.03,
+                transition: { duration: 0.3 }
+              }}
+              animate={{
+                y: [0, -6, 0],
+              }}
+              transition={{
+                default: { duration: 0.6, delay: index * 0.1 },
+                y: {
+                  duration: 3.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.2,
+                  repeatType: "reverse"
+                }
+              }}
               className="relative"
             >
-              <div className="p-6 rounded-xl bg-white border border-gray-100 hover:shadow-lg transition-shadow">
+              <div className="p-6 rounded-xl bg-white border border-gray-100 hover:shadow-xl hover:border-primary-300 transition-all cursor-pointer">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                  <motion.div 
+                    className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center"
+                    whileHover={{ 
+                      rotate: [0, -15, 15, -15, 0],
+                      scale: 1.15,
+                      transition: { duration: 0.5 }
+                    }}
+                  >
                     <step.icon className="w-6 h-6 text-primary-600" />
-                  </div>
-                  <span className="text-2xl font-bold text-primary-600">
+                  </motion.div>
+                  <motion.span 
+                    className="text-2xl font-bold text-primary-600"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{
+                      scale: {
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: index * 0.1
+                      }
+                    }}
+                  >
                     {String(index + 1).padStart(2, '0')}
-                  </span>
+                  </motion.span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 hover:text-primary-600 transition-colors">
                   {step.title}
                 </h3>
                 <p className="text-gray-600">
@@ -49,9 +87,28 @@ export function HowItWorks() {
                 </p>
               </div>
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-primary-300 transform -translate-y-1/2">
-                  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-8 border-l-primary-300 border-t-4 border-t-transparent border-b-4 border-b-transparent"></div>
-                </div>
+                <motion.div 
+                  className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-primary-300 transform -translate-y-1/2"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                >
+                  <motion.div 
+                    className="absolute right-0 top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-8 border-l-primary-300 border-t-4 border-t-transparent border-b-4 border-b-transparent"
+                    animate={{
+                      x: [0, 4, 0],
+                    }}
+                    transition={{
+                      x: {
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: index * 0.1
+                      }
+                    }}
+                  />
+                </motion.div>
               )}
             </motion.div>
           ))}

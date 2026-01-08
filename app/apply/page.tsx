@@ -53,17 +53,30 @@ export default function ApplyPage() {
                     value={mobileNumber}
                     onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
                     placeholder="Enter 10-digit mobile number"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-gray-900"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-black placeholder:text-gray-400"
                     maxLength={10}
                   />
                 </div>
-                <button
+                <motion.button
                   onClick={handleGetOTP}
                   disabled={mobileNumber.length !== 10}
-                  className="w-full py-3 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-lg font-semibold hover:from-accent-600 hover:to-accent-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ 
+                    scale: 1.02,
+                    y: -2,
+                    boxShadow: "0 10px 25px rgba(249, 115, 22, 0.3)",
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-lg font-semibold hover:from-accent-600 hover:to-accent-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
                 >
-                  Get OTP
-                </button>
+                  <motion.div
+                    className="absolute inset-0 bg-white/20"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.5 }}
+                  />
+                  <span className="relative z-10">Get OTP</span>
+                </motion.button>
               </div>
             ) : (
               <div className="space-y-4">
@@ -76,23 +89,38 @@ export default function ApplyPage() {
                     value={otp}
                     onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
                     placeholder="Enter 6-digit OTP"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-gray-900 text-center text-2xl tracking-widest"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-black placeholder:text-gray-400 text-center text-2xl tracking-widest"
                     maxLength={6}
                   />
                 </div>
-                <button
+                <motion.button
                   onClick={handleVerifyOTP}
                   disabled={otp.length !== 6}
-                  className="w-full py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ 
+                    scale: 1.02,
+                    y: -2,
+                    boxShadow: "0 10px 25px rgba(29, 78, 216, 0.3)",
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
                 >
-                  Verify OTP
-                </button>
-                <button
+                  <motion.div
+                    className="absolute inset-0 bg-white/20"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.5 }}
+                  />
+                  <span className="relative z-10">Verify OTP</span>
+                </motion.button>
+                <motion.button
                   onClick={() => setShowOTP(false)}
+                  whileHover={{ scale: 1.02, x: 4 }}
+                  whileTap={{ scale: 0.98 }}
                   className="w-full py-2 text-primary-600 hover:text-primary-700 text-sm font-medium"
                 >
                   Change Mobile Number
-                </button>
+                </motion.button>
               </div>
             )}
 
@@ -102,40 +130,149 @@ export default function ApplyPage() {
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                <Link
-                  href="/loans"
-                  className="flex flex-col items-center p-4 bg-primary-50 rounded-lg hover:bg-primary-100 transition-colors"
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  whileHover={{ 
+                    y: -5,
+                    scale: 1.05,
+                    transition: { duration: 0.2 }
+                  }}
+                  animate={{
+                    y: [0, -4, 0],
+                  }}
+                  transition={{
+                    y: {
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.1,
+                      repeatType: "reverse"
+                    }
+                  }}
                 >
-                  <CreditCard className="w-8 h-8 text-primary-600 mb-2" />
-                  <span className="text-sm font-medium text-gray-900">Loans</span>
-                </Link>
-                <Link
-                  href="/credit-cards"
-                  className="flex flex-col items-center p-4 bg-accent-50 rounded-lg hover:bg-accent-100 transition-colors"
+                  <Link
+                    href="/loans"
+                    className="flex flex-col items-center p-4 bg-primary-50 rounded-lg hover:bg-primary-100 transition-colors hover:shadow-lg group"
+                  >
+                    <motion.div
+                      whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.15 }}
+                    >
+                      <CreditCard className="w-8 h-8 text-primary-600 mb-2" />
+                    </motion.div>
+                    <span className="text-sm font-medium text-gray-900 group-hover:text-primary-600 transition-colors">Loans</span>
+                  </Link>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  whileHover={{ 
+                    y: -5,
+                    scale: 1.05,
+                    transition: { duration: 0.2 }
+                  }}
+                  animate={{
+                    y: [0, -4, 0],
+                  }}
+                  transition={{
+                    y: {
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.2,
+                      repeatType: "reverse"
+                    }
+                  }}
                 >
-                  <Smartphone className="w-8 h-8 text-accent-600 mb-2" />
-                  <span className="text-sm font-medium text-gray-900">Credit Cards</span>
-                </Link>
-                <Link
-                  href="/investments"
-                  className="flex flex-col items-center p-4 bg-primary-50 rounded-lg hover:bg-primary-100 transition-colors"
+                  <Link
+                    href="/credit-cards"
+                    className="flex flex-col items-center p-4 bg-accent-50 rounded-lg hover:bg-accent-100 transition-colors hover:shadow-lg group"
+                  >
+                    <motion.div
+                      whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.15 }}
+                    >
+                      <Smartphone className="w-8 h-8 text-accent-600 mb-2" />
+                    </motion.div>
+                    <span className="text-sm font-medium text-gray-900 group-hover:text-accent-600 transition-colors">Credit Cards</span>
+                  </Link>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  whileHover={{ 
+                    y: -5,
+                    scale: 1.05,
+                    transition: { duration: 0.2 }
+                  }}
+                  animate={{
+                    y: [0, -4, 0],
+                  }}
+                  transition={{
+                    y: {
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.3,
+                      repeatType: "reverse"
+                    }
+                  }}
                 >
-                  <TrendingUp className="w-8 h-8 text-primary-600 mb-2" />
-                  <span className="text-sm font-medium text-gray-900">Investments</span>
-                </Link>
+                  <Link
+                    href="/investments"
+                    className="flex flex-col items-center p-4 bg-primary-50 rounded-lg hover:bg-primary-100 transition-colors hover:shadow-lg group"
+                  >
+                    <motion.div
+                      whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.15 }}
+                    >
+                      <TrendingUp className="w-8 h-8 text-primary-600 mb-2" />
+                    </motion.div>
+                    <span className="text-sm font-medium text-gray-900 group-hover:text-primary-600 transition-colors">Investments</span>
+                  </Link>
+                </motion.div>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 text-center">
-            <Link
-              href="/instant-loan"
-              className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium"
+          <motion.div 
+            className="mt-8 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.05, x: 4 }}
+              animate={{
+                x: [0, 5, 0],
+              }}
+              transition={{
+                x: {
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  repeatType: "reverse"
+                }
+              }}
             >
-              Apply for Instant Personal Loan
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+              <Link
+                href="/instant-loan"
+                className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium group"
+              >
+                Apply for Instant Personal Loan
+                <motion.div
+                  whileHover={{ x: 4 }}
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </motion.div>
+              </Link>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
     </div>

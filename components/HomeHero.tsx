@@ -85,17 +85,30 @@ export function HomeHero() {
                     value={mobileNumber}
                     onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
                     placeholder="Enter 10-digit mobile number"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-gray-900"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-black placeholder:text-gray-400"
                     maxLength={10}
                   />
                 </div>
-                <button
+                <motion.button
                   onClick={handleGetOTP}
                   disabled={mobileNumber.length !== 10}
-                  className="w-full py-3 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-lg font-semibold hover:from-accent-600 hover:to-accent-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ 
+                    scale: 1.02,
+                    y: -2,
+                    boxShadow: "0 10px 25px rgba(249, 115, 22, 0.3)",
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-lg font-semibold hover:from-accent-600 hover:to-accent-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
                 >
-                  Get OTP
-                </button>
+                  <motion.div
+                    className="absolute inset-0 bg-white/20"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.5 }}
+                  />
+                  <span className="relative z-10">Get OTP</span>
+                </motion.button>
               </div>
             ) : (
               <div className="space-y-4">
@@ -108,23 +121,38 @@ export function HomeHero() {
                     value={otp}
                     onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
                     placeholder="Enter 6-digit OTP"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-gray-900 text-center text-2xl tracking-widest"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-black placeholder:text-gray-400 text-center text-2xl tracking-widest"
                     maxLength={6}
                   />
                 </div>
-                <button
+                <motion.button
                   onClick={handleVerifyOTP}
                   disabled={otp.length !== 6}
-                  className="w-full py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ 
+                    scale: 1.02,
+                    y: -2,
+                    boxShadow: "0 10px 25px rgba(29, 78, 216, 0.3)",
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
                 >
-                  Verify OTP
-                </button>
-                <button
+                  <motion.div
+                    className="absolute inset-0 bg-white/20"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.5 }}
+                  />
+                  <span className="relative z-10">Verify OTP</span>
+                </motion.button>
+                <motion.button
                   onClick={() => setShowOTP(false)}
+                  whileHover={{ scale: 1.02, x: 4 }}
+                  whileTap={{ scale: 0.98 }}
                   className="w-full py-2 text-primary-600 hover:text-primary-700 text-sm font-medium"
                 >
                   Change Mobile Number
-                </button>
+                </motion.button>
               </div>
             )}
 
@@ -143,27 +171,120 @@ export function HomeHero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          <div className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ 
+              y: -8,
+              scale: 1.03,
+              transition: { duration: 0.3 }
+            }}
+            animate={{
+              y: [0, -5, 0],
+            }}
+            transition={{
+              default: { duration: 0.5, delay: 0.1 },
+              y: {
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.2,
+                repeatType: "reverse"
+              }
+            }}
+            className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-xl hover:border-primary-300 transition-all cursor-pointer"
+          >
+            <motion.div 
+              className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4"
+              whileHover={{ 
+                rotate: [0, -10, 10, -10, 0],
+                scale: 1.15,
+                transition: { duration: 0.5 }
+              }}
+            >
               <Smartphone className="w-6 h-6 text-primary-600" />
-            </div>
+            </motion.div>
             <h3 className="font-semibold text-gray-900 mb-2">Get The App</h3>
             <p className="text-sm text-gray-600">Download the KreditRoute App Today! Get instant access to loans, credit cards, and financial tools.</p>
-          </div>
-          <div className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ 
+              y: -8,
+              scale: 1.03,
+              transition: { duration: 0.3 }
+            }}
+            animate={{
+              y: [0, -5, 0],
+            }}
+            transition={{
+              default: { duration: 0.5, delay: 0.2 },
+              y: {
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.3,
+                repeatType: "reverse"
+              }
+            }}
+            className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-xl hover:border-accent-300 transition-all cursor-pointer"
+          >
+            <motion.div 
+              className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4"
+              whileHover={{ 
+                rotate: [0, -10, 10, -10, 0],
+                scale: 1.15,
+                transition: { duration: 0.5 }
+              }}
+            >
               <TrendingUp className="w-6 h-6 text-accent-600" />
-            </div>
+            </motion.div>
             <h3 className="font-semibold text-gray-900 mb-2">Quick Approval</h3>
             <p className="text-sm text-gray-600">Fast-track loan approvals with minimal documentation. Get funds in your account quickly.</p>
-          </div>
-          <div className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            whileHover={{ 
+              y: -8,
+              scale: 1.03,
+              transition: { duration: 0.3 }
+            }}
+            animate={{
+              y: [0, -5, 0],
+            }}
+            transition={{
+              default: { duration: 0.5, delay: 0.3 },
+              y: {
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.4,
+                repeatType: "reverse"
+              }
+            }}
+            className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-xl hover:border-primary-300 transition-all cursor-pointer"
+          >
+            <motion.div 
+              className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4"
+              whileHover={{ 
+                rotate: [0, -10, 10, -10, 0],
+                scale: 1.15,
+                transition: { duration: 0.5 }
+              }}
+            >
               <Shield className="w-6 h-6 text-primary-600" />
-            </div>
+            </motion.div>
             <h3 className="font-semibold text-gray-900 mb-2">Secure & Trusted</h3>
             <p className="text-sm text-gray-600">Your financial data is protected with bank-level security. Trusted by millions of users.</p>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

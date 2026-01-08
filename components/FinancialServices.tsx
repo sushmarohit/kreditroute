@@ -81,30 +81,78 @@ export function FinancialServices() {
                 {service.items.map((item, index) => {
                   const Icon = item.icon
                   return (
-                    <Link
+                    <motion.div
                       key={index}
-                      href={item.href}
-                      className="group bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-primary-500 hover:shadow-lg transition-all duration-300"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      whileHover={{ 
+                        y: -8,
+                        scale: 1.03,
+                        transition: { duration: 0.3 }
+                      }}
+                      animate={{
+                        y: [0, -4, 0],
+                        opacity: 1
+                      }}
+                      transition={{
+                        default: { duration: 0.5, delay: index * 0.05 },
+                        y: {
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: index * 0.15,
+                          repeatType: "reverse"
+                        }
+                      }}
                     >
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="w-12 h-12 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                          <Icon className="w-6 h-6 text-primary-600" />
+                      <Link
+                        href={item.href}
+                        className="group block bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-primary-500 hover:shadow-xl transition-all duration-300"
+                      >
+                        <div className="flex items-start justify-between mb-4">
+                          <motion.div 
+                            className="w-12 h-12 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center"
+                            whileHover={{ 
+                              rotate: [0, -15, 15, -15, 0],
+                              scale: 1.15,
+                              transition: { duration: 0.5 }
+                            }}
+                          >
+                            <Icon className="w-6 h-6 text-primary-600" />
+                          </motion.div>
+                          {item.badge && (
+                            <motion.span 
+                              className="text-xs font-semibold bg-accent-100 text-accent-700 px-2 py-1 rounded"
+                              whileHover={{ scale: 1.1 }}
+                              animate={{
+                                scale: [1, 1.05, 1],
+                              }}
+                              transition={{
+                                scale: {
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  ease: "easeInOut"
+                                }
+                              }}
+                            >
+                              {item.badge}
+                            </motion.span>
+                          )}
                         </div>
-                        {item.badge && (
-                          <span className="text-xs font-semibold bg-accent-100 text-accent-700 px-2 py-1 rounded">
-                            {item.badge}
-                          </span>
-                        )}
-                      </div>
-                      <h4 className="font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
-                        {item.title}
-                      </h4>
-                      <p className="text-sm text-gray-600 mb-3">{item.desc}</p>
-                      <div className="flex items-center text-primary-600 text-sm font-medium group-hover:gap-2 transition-all">
-                        <span>Explore</span>
-                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </Link>
+                        <h4 className="font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+                          {item.title}
+                        </h4>
+                        <p className="text-sm text-gray-600 mb-3">{item.desc}</p>
+                        <motion.div 
+                          className="flex items-center text-primary-600 text-sm font-medium"
+                          whileHover={{ x: 4 }}
+                        >
+                          <span>Explore</span>
+                          <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                        </motion.div>
+                      </Link>
+                    </motion.div>
                   )
                 })}
               </div>

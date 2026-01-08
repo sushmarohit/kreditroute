@@ -1,3 +1,6 @@
+'use client'
+
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 export function Footer() {
@@ -84,16 +87,27 @@ export function Footer() {
               Products
             </h4>
             <ul className="space-y-2">
-              {footerLinks.products.map((link) => (
-                <li key={link.href}>
+              {footerLinks.products.map((link, index) => (
+                <motion.li 
+                  key={link.href}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  whileHover={{ x: 4 }}
+                >
                   <Link 
                     href={link.href} 
-                    className="hover:text-primary-400 hover:translate-x-1 transition-all duration-200 text-sm text-gray-400 flex items-center gap-2 group"
+                    className="hover:text-primary-400 transition-all duration-200 text-sm text-gray-400 flex items-center gap-2 group"
                   >
-                    <span className="w-0 group-hover:w-1.5 h-0.5 bg-accent-500 transition-all duration-200"></span>
+                    <motion.span 
+                      className="w-0 h-0.5 bg-accent-500"
+                      whileHover={{ width: "0.375rem" }}
+                      transition={{ duration: 0.2 }}
+                    />
                     {link.label}
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </div>
@@ -104,16 +118,27 @@ export function Footer() {
               Company
             </h4>
             <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.href}>
+              {footerLinks.company.map((link, index) => (
+                <motion.li 
+                  key={link.href}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  whileHover={{ x: 4 }}
+                >
                   <Link 
                     href={link.href} 
-                    className="hover:text-primary-400 hover:translate-x-1 transition-all duration-200 text-sm text-gray-400 flex items-center gap-2 group"
+                    className="hover:text-primary-400 transition-all duration-200 text-sm text-gray-400 flex items-center gap-2 group"
                   >
-                    <span className="w-0 group-hover:w-1.5 h-0.5 bg-accent-500 transition-all duration-200"></span>
+                    <motion.span 
+                      className="w-0 h-0.5 bg-accent-500"
+                      whileHover={{ width: "0.375rem" }}
+                      transition={{ duration: 0.2 }}
+                    />
                     {link.label}
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </div>
@@ -124,16 +149,27 @@ export function Footer() {
               Support
             </h4>
             <ul className="space-y-2">
-              {footerLinks.support.map((link) => (
-                <li key={link.href}>
+              {footerLinks.support.map((link, index) => (
+                <motion.li 
+                  key={link.href}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  whileHover={{ x: 4 }}
+                >
                   <Link 
                     href={link.href} 
-                    className="hover:text-primary-400 hover:translate-x-1 transition-all duration-200 text-sm text-gray-400 flex items-center gap-2 group"
+                    className="hover:text-primary-400 transition-all duration-200 text-sm text-gray-400 flex items-center gap-2 group"
                   >
-                    <span className="w-0 group-hover:w-1.5 h-0.5 bg-accent-500 transition-all duration-200"></span>
+                    <motion.span 
+                      className="w-0 h-0.5 bg-accent-500"
+                      whileHover={{ width: "0.375rem" }}
+                      transition={{ duration: 0.2 }}
+                    />
                     {link.label}
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </div>

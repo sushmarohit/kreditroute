@@ -93,25 +93,64 @@ export default function LoansPage() {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -10,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                animate={{
+                  y: [0, -6, 0],
+                  opacity: 1
+                }}
+                transition={{
+                  default: { duration: 0.6, delay: index * 0.1 },
+                  y: {
+                    duration: 3.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: index * 0.2,
+                    repeatType: "reverse"
+                  }
+                }}
               >
                 <Link
                   href={loan.href}
-                  className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-xl transition-all duration-300 h-full"
+                  className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full group"
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center">
+                    <motion.div 
+                      className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center"
+                      whileHover={{ 
+                        rotate: [0, -15, 15, -15, 0],
+                        scale: 1.15,
+                        transition: { duration: 0.5 }
+                      }}
+                    >
                       <Icon className="w-7 h-7 text-primary-600" />
-                    </div>
+                    </motion.div>
                     {loan.badge && (
-                      <span className="text-xs font-semibold bg-accent-100 text-accent-700 px-3 py-1 rounded-full">
+                      <motion.span 
+                        className="text-xs font-semibold bg-accent-100 text-accent-700 px-3 py-1 rounded-full"
+                        whileHover={{ scale: 1.1 }}
+                        animate={{
+                          scale: [1, 1.05, 1],
+                        }}
+                        transition={{
+                          scale: {
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }
+                        }}
+                      >
                         {loan.badge}
-                      </span>
+                      </motion.span>
                     )}
                   </div>
                   
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{loan.title}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">{loan.title}</h3>
                   <p className="text-gray-600 mb-4 text-sm">{loan.description}</p>
 
                   <div className="space-y-2 mb-4">
@@ -140,10 +179,13 @@ export default function LoansPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center text-primary-600 font-semibold group">
+                  <motion.div 
+                    className="flex items-center text-primary-600 font-semibold"
+                    whileHover={{ x: 4 }}
+                  >
                     <span>Apply Now</span>
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  </motion.div>
                 </Link>
               </motion.div>
             )

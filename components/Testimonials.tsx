@@ -53,17 +53,50 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index}>
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="p-6 bg-gradient-to-br from-gray-50 to-white rounded-xl border border-gray-100 h-full"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ 
+                  y: -8,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                animate={{
+                  y: [0, -5, 0],
+                }}
+                transition={{
+                  default: { duration: 0.5, delay: index * 0.1 },
+                  y: {
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: index * 0.2,
+                    repeatType: "reverse"
+                  }
+                }}
+                className="p-6 bg-gradient-to-br from-gray-50 to-white rounded-xl border border-gray-100 h-full hover:shadow-xl hover:border-primary-300 transition-all cursor-pointer"
               >
-                <div className="flex mb-4">
+                <motion.div 
+                  className="flex mb-4"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+                >
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    <motion.div
+                      key={i}
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.1 + 0.2 + i * 0.05 }}
+                      whileHover={{ scale: 1.2, rotate: 15 }}
+                    >
+                      <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
                 <p className="text-gray-700 mb-4 italic">
                   "{testimonial.text}"
                 </p>

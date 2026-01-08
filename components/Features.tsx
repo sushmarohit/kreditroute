@@ -29,11 +29,36 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="p-6 rounded-xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-lg transition-shadow"
+              whileHover={{ 
+                y: -8,
+                scale: 1.02,
+                transition: { duration: 0.3 }
+              }}
+              animate={{
+                y: [0, -5, 0],
+              }}
+              transition={{
+                default: { duration: 0.6, delay: index * 0.1 },
+                y: {
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.2,
+                  repeatType: "reverse"
+                }
+              }}
+              className="p-6 rounded-xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-xl hover:border-primary-300 transition-all cursor-pointer"
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center mb-4">
+              <motion.div 
+                className="w-12 h-12 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center mb-4"
+                whileHover={{ 
+                  rotate: [0, -10, 10, -10, 0],
+                  scale: 1.1,
+                  transition: { duration: 0.5 }
+                }}
+              >
                 <feature.icon className="w-6 h-6 text-primary-600" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 {feature.title}
               </h3>

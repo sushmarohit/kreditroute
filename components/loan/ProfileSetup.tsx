@@ -66,7 +66,7 @@ export function ProfileSetup({ email, onSuccess }: ProfileSetupProps) {
               {...register('name')}
               type="text"
               id="name"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder:text-gray-400"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all text-black placeholder:text-gray-400"
               placeholder="John Doe"
             />
             {errors.name && (
@@ -82,7 +82,7 @@ export function ProfileSetup({ email, onSuccess }: ProfileSetupProps) {
               {...register('phoneNumber')}
               type="tel"
               id="phoneNumber"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder:text-gray-400"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all text-black placeholder:text-gray-400"
               placeholder="9876543210"
               maxLength={10}
             />
@@ -132,7 +132,7 @@ export function ProfileSetup({ email, onSuccess }: ProfileSetupProps) {
             {...register('address')}
             id="address"
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all resize-none text-gray-900 placeholder:text-gray-400"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all resize-none text-black placeholder:text-gray-400"
             placeholder="Complete residential address"
           />
           {errors.address && (
