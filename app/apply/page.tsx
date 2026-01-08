@@ -134,16 +134,15 @@ export default function ApplyPage() {
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
                   whileHover={{ 
                     y: -5,
-                    scale: 1.05,
-                    transition: { duration: 0.2 }
+                    scale: 1.05
                   }}
                   animate={{
                     y: [0, -4, 0],
                   }}
                   transition={{
+                    opacity: { duration: 0.5, delay: 0.1 },
                     y: {
                       duration: 3,
                       repeat: Infinity,
@@ -169,16 +168,15 @@ export default function ApplyPage() {
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
                   whileHover={{ 
                     y: -5,
-                    scale: 1.05,
-                    transition: { duration: 0.2 }
+                    scale: 1.05
                   }}
                   animate={{
                     y: [0, -4, 0],
                   }}
                   transition={{
+                    opacity: { duration: 0.5, delay: 0.2 },
                     y: {
                       duration: 3,
                       repeat: Infinity,
@@ -204,16 +202,15 @@ export default function ApplyPage() {
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
                   whileHover={{ 
                     y: -5,
-                    scale: 1.05,
-                    transition: { duration: 0.2 }
+                    scale: 1.05
                   }}
                   animate={{
                     y: [0, -4, 0],
                   }}
                   transition={{
+                    opacity: { duration: 0.5, delay: 0.3 },
                     y: {
                       duration: 3,
                       repeat: Infinity,

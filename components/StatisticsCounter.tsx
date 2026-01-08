@@ -141,12 +141,11 @@ export function StatisticsCounter() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ 
                   y: -8,
-                  scale: 1.05,
-                  transition: { duration: 0.3 }
+                  scale: 1.05
                 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-primary-300 hover:shadow-xl transition-all text-center group"
               >
                 <motion.div

@@ -114,12 +114,11 @@ export function FinancialCalculators() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ 
                   y: -10,
-                  scale: 1.03,
-                  transition: { duration: 0.3 }
+                  scale: 1.03
                 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <Link
                   href={calc.href}

@@ -28,17 +28,15 @@ export function Features() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ 
                 y: -8,
-                scale: 1.02,
-                transition: { duration: 0.3 }
+                scale: 1.02
               }}
               animate={{
                 y: [0, -5, 0],
               }}
               transition={{
-                default: { duration: 0.6, delay: index * 0.1 },
+                opacity: { duration: 0.6, delay: index * 0.1 },
                 y: {
                   duration: 3,
                   repeat: Infinity,

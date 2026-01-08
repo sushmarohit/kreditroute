@@ -88,15 +88,14 @@ export function FinancialServices() {
                       viewport={{ once: true }}
                       whileHover={{ 
                         y: -8,
-                        scale: 1.03,
-                        transition: { duration: 0.3 }
+                        scale: 1.03
                       }}
                       animate={{
                         y: [0, -4, 0],
                         opacity: 1
                       }}
                       transition={{
-                        default: { duration: 0.5, delay: index * 0.05 },
+                        opacity: { duration: 0.5, delay: index * 0.05 },
                         y: {
                           duration: 4,
                           repeat: Infinity,

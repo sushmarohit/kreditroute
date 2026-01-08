@@ -175,17 +175,15 @@ export function HomeHero() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
             whileHover={{ 
               y: -8,
-              scale: 1.03,
-              transition: { duration: 0.3 }
+              scale: 1.03
             }}
             animate={{
               y: [0, -5, 0],
             }}
             transition={{
-              default: { duration: 0.5, delay: 0.1 },
+              opacity: { duration: 0.5, delay: 0.1 },
               y: {
                 duration: 3,
                 repeat: Infinity,
@@ -213,17 +211,15 @@ export function HomeHero() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
             whileHover={{ 
               y: -8,
-              scale: 1.03,
-              transition: { duration: 0.3 }
+              scale: 1.03
             }}
             animate={{
               y: [0, -5, 0],
             }}
             transition={{
-              default: { duration: 0.5, delay: 0.2 },
+              opacity: { duration: 0.5, delay: 0.2 },
               y: {
                 duration: 3,
                 repeat: Infinity,
@@ -251,17 +247,15 @@ export function HomeHero() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
             whileHover={{ 
               y: -8,
-              scale: 1.03,
-              transition: { duration: 0.3 }
+              scale: 1.03
             }}
             animate={{
               y: [0, -5, 0],
             }}
             transition={{
-              default: { duration: 0.5, delay: 0.3 },
+              opacity: { duration: 0.5, delay: 0.3 },
               y: {
                 duration: 3,
                 repeat: Infinity,

@@ -75,12 +75,11 @@ export function ProcessSteps() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
                 whileHover={{ 
                   y: -10,
-                  scale: 1.05,
-                  transition: { duration: 0.3 }
+                  scale: 1.05
                 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
                 className="relative"
               >
                 {/* Arrow between steps (Desktop) */}
