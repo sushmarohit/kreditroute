@@ -103,18 +103,24 @@ export const PersonalLoanIcon = () => (
       {/* Bag Highlight */}
       <path d="M 18 16 Q 18 14 20 14 L 24 14 Q 26 14 26 16" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="1" fill="none" />
     </g>
-    {/* Coins */}
+    {/* Coins - 3D */}
     <g>
-      {/* Coin 1 */}
+      {/* Coin 1 - 3D */}
+      <ellipse cx="22" cy="24" rx="1.5" ry="3.5" fill="#D97706" opacity="0.5" />
       <circle cx="20" cy="24" r="3.5" fill="url(#coinGradient)" />
+      <ellipse cx="19" cy="23" rx="2" ry="2.5" fill="rgba(255, 255, 255, 0.3)" />
       <circle cx="20" cy="24" r="2.5" fill="#FCD34D" opacity="0.6" />
       <text x="20" y="25.5" textAnchor="middle" fontSize="4" fill="#92400E" fontWeight="bold">₹</text>
-      {/* Coin 2 */}
+      {/* Coin 2 - 3D */}
+      <ellipse cx="30" cy="22" rx="1.5" ry="3.5" fill="#D97706" opacity="0.5" />
       <circle cx="28" cy="22" r="3.5" fill="url(#coinGradient)" />
+      <ellipse cx="27" cy="21" rx="2" ry="2.5" fill="rgba(255, 255, 255, 0.3)" />
       <circle cx="28" cy="22" r="2.5" fill="#FCD34D" opacity="0.6" />
       <text x="28" y="23.5" textAnchor="middle" fontSize="4" fill="#92400E" fontWeight="bold">₹</text>
-      {/* Coin 3 - Bottom */}
+      {/* Coin 3 - Bottom 3D */}
+      <ellipse cx="26" cy="28" rx="1.2" ry="2.5" fill="#D97706" opacity="0.4" />
       <ellipse cx="24" cy="28" rx="3" ry="2.5" fill="url(#coinGradient)" opacity="0.8" />
+      <ellipse cx="23" cy="27" rx="2" ry="2" fill="rgba(255, 255, 255, 0.2)" />
     </g>
   </svg>
 )
@@ -201,8 +207,10 @@ export const BusinessLoanIcon = () => (
       <circle cx="24" cy="26" r="1.2" fill="#92400E" />
       <rect x="23" y="26" width="2" height="3" fill="#FBBF24" />
     </g>
-    {/* Coin next to briefcase */}
+    {/* Coin next to briefcase - 3D */}
+    <ellipse cx="35" cy="22" rx="1.5" ry="4" fill="#D97706" opacity="0.5" />
     <circle cx="32" cy="22" r="4" fill="url(#coinGrad)" />
+    <ellipse cx="31" cy="21" rx="2.5" ry="3" fill="rgba(255, 255, 255, 0.3)" />
     <circle cx="32" cy="22" r="3" fill="#FCD34D" opacity="0.7" />
     <text x="32" y="24" textAnchor="middle" fontSize="5" fill="#92400E" fontWeight="bold">₹</text>
   </svg>
@@ -279,19 +287,32 @@ export const CreditScoreIcon = () => (
     </defs>
     {/* Gauge/Speedometer - 3D */}
     <g filter="url(#gaugeShadow)">
-      {/* Gauge Background Circle */}
+      {/* Gauge Shadow */}
+      <ellipse cx="26" cy="26" rx="14" ry="16" fill="#000000" opacity="0.1" />
+      {/* Gauge Background Circle - Side */}
+      <ellipse cx="28" cy="24" rx="2" ry="16" fill="#E5E7EB" opacity="0.4" />
+      {/* Gauge Background Circle - Front */}
       <circle cx="24" cy="24" r="16" fill="#F3F4F6" stroke="#D1D5DB" strokeWidth="1" />
-      {/* Gauge Arc - Red */}
+      {/* Gauge Inner Ring */}
+      <circle cx="24" cy="24" r="14" fill="none" stroke="#FFFFFF" strokeWidth="1" opacity="0.5" />
+      {/* Gauge Arc - Red - 3D */}
       <path d="M 24 8 A 14 14 0 0 1 38 24" stroke="#EF4444" strokeWidth="4" fill="none" strokeLinecap="round" />
-      {/* Gauge Arc - Yellow */}
+      <path d="M 24 9 A 13 13 0 0 1 37 24" stroke="#DC2626" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.7" />
+      {/* Gauge Arc - Yellow - 3D */}
       <path d="M 38 24 A 14 14 0 0 1 31 36" stroke="#FBBF24" strokeWidth="4" fill="none" strokeLinecap="round" />
-      {/* Gauge Arc - Green */}
+      <path d="M 37 24 A 13 13 0 0 1 31 35" stroke="#F59E0B" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.7" />
+      {/* Gauge Arc - Green - 3D */}
       <path d="M 31 36 A 14 14 0 0 1 24 8" stroke="#10B981" strokeWidth="4" fill="none" strokeLinecap="round" />
-      {/* Center Circle */}
+      <path d="M 31 35 A 13 13 0 0 1 24 9" stroke="#059669" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.7" />
+      {/* Center Circle - 3D */}
+      <circle cx="25" cy="25" r="3" fill="#1F2937" opacity="0.5" />
       <circle cx="24" cy="24" r="3" fill="#374151" />
-      {/* Needle */}
+      <circle cx="24" cy="24" r="2" fill="#4B5563" />
+      {/* Needle - 3D */}
+      <line x1="24" y1="24" x2="20" y2="16" stroke="#374151" strokeWidth="3" strokeLinecap="round" opacity="0.5" />
       <line x1="24" y1="24" x2="20" y2="16" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" />
       <circle cx="24" cy="24" r="1.5" fill="#10B981" />
+      <circle cx="24" cy="24" r="1" fill="#34D399" />
       {/* Score Text */}
       <text x="24" y="34" textAnchor="middle" fontSize="6" fill="#10B981" fontWeight="bold">750</text>
     </g>
@@ -483,17 +504,25 @@ export const InvestmentBondsIcon = () => (
     </defs>
     {/* Gold Bars Stack - 3D */}
     <g filter="url(#goldShadow)">
-      {/* Bar 3 - Bottom */}
+      {/* Bar 3 - Bottom - Side */}
+      <path d="M 36 28 L 38 30 L 38 34 L 36 32 Z" fill="#D97706" opacity="0.4" />
       <rect x="12" y="28" width="24" height="6" rx="1" fill="url(#goldGrad)" opacity="0.8" />
+      <path d="M 12 28 L 36 28 L 38 30 L 14 30 Z" fill="#D97706" opacity="0.3" />
       <rect x="14" y="29" width="20" height="4" fill="#FCD34D" opacity="0.5" />
-      {/* Bar 2 - Middle */}
+      {/* Bar 2 - Middle - Side */}
+      <path d="M 38 22 L 40 24 L 40 28 L 38 26 Z" fill="#D97706" opacity="0.5" />
       <rect x="14" y="22" width="24" height="6" rx="1" fill="url(#goldGrad)" />
+      <path d="M 14 22 L 38 22 L 40 24 L 16 24 Z" fill="#D97706" opacity="0.4" />
       <rect x="16" y="23" width="20" height="4" fill="#FCD34D" opacity="0.6" />
-      {/* Bar 1 - Top */}
+      {/* Bar 1 - Top - Side */}
+      <path d="M 40 16 L 42 18 L 42 22 L 40 20 Z" fill="#D97706" opacity="0.6" />
       <rect x="16" y="16" width="24" height="6" rx="1" fill="url(#goldGrad)" />
+      <path d="M 16 16 L 40 16 L 42 18 L 18 18 Z" fill="#D97706" opacity="0.5" />
       <rect x="18" y="17" width="20" height="4" fill="#FCD34D" opacity="0.7" />
       {/* Percentage Sign */}
       <text x="28" y="21" textAnchor="middle" fontSize="6" fill="#92400E" fontWeight="bold">13.25%</text>
+      {/* Highlight on top bar */}
+      <rect x="18" y="17" width="20" height="1.5" fill="rgba(255, 255, 255, 0.4)" />
     </g>
   </svg>
 )
@@ -602,12 +631,21 @@ export const LoanRepaymentIcon = () => (
     </defs>
     {/* Wallet/Money Bag with EMI - 3D */}
     <g filter="url(#walletShadow)">
-      {/* Bag Body */}
+      {/* Bag Shadow */}
+      <ellipse cx="26" cy="32" rx="10" ry="3" fill="#059669" opacity="0.3" />
+      {/* Bag Side */}
+      <path d="M 34 18 Q 34 16 32 16 L 32 30 Q 32 32 34 32 Z" fill="#047857" opacity="0.5" />
+      {/* Bag Body Front */}
       <path d="M 14 18 Q 14 14 18 14 L 30 14 Q 34 14 34 18 L 34 30 Q 34 32 32 32 L 20 32 Q 18 32 18 30 L 18 18 Z" fill="url(#walletGrad)" />
-      {/* Bag Top */}
+      {/* Bag Top - 3D */}
       <ellipse cx="24" cy="18" rx="8" ry="3" fill="#047857" opacity="0.7" />
+      <ellipse cx="26" cy="18" rx="6" ry="2" fill="#065F46" opacity="0.5" />
+      {/* Bag Highlight */}
+      <path d="M 18 16 Q 18 15 24 15 Q 30 15 30 16" stroke="rgba(255, 255, 255, 0.3)" strokeWidth="1" fill="none" />
       {/* EMI Text */}
       <text x="24" y="26" textAnchor="middle" fontSize="5" fill="#FFFFFF" fontWeight="bold">EMI</text>
+      {/* Inner Glow */}
+      <path d="M 20 20 Q 20 19 24 19 Q 28 19 28 20" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="0.5" fill="none" />
     </g>
   </svg>
 )
