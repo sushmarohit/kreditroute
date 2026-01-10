@@ -2,7 +2,9 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { CreditCard, Gift, Plane, ShoppingBag, TrendingUp, ArrowRight, CheckCircle, Percent, Star, Shield, Zap, Clock, Globe, Users } from 'lucide-react'
+import type { ComponentType } from 'react'
+import { ArrowRight, CheckCircle, Percent } from 'lucide-react'
+import { CreditCardIcon, BestRatesIcon, SecureIcon, InstantFundsIcon, DigitalProcessIcon } from '@/components/icons/IconLibrary'
 import { FeatureHighlightsTable } from '@/components/FeatureHighlightsTable'
 import { EligibilityTable } from '@/components/EligibilityTable'
 import { ProcessSteps } from '@/components/ProcessSteps'
@@ -10,9 +12,18 @@ import { DocumentsChecklist } from '@/components/DocumentsChecklist'
 import { FAQAccordion } from '@/components/FAQAccordion'
 
 export default function CreditCardsPage() {
-  const cardTypes = [
+  const cardTypes: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+    features: string[]
+    href: string
+    badge?: string
+    cashback: string
+    joiningFee: string
+  }> = [
     {
-      icon: Gift,
+      IconComponent: CreditCardIcon,
       title: 'Rewards Credit Cards',
       description: 'Earn reward points on every purchase and redeem them for exciting gifts and vouchers.',
       features: ['5X reward points', 'Welcome bonus', 'Airport lounge access', 'Zero annual fee'],
@@ -22,7 +33,7 @@ export default function CreditCardsPage() {
       joiningFee: '₹0 - ₹1,500'
     },
     {
-      icon: Plane,
+      IconComponent: CreditCardIcon,
       title: 'Travel Credit Cards',
       description: 'Make your travel dreams come true with exclusive travel benefits and miles.',
       features: ['Air miles', 'Travel insurance', 'Lounge access', 'Hotel discounts'],
@@ -31,7 +42,7 @@ export default function CreditCardsPage() {
       joiningFee: '₹500 - ₹5,000'
     },
     {
-      icon: ShoppingBag,
+      IconComponent: CreditCardIcon,
       title: 'Shopping Credit Cards',
       description: 'Shop more, save more with exclusive discounts and cashback on shopping.',
       features: ['Shopping discounts', 'EMI options', 'Brand offers', 'Cashback rewards'],
@@ -41,7 +52,7 @@ export default function CreditCardsPage() {
       joiningFee: '₹0 - ₹2,000'
     },
     {
-      icon: TrendingUp,
+      IconComponent: CreditCardIcon,
       title: 'Premium Credit Cards',
       description: 'Experience luxury with premium credit cards offering exclusive privileges.',
       features: ['Concierge service', 'Premium rewards', 'Exclusive events', 'Priority support'],
@@ -50,7 +61,7 @@ export default function CreditCardsPage() {
       joiningFee: '₹5,000 - ₹15,000'
     },
     {
-      icon: CreditCard,
+      IconComponent: CreditCardIcon,
       title: 'Fuel Credit Cards',
       description: 'Save on fuel expenses with dedicated fuel credit cards.',
       features: ['Fuel surcharge waiver', 'Cashback on fuel', 'Reward points', 'Low annual fee'],
@@ -59,7 +70,7 @@ export default function CreditCardsPage() {
       joiningFee: '₹0 - ₹1,000'
     },
     {
-      icon: Star,
+      IconComponent: CreditCardIcon,
       title: 'Secured Credit Cards',
       description: 'Build or rebuild your credit score with secured credit cards.',
       features: ['Easy approval', 'Credit building', 'Flexible limit', 'Low fees'],
@@ -89,57 +100,65 @@ export default function CreditCardsPage() {
     { criterion: 'Work Experience', requirement: '6 months+' }
   ]
 
-  const keyFeatures = [
+  const keyFeatures: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+  }> = [
     {
-      icon: Globe,
+      IconComponent: CreditCardIcon,
       title: 'Global Acceptance',
       description: 'Use your card anywhere in the world with wide acceptance.'
     },
     {
-      icon: Clock,
+      IconComponent: DigitalProcessIcon,
       title: '24/7 Concierge Service',
       description: 'Personal travel assistance anytime, anywhere.'
     },
     {
-      icon: Gift,
+      IconComponent: BestRatesIcon,
       title: 'Accelerated Rewards',
       description: 'Double points on flight & hotel bookings.'
     },
     {
-      icon: Shield,
+      IconComponent: SecureIcon,
       title: 'Secure Transactions',
       description: 'Advanced security features to protect your transactions.'
     }
   ]
 
-  const whyChooseUs = [
+  const whyChooseUs: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+  }> = [
     {
-      icon: Gift,
+      IconComponent: BestRatesIcon,
       title: 'Best Rewards',
       description: 'Earn maximum rewards and cashback on every purchase.'
     },
     {
-      icon: CheckCircle,
+      IconComponent: InstantFundsIcon,
       title: 'Quick Approval',
       description: 'Get instant approval and start using your card immediately.'
     },
     {
-      icon: Shield,
+      IconComponent: SecureIcon,
       title: 'Secure & Safe',
       description: 'Advanced security features to protect your transactions.'
     },
     {
-      icon: Zap,
+      IconComponent: SecureIcon,
       title: 'Zero Credit Score Impact',
       description: 'Check eligibility without affecting your credit score.'
     },
     {
-      icon: Clock,
+      IconComponent: InstantFundsIcon,
       title: 'Instant Activation',
       description: 'Activate and start using your card within minutes of approval.'
     },
     {
-      icon: Users,
+      IconComponent: DigitalProcessIcon,
       title: '24/7 Customer Support',
       description: 'Round-the-clock support for all your card-related queries.'
     }
@@ -263,7 +282,6 @@ export default function CreditCardsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {cardTypes.map((card, index) => {
-              const Icon = card.icon
               return (
                 <motion.div
                   key={index}
@@ -279,10 +297,12 @@ export default function CreditCardsPage() {
                   >
                     <div className="flex items-start justify-between mb-4">
                       <motion.div
-                        className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center"
+                        className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center overflow-hidden relative"
                         whileHover={{ rotate: [0, -15, 15, -15, 0], scale: 1.15 }}
                       >
-                        <Icon className="w-7 h-7 text-primary-600" />
+                        <div className="w-full h-full flex items-center justify-center">
+                          <card.IconComponent />
+                        </div>
                       </motion.div>
                       {card.badge && (
                         <span className="text-xs font-semibold bg-accent-100 text-accent-700 px-3 py-1 rounded-full">
@@ -300,7 +320,12 @@ export default function CreditCardsPage() {
                         <span className="font-medium">{card.cashback}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <CreditCard className="w-4 h-4 text-primary-600" />
+                        <div className="w-4 h-4 relative flex items-center justify-center">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="7" fill="#FBBF24" />
+                            <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#92400E" fontWeight="bold">₹</text>
+                          </svg>
+                        </div>
                         <span>Joining Fee: {card.joiningFee}</span>
                       </div>
                     </div>
@@ -356,7 +381,6 @@ export default function CreditCardsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {keyFeatures.map((feature, index) => {
-              const Icon = feature.icon
               return (
                 <motion.div
                   key={index}
@@ -368,10 +392,12 @@ export default function CreditCardsPage() {
                   className="bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-xl transition-all text-center"
                 >
                   <motion.div
-                    className="w-16 h-16 bg-gradient-to-br from-accent-500 to-primary-500 rounded-xl flex items-center justify-center mx-auto mb-4"
+                    className="w-16 h-16 bg-gradient-to-br from-accent-500 to-primary-500 rounded-xl flex items-center justify-center mx-auto mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                    <Icon className="w-8 h-8 text-white" />
+                    <div className="w-full h-full flex items-center justify-center">
+                      <feature.IconComponent />
+                    </div>
                   </motion.div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
                   <p className="text-sm text-gray-600">{feature.description}</p>
@@ -409,7 +435,6 @@ export default function CreditCardsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {whyChooseUs.map((item, index) => {
-              const Icon = item.icon
               return (
                 <motion.div
                   key={index}
@@ -421,10 +446,12 @@ export default function CreditCardsPage() {
                   className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all"
                 >
                   <motion.div
-                    className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4"
+                    className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                    <Icon className="w-6 h-6" />
+                      <div className="w-full h-full flex items-center justify-center brightness-0 invert">
+                        <item.IconComponent />
+                      </div>
                   </motion.div>
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
                   <p className="text-sm opacity-90">{item.description}</p>

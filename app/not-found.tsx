@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Home, ArrowLeft, Clock, TrendingUp, CreditCard, Shield } from 'lucide-react'
+import { Home, ArrowLeft } from 'lucide-react'
+import { PersonalLoanIcon, DigitalProcessIcon, CreditCardIcon, SecureIcon, InstantFundsIcon } from '@/components/icons/IconLibrary'
 
 export default function NotFound() {
   return (
@@ -21,20 +22,8 @@ export default function NotFound() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex justify-center mb-8"
           >
-            <div className="relative w-32 h-32">
-              {/* Top chevron - Orange/Yellow, elongated, angled upwards and to the right */}
-              <svg 
-                width="128" 
-                height="128" 
-                viewBox="0 0 40 40" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-                className="absolute inset-0"
-              >
-                <path d="M4 4 L28 4 L20 18 L4 18 Z" fill="#f97316" />
-                {/* Bottom chevron - Deep Green, elongated, angled downwards and to the right */}
-                <path d="M4 18 L20 18 L28 36 L4 36 Z" fill="#16a34a" />
-              </svg>
+            <div className="relative w-32 h-32 md:w-40 md:h-40 bg-white rounded-xl p-3 shadow-lg flex items-center justify-center">
+              <PersonalLoanIcon />
             </div>
           </motion.div>
 
@@ -67,22 +56,22 @@ export default function NotFound() {
             className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
           >
             <div className="bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 transition-all">
-              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <TrendingUp className="w-6 h-6 text-primary-600" />
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 mx-auto overflow-hidden relative">
+                <DigitalProcessIcon />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">New Features</h3>
               <p className="text-sm text-gray-600">Exciting updates are on the way</p>
             </div>
             <div className="bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 transition-all">
-              <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <CreditCard className="w-6 h-6 text-accent-600" />
+              <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4 mx-auto overflow-hidden relative">
+                <CreditCardIcon />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Better Experience</h3>
               <p className="text-sm text-gray-600">Improved user interface and functionality</p>
             </div>
             <div className="bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 transition-all">
-              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <Shield className="w-6 h-6 text-primary-600" />
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 mx-auto overflow-hidden relative">
+                <SecureIcon />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Enhanced Security</h3>
               <p className="text-sm text-gray-600">Your data protection is our priority</p>
@@ -168,7 +157,9 @@ export default function NotFound() {
             className="mt-12 bg-gradient-to-r from-primary-600 to-accent-600 rounded-2xl p-8 text-white"
           >
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Clock className="w-6 h-6" />
+              <div className="w-6 h-6 relative flex items-center justify-center brightness-0 invert">
+                <InstantFundsIcon />
+              </div>
               <h3 className="text-xl font-bold">We're Working on It!</h3>
             </div>
             <p className="text-primary-100 max-w-2xl mx-auto">

@@ -2,8 +2,17 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { TrendingUp, Percent, Shield, ArrowRight, CheckCircle, Clock, DollarSign, BarChart, Zap, Target, Users, Globe } from 'lucide-react'
+import type { ComponentType } from 'react'
+import { ArrowRight, CheckCircle, Percent } from 'lucide-react'
 import { useState } from 'react'
+import {
+  InvestmentBondsIcon,
+  FixedDepositIcon,
+  MarketLinkedIcon,
+  SecureIcon,
+  DigitalProcessIcon,
+  BestRatesIcon
+} from '@/components/icons/IconLibrary'
 import { FeatureHighlightsTable } from '@/components/FeatureHighlightsTable'
 import { FAQAccordion } from '@/components/FAQAccordion'
 
@@ -40,9 +49,18 @@ export default function InvestmentsPage() {
     })
   }
 
-  const investmentProducts = [
+  const investmentProducts: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+    features: string[]
+    href: string
+    badge?: string
+    returns: string
+    minInvestment: string
+  }> = [
     {
-      icon: TrendingUp,
+      IconComponent: InvestmentBondsIcon,
       title: 'Bonds',
       description: 'SEBI Regulated investment products with fixed returns and low risk.',
       features: ['SEBI Regulated', 'Fixed returns', 'Low risk', 'Regular income'],
@@ -52,7 +70,7 @@ export default function InvestmentsPage() {
       minInvestment: '₹10,000'
     },
     {
-      icon: Percent,
+      IconComponent: FixedDepositIcon,
       title: 'Fixed Deposits',
       description: 'Earn up to 8% returns with secure fixed deposit investments.',
       features: ['Up to 8% returns', 'Safe investment', 'Flexible tenure', 'Tax benefits'],
@@ -61,7 +79,7 @@ export default function InvestmentsPage() {
       minInvestment: '₹5,000'
     },
     {
-      icon: BarChart,
+      IconComponent: MarketLinkedIcon,
       title: 'Market Linked Plans',
       description: 'Invest in market-linked products for potential higher returns.',
       features: ['Market linked', 'Growth potential', 'Diversified portfolio', 'Professional management'],
@@ -70,7 +88,7 @@ export default function InvestmentsPage() {
       minInvestment: '₹1,000'
     },
     {
-      icon: Shield,
+      IconComponent: FixedDepositIcon,
       title: 'National Pension Scheme (NPS)',
       description: 'Plan for your retirement with tax benefits and long-term wealth creation.',
       features: ['Tax benefits', 'Retirement planning', 'Long-term growth', 'Government backed'],
@@ -79,7 +97,7 @@ export default function InvestmentsPage() {
       minInvestment: '₹500'
     },
     {
-      icon: DollarSign,
+      IconComponent: MarketLinkedIcon,
       title: 'Mutual Funds',
       description: 'Diversify your portfolio with professionally managed mutual funds.',
       features: ['Diversified', 'Professional management', 'Liquidity', 'Flexible SIP'],
@@ -88,7 +106,7 @@ export default function InvestmentsPage() {
       minInvestment: '₹500'
     },
     {
-      icon: TrendingUp,
+      IconComponent: MarketLinkedIcon,
       title: 'Stocks & Equity',
       description: 'Invest in stocks and equity for long-term wealth creation.',
       features: ['Direct equity', 'Long-term growth', 'Dividend income', 'Portfolio building'],
@@ -110,57 +128,65 @@ export default function InvestmentsPage() {
     { feature: 'Minimum Investment', details: '₹500 onwards' }
   ]
 
-  const keyFeatures = [
+  const keyFeatures: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+  }> = [
     {
-      icon: Shield,
+      IconComponent: SecureIcon,
       title: 'Secure & Regulated',
       description: 'All investment products are SEBI regulated and secure.'
     },
     {
-      icon: TrendingUp,
+      IconComponent: DigitalProcessIcon,
       title: 'Expert Guidance',
       description: 'Get expert advice to choose the right investment products.'
     },
     {
-      icon: Clock,
+      IconComponent: DigitalProcessIcon,
       title: 'Easy Process',
       description: 'Invest online with minimal documentation and quick processing.'
     },
     {
-      icon: Target,
+      IconComponent: MarketLinkedIcon,
       title: 'Diversified Portfolio',
       description: 'Build a diversified portfolio with multiple investment options.'
     }
   ]
 
-  const whyChooseUs = [
+  const whyChooseUs: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+  }> = [
     {
-      icon: Shield,
+      IconComponent: SecureIcon,
       title: 'Secure & Regulated',
       description: 'All investment products are SEBI regulated and secure.'
     },
     {
-      icon: TrendingUp,
+      IconComponent: DigitalProcessIcon,
       title: 'Expert Guidance',
       description: 'Get expert advice to choose the right investment products for your goals.'
     },
     {
-      icon: Clock,
+      IconComponent: DigitalProcessIcon,
       title: 'Easy Process',
       description: 'Invest online with minimal documentation and quick processing.'
     },
     {
-      icon: Target,
+      IconComponent: MarketLinkedIcon,
       title: 'Diversified Portfolio',
       description: 'Build a diversified portfolio with multiple investment options.'
     },
     {
-      icon: Zap,
+      IconComponent: MarketLinkedIcon,
       title: 'Flexible Investment',
       description: 'Choose from SIP, lump sum, or flexible investment options.'
     },
     {
-      icon: Users,
+      IconComponent: DigitalProcessIcon,
       title: 'Professional Management',
       description: 'Your investments are managed by professional fund managers.'
     }
@@ -256,7 +282,6 @@ export default function InvestmentsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {investmentProducts.map((product, index) => {
-              const Icon = product.icon
               return (
                 <motion.div
                   key={index}
@@ -272,10 +297,12 @@ export default function InvestmentsPage() {
                   >
                     <div className="flex items-start justify-between mb-4">
                       <motion.div
-                        className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center"
+                        className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center overflow-hidden relative"
                         whileHover={{ rotate: [0, -15, 15, -15, 0], scale: 1.15 }}
                       >
-                        <Icon className="w-7 h-7 text-primary-600" />
+                        <div className="w-full h-full flex items-center justify-center">
+                          <product.IconComponent />
+                        </div>
                       </motion.div>
                       {product.badge && (
                         <span className="text-xs font-semibold bg-accent-100 text-accent-700 px-3 py-1 rounded-full">
@@ -293,7 +320,12 @@ export default function InvestmentsPage() {
                         <span className="font-medium">Returns: {product.returns}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <DollarSign className="w-4 h-4 text-primary-600" />
+                        <div className="w-4 h-4 relative flex items-center justify-center">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="7" fill="#FBBF24" />
+                            <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#92400E" fontWeight="bold">₹</text>
+                          </svg>
+                        </div>
                         <span>Min Investment: {product.minInvestment}</span>
                       </div>
                     </div>
@@ -349,7 +381,6 @@ export default function InvestmentsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {keyFeatures.map((feature, index) => {
-              const Icon = feature.icon
               return (
                 <motion.div
                   key={index}
@@ -361,10 +392,12 @@ export default function InvestmentsPage() {
                   className="bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-xl transition-all text-center"
                 >
                   <motion.div
-                    className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center mx-auto mb-4"
+                    className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center mx-auto mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                    <Icon className="w-8 h-8 text-white" />
+                    <div className="w-full h-full flex items-center justify-center">
+                      <feature.IconComponent />
+                    </div>
                   </motion.div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
                   <p className="text-sm text-gray-600">{feature.description}</p>
@@ -484,7 +517,6 @@ export default function InvestmentsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {whyChooseUs.map((item, index) => {
-              const Icon = item.icon
               return (
                 <motion.div
                   key={index}
@@ -496,10 +528,12 @@ export default function InvestmentsPage() {
                   className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all"
                 >
                   <motion.div
-                    className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4"
+                    className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                    <Icon className="w-6 h-6" />
+                      <div className="w-full h-full flex items-center justify-center brightness-0 invert">
+                        <item.IconComponent />
+                      </div>
                   </motion.div>
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
                   <p className="text-sm opacity-90">{item.description}</p>

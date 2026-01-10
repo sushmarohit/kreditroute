@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { TrendingUp, Shield, FileText, CheckCircle, ArrowRight, BarChart, AlertCircle, Target, Zap, Clock, Users, Percent } from 'lucide-react'
+import type { ComponentType } from 'react'
+import { CheckCircle, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
+import { CreditScoreIcon, DigitalProcessIcon, SecureIcon, InstantFundsIcon } from '@/components/icons/IconLibrary'
 import { FeatureHighlightsTable } from '@/components/FeatureHighlightsTable'
 import { FAQAccordion } from '@/components/FAQAccordion'
 
@@ -12,9 +14,16 @@ export default function CreditScorePage() {
   const [showOTP, setShowOTP] = useState(false)
   const [otp, setOtp] = useState('')
 
-  const services = [
+  const services: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+    features: string[]
+    href: string
+    badge?: string
+  }> = [
     {
-      icon: TrendingUp,
+      IconComponent: CreditScoreIcon,
       title: 'Free Credit Score',
       description: 'Check your credit score for free and understand your credit health instantly.',
       features: ['Free credit score', 'Credit report access', 'Score insights', 'Monthly updates'],
@@ -22,7 +31,7 @@ export default function CreditScorePage() {
       badge: 'Free'
     },
     {
-      icon: Shield,
+      IconComponent: CreditScoreIcon,
       title: 'Credit Health Pro',
       description: 'Advanced credit monitoring with detailed insights and personalized recommendations.',
       features: ['Advanced monitoring', 'Detailed insights', 'Personalized tips', 'Score improvement plan'],
@@ -30,14 +39,14 @@ export default function CreditScorePage() {
       badge: 'Pro'
     },
     {
-      icon: CheckCircle,
+      IconComponent: CreditScoreIcon,
       title: 'Fix your Credit Score',
       description: 'Get expert guidance to improve your credit score with actionable steps.',
       features: ['Expert consultation', 'Action plan', 'Score tracking', 'Improvement tips'],
       href: '/credit-score/fix'
     },
     {
-      icon: FileText,
+      IconComponent: CreditScoreIcon,
       title: 'Video Credit Report',
       description: 'Understand your credit report easily with video explanations and insights.',
       features: ['Video explanations', 'Easy to understand', 'Detailed analysis', 'Action items'],
@@ -64,57 +73,65 @@ export default function CreditScorePage() {
     { feature: 'Report Value', details: 'Worth ₹500 - FREE' }
   ]
 
-  const keyFeatures = [
+  const keyFeatures: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+  }> = [
     {
-      icon: TrendingUp,
+      IconComponent: CreditScoreIcon,
       title: 'Free Credit Score',
       description: 'Check your credit score for free. No credit card required.'
     },
     {
-      icon: BarChart,
+      IconComponent: DigitalProcessIcon,
       title: 'Detailed Insights',
       description: 'Get detailed analysis of your credit profile and factors affecting your score.'
     },
     {
-      icon: Target,
+      IconComponent: DigitalProcessIcon,
       title: 'Improvement Tips',
       description: 'Receive personalized recommendations to improve your credit score.'
     },
     {
-      icon: Shield,
+      IconComponent: SecureIcon,
       title: 'Secure & Private',
       description: 'Your credit information is protected with bank-level security.'
     }
   ]
 
-  const whyChooseUs = [
+  const whyChooseUs: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+  }> = [
     {
-      icon: TrendingUp,
+      IconComponent: CreditScoreIcon,
       title: 'Free Credit Score',
       description: 'Get your CIBIL credit report worth ₹500 for FREE. No hidden charges.'
     },
     {
-      icon: CheckCircle,
+      IconComponent: SecureIcon,
       title: 'No Credit Score Impact',
       description: 'Check your credit score without affecting it. Safe and secure.'
     },
     {
-      icon: Zap,
+      IconComponent: InstantFundsIcon,
       title: 'Instant Results',
       description: 'Get your credit score instantly. No waiting, no delays.'
     },
     {
-      icon: BarChart,
+      IconComponent: DigitalProcessIcon,
       title: 'Detailed Analysis',
       description: 'Understand your credit profile with detailed insights and recommendations.'
     },
     {
-      icon: Clock,
+      IconComponent: CreditScoreIcon,
       title: 'Monthly Updates',
       description: 'Track your credit score changes with monthly updates.'
     },
     {
-      icon: Users,
+      IconComponent: DigitalProcessIcon,
       title: 'Expert Guidance',
       description: 'Get expert advice on how to improve your credit score.'
     }
@@ -261,8 +278,8 @@ export default function CreditScorePage() {
                 )}
               </div>
               <div className="bg-gradient-to-br from-primary-50 to-accent-50 rounded-xl p-8 text-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-primary-600 to-accent-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="w-12 h-12 text-white" />
+                <div className="w-24 h-24 bg-gradient-to-br from-primary-600 to-accent-600 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden relative brightness-0 invert">
+                  <CreditScoreIcon />
                 </div>
                 <h3 className="text-4xl font-bold text-gray-900 mb-2">770</h3>
                 <p className="text-xl text-gray-600 mb-6">Excellent</p>
@@ -299,7 +316,6 @@ export default function CreditScorePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => {
-              const Icon = service.icon
               return (
                 <motion.div
                   key={index}
@@ -315,10 +331,12 @@ export default function CreditScorePage() {
                   >
                     <div className="flex items-start justify-between mb-4">
                       <motion.div
-                        className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center"
+                        className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center overflow-hidden relative"
                         whileHover={{ rotate: [0, -15, 15, -15, 0], scale: 1.15 }}
                       >
-                        <Icon className="w-7 h-7 text-primary-600" />
+                        <div className="w-full h-full flex items-center justify-center">
+                          <service.IconComponent />
+                        </div>
                       </motion.div>
                       {service.badge && (
                         <span className="text-xs font-semibold bg-accent-100 text-accent-700 px-3 py-1 rounded-full">
@@ -382,7 +400,6 @@ export default function CreditScorePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {keyFeatures.map((feature, index) => {
-              const Icon = feature.icon
               return (
                 <motion.div
                   key={index}
@@ -394,10 +411,12 @@ export default function CreditScorePage() {
                   className="bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-xl transition-all text-center"
                 >
                   <motion.div
-                    className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center mx-auto mb-4"
+                    className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center mx-auto mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                    <Icon className="w-8 h-8 text-white" />
+                    <div className="w-full h-full flex items-center justify-center">
+                      <feature.IconComponent />
+                    </div>
                   </motion.div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
                   <p className="text-sm text-gray-600">{feature.description}</p>
@@ -428,7 +447,6 @@ export default function CreditScorePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {whyChooseUs.map((item, index) => {
-              const Icon = item.icon
               return (
                 <motion.div
                   key={index}
@@ -440,10 +458,12 @@ export default function CreditScorePage() {
                   className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all"
                 >
                   <motion.div
-                    className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4"
+                    className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                    <Icon className="w-6 h-6" />
+                    <div className="w-full h-full flex items-center justify-center brightness-0 invert">
+                      <item.IconComponent />
+                    </div>
                   </motion.div>
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
                   <p className="text-sm opacity-90">{item.description}</p>

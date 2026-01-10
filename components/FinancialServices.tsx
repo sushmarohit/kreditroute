@@ -2,49 +2,71 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { 
-  Wallet, CreditCard, TrendingUp, Shield, 
-  Home, Briefcase, FileText, Receipt,
-  ArrowRight, Percent, Clock, CheckCircle
-} from 'lucide-react'
+import type { ComponentType } from 'react'
+import { ArrowRight, CheckCircle } from 'lucide-react'
+import {
+  PersonalLoanIcon,
+  CreditCardIcon,
+  BusinessLoanIcon,
+  HomeLoanIcon,
+  CreditScoreIcon,
+  BillPaymentIcon,
+  LoanRepaymentIcon,
+  ElectricityBillIcon,
+  InvestmentBondsIcon,
+  FixedDepositIcon,
+  MarketLinkedIcon,
+  HealthInsuranceIcon,
+  TermLifeInsuranceIcon,
+  CarInsuranceIcon
+} from '@/components/icons/IconLibrary'
 
 export function FinancialServices() {
-  const services = [
+  const services: Array<{
+    category: string
+    items: Array<{
+      IconComponent: ComponentType
+      title: string
+      desc: string
+      href: string
+      badge?: string
+    }>
+  }> = [
     {
       category: 'Loans and Cards',
       items: [
-        { icon: Wallet, title: 'Personal Loan', desc: 'Instant personal loans up to ₹40 Lakhs', href: '/loans/personal', badge: '₹500 Cashback' },
-        { icon: CreditCard, title: 'Credit Cards', desc: 'Best credit cards with exciting rewards', href: '/credit-cards', badge: 'Cashback Offer' },
-        { icon: Briefcase, title: 'Business Loan', desc: 'Grow your business with flexible financing', href: '/loans/business' },
-        { icon: Home, title: 'Home Loan', desc: 'Fulfill your dream of owning a home', href: '/loans/home' },
-        { icon: FileText, title: 'Loan Against Property', desc: 'Unlock value from your property', href: '/loans/lap' },
-        { icon: TrendingUp, title: 'Transfer Home Loan', desc: 'Save on interest with balance transfer', href: '/loans/transfer' },
+        { IconComponent: PersonalLoanIcon, title: 'Personal Loan', desc: 'Instant personal loans up to ₹40 Lakhs', href: '/loans/personal', badge: '₹500 Cashback' },
+        { IconComponent: CreditCardIcon, title: 'Credit Cards', desc: 'Best credit cards with exciting rewards', href: '/credit-cards', badge: 'Cashback Offer' },
+        { IconComponent: BusinessLoanIcon, title: 'Business Loan', desc: 'Grow your business with flexible financing', href: '/loans/business' },
+        { IconComponent: HomeLoanIcon, title: 'Home Loan', desc: 'Fulfill your dream of owning a home', href: '/loans/home' },
+        { IconComponent: BusinessLoanIcon, title: 'Loan Against Property', desc: 'Unlock value from your property', href: '/loans/lap' },
+        { IconComponent: HomeLoanIcon, title: 'Transfer Home Loan', desc: 'Save on interest with balance transfer', href: '/loans/transfer' },
       ]
     },
     {
       category: 'Credit Score & Bill Payments',
       items: [
-        { icon: TrendingUp, title: 'Credit Score', desc: 'Check your credit score for free', href: '/credit-score' },
-        { icon: Shield, title: 'Credit Health Pro', desc: 'Advanced credit monitoring & insights', href: '/credit-score/pro' },
-        { icon: CheckCircle, title: 'Fix your Credit Score', desc: 'Improve your credit score with expert guidance', href: '/credit-score/fix' },
-        { icon: FileText, title: 'Video Credit Report', desc: 'Understand your credit report easily', href: '/credit-score/report' },
-        { icon: Receipt, title: 'Credit Card Bill', desc: 'Pay credit card bills instantly', href: '/bill-payments/credit-card' },
-        { icon: Wallet, title: 'Loan Repayment', desc: 'Repay loans with ease', href: '/bill-payments/loan' },
-        { icon: Receipt, title: 'Electricity Bill', desc: 'Pay electricity bills online', href: '/bill-payments/electricity' },
+        { IconComponent: CreditScoreIcon, title: 'Credit Score', desc: 'Check your credit score for free', href: '/credit-score' },
+        { IconComponent: CreditScoreIcon, title: 'Credit Health Pro', desc: 'Advanced credit monitoring & insights', href: '/credit-score/pro' },
+        { IconComponent: CreditScoreIcon, title: 'Fix your Credit Score', desc: 'Improve your credit score with expert guidance', href: '/credit-score/fix' },
+        { IconComponent: CreditScoreIcon, title: 'Video Credit Report', desc: 'Understand your credit report easily', href: '/credit-score/report' },
+        { IconComponent: BillPaymentIcon, title: 'Credit Card Bill', desc: 'Pay credit card bills instantly', href: '/bill-payments/credit-card' },
+        { IconComponent: LoanRepaymentIcon, title: 'Loan Repayment', desc: 'Repay loans with ease', href: '/bill-payments/loan' },
+        { IconComponent: ElectricityBillIcon, title: 'Electricity Bill', desc: 'Pay electricity bills online', href: '/bill-payments/electricity' },
       ]
     },
     {
       category: 'Investment & Insurance Products',
       items: [
-        { icon: TrendingUp, title: 'Bonds', desc: 'SEBI Regulated - Newly Launched', href: '/investments/bonds' },
-        { icon: Percent, title: 'Fixed Deposits', desc: 'Earn up to 8% returns', href: '/investments/fixed-deposits' },
-        { icon: TrendingUp, title: 'Market Linked Plans', desc: 'Invest in market-linked products', href: '/investments/market-linked' },
-        { icon: Shield, title: 'National Pension Scheme', desc: 'Plan for your retirement', href: '/investments/nps' },
-        { icon: Shield, title: 'Health Insurance', desc: '0% GST - Comprehensive coverage', href: '/insurance/health' },
-        { icon: Shield, title: 'Term Life Insurance', desc: '0% GST - Lowest Price', href: '/insurance/term-life' },
-        { icon: Shield, title: 'Car Insurance', desc: 'Comprehensive car insurance plans', href: '/insurance/car' },
-        { icon: Shield, title: 'Two Wheeler Insurance', desc: 'Protect your two-wheeler', href: '/insurance/two-wheeler' },
-        { icon: Shield, title: 'Retirement Plans', desc: 'Secure your golden years', href: '/insurance/retirement' },
+        { IconComponent: InvestmentBondsIcon, title: 'Bonds', desc: 'SEBI Regulated - Newly Launched', href: '/investments/bonds' },
+        { IconComponent: FixedDepositIcon, title: 'Fixed Deposits', desc: 'Earn up to 8% returns', href: '/investments/fixed-deposits' },
+        { IconComponent: MarketLinkedIcon, title: 'Market Linked Plans', desc: 'Invest in market-linked products', href: '/investments/market-linked' },
+        { IconComponent: FixedDepositIcon, title: 'National Pension Scheme', desc: 'Plan for your retirement', href: '/investments/nps' },
+        { IconComponent: HealthInsuranceIcon, title: 'Health Insurance', desc: '0% GST - Comprehensive coverage', href: '/insurance/health' },
+        { IconComponent: TermLifeInsuranceIcon, title: 'Term Life Insurance', desc: '0% GST - Lowest Price', href: '/insurance/term-life' },
+        { IconComponent: CarInsuranceIcon, title: 'Car Insurance', desc: 'Comprehensive car insurance plans', href: '/insurance/car' },
+        { IconComponent: CarInsuranceIcon, title: 'Two Wheeler Insurance', desc: 'Protect your two-wheeler', href: '/insurance/two-wheeler' },
+        { IconComponent: FixedDepositIcon, title: 'Retirement Plans', desc: 'Secure your golden years', href: '/insurance/retirement' },
       ]
     }
   ]
@@ -79,7 +101,6 @@ export function FinancialServices() {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">{service.category}</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {service.items.map((item, index) => {
-                  const Icon = item.icon
                   return (
                     <motion.div
                       key={index}
@@ -111,14 +132,16 @@ export function FinancialServices() {
                       >
                         <div className="flex items-start justify-between mb-4">
                           <motion.div 
-                            className="w-12 h-12 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center"
+                            className="w-12 h-12 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center overflow-hidden relative"
                             whileHover={{ 
                               rotate: [0, -15, 15, -15, 0],
                               scale: 1.15,
                               transition: { duration: 0.5 }
                             }}
                           >
-                            <Icon className="w-6 h-6 text-primary-600" />
+                            <div className="w-full h-full flex items-center justify-center">
+                              <item.IconComponent />
+                            </div>
                           </motion.div>
                           {item.badge && (
                             <motion.span 

@@ -48,14 +48,16 @@ export function Features() {
               className="p-6 rounded-xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-xl hover:border-primary-300 transition-all cursor-pointer"
             >
               <motion.div 
-                className="w-12 h-12 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center mb-4"
+                className="w-12 h-12 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
                 whileHover={{ 
                   rotate: [0, -10, 10, -10, 0],
                   scale: 1.1,
                   transition: { duration: 0.5 }
                 }}
               >
-                <feature.icon className="w-6 h-6 text-primary-600" />
+                <div className="w-full h-full flex items-center justify-center">
+                  <feature.IconComponent />
+                </div>
               </motion.div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 {feature.title}

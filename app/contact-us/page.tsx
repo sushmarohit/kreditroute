@@ -3,7 +3,8 @@ import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react'
+import { Send, Loader2 } from 'lucide-react'
+import { EmailIcon, PhoneIcon, MapIcon } from '@/components/icons/IconLibrary'
 import axios from 'axios'
 import { useState } from 'react'
 
@@ -63,16 +64,16 @@ export default function ContactUs() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-1 space-y-6">
               <div className="bg-white rounded-xl p-6 border border-gray-200">
-                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-                  <Mail className="w-6 h-6 text-primary-600" />
+                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative">
+                  <EmailIcon />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Email</h3>
                 <p className="text-gray-600">support@kreditroute.com</p>
               </div>
 
               <div className="bg-white rounded-xl p-6 border border-gray-200">
-                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-                  <Phone className="w-6 h-6 text-primary-600" />
+                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative">
+                  <PhoneIcon />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Phone</h3>
                 <p className="text-gray-600">+91-1800-XXX-XXXX</p>
@@ -80,8 +81,8 @@ export default function ContactUs() {
               </div>
 
               <div className="bg-white rounded-xl p-6 border border-gray-200">
-                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-                  <MapPin className="w-6 h-6 text-primary-600" />
+                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative">
+                  <MapIcon />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Address</h3>
                 <p className="text-gray-600">

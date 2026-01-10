@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Smartphone, TrendingUp, Shield } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { useState } from 'react'
+import { DigitalProcessIcon, InstantFundsIcon, SecureIcon } from '@/components/icons/IconLibrary'
 
 export function HomeHero() {
   const [mobileNumber, setMobileNumber] = useState('')
@@ -195,14 +196,14 @@ export function HomeHero() {
             className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-xl hover:border-primary-300 transition-all cursor-pointer"
           >
             <motion.div 
-              className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4"
+              className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
               whileHover={{ 
                 rotate: [0, -10, 10, -10, 0],
                 scale: 1.15,
                 transition: { duration: 0.5 }
               }}
             >
-              <Smartphone className="w-6 h-6 text-primary-600" />
+              <DigitalProcessIcon />
             </motion.div>
             <h3 className="font-semibold text-gray-900 mb-2">Get The App</h3>
             <p className="text-sm text-gray-600">Download the KreditRoute App Today! Get instant access to loans, credit cards, and financial tools.</p>
@@ -231,14 +232,14 @@ export function HomeHero() {
             className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-xl hover:border-accent-300 transition-all cursor-pointer"
           >
             <motion.div 
-              className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4"
+              className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
               whileHover={{ 
                 rotate: [0, -10, 10, -10, 0],
                 scale: 1.15,
                 transition: { duration: 0.5 }
               }}
             >
-              <TrendingUp className="w-6 h-6 text-accent-600" />
+              <InstantFundsIcon />
             </motion.div>
             <h3 className="font-semibold text-gray-900 mb-2">Quick Approval</h3>
             <p className="text-sm text-gray-600">Fast-track loan approvals with minimal documentation. Get funds in your account quickly.</p>
@@ -267,14 +268,14 @@ export function HomeHero() {
             className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-xl hover:border-primary-300 transition-all cursor-pointer"
           >
             <motion.div 
-              className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4"
+              className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
               whileHover={{ 
                 rotate: [0, -10, 10, -10, 0],
                 scale: 1.15,
                 transition: { duration: 0.5 }
               }}
             >
-              <Shield className="w-6 h-6 text-primary-600" />
+              <SecureIcon />
             </motion.div>
             <h3 className="font-semibold text-gray-900 mb-2">Secure & Trusted</h3>
             <p className="text-sm text-gray-600">Your financial data is protected with bank-level security. Trusted by millions of users.</p>

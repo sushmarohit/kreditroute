@@ -2,7 +2,18 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Wallet, Home, Briefcase, FileText, TrendingUp, ArrowRight, CheckCircle, Clock, Percent, Shield, Zap, Users } from 'lucide-react'
+import { ArrowRight, CheckCircle, Clock, Percent, Shield, Zap, Users } from 'lucide-react'
+import type { ComponentType } from 'react'
+import { 
+  PersonalLoanIcon, 
+  HomeLoanIcon, 
+  BusinessLoanIcon,
+  BillPaymentIcon,
+  BestRatesIcon,
+  DigitalProcessIcon,
+  InstantFundsIcon,
+  SecureIcon
+} from '@/components/icons/IconLibrary'
 import { FeatureHighlightsTable } from '@/components/FeatureHighlightsTable'
 import { EligibilityTable } from '@/components/EligibilityTable'
 import { ProcessSteps } from '@/components/ProcessSteps'
@@ -11,9 +22,19 @@ import { DocumentsChecklist } from '@/components/DocumentsChecklist'
 import { FAQAccordion } from '@/components/FAQAccordion'
 
 export default function LoansPage() {
-  const loanTypes = [
+  const loanTypes: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+    features: string[]
+    href: string
+    badge?: string
+    amount: string
+    rate: string
+    time: string
+  }> = [
     {
-      icon: Wallet,
+      IconComponent: PersonalLoanIcon,
       title: 'Personal Loan',
       description: 'Get instant personal loans up to ₹40 Lakhs with quick approval and flexible repayment options.',
       features: ['Quick approval', 'No collateral required', 'Flexible tenure', 'Competitive interest rates'],
@@ -24,7 +45,7 @@ export default function LoansPage() {
       time: 'Approved in 24 hours'
     },
     {
-      icon: Home,
+      IconComponent: HomeLoanIcon,
       title: 'Home Loan',
       description: 'Fulfill your dream of owning a home with our attractive home loan offers and easy documentation.',
       features: ['Long repayment tenure', 'Low interest rates', 'Tax benefits', 'Quick processing'],
@@ -34,7 +55,7 @@ export default function LoansPage() {
       time: 'Sanctioned in 3-5 days'
     },
     {
-      icon: Briefcase,
+      IconComponent: BusinessLoanIcon,
       title: 'Business Loan',
       description: 'Fuel your business growth with flexible business loans tailored to your needs.',
       features: ['No collateral required', 'Quick disbursal', 'Flexible repayment', 'Competitive rates'],
@@ -44,7 +65,7 @@ export default function LoansPage() {
       time: 'Approved in 48 hours'
     },
     {
-      icon: FileText,
+      IconComponent: BusinessLoanIcon,
       title: 'Loan Against Property',
       description: 'Unlock the value of your property and get funds for your financial needs.',
       features: ['High loan amount', 'Low interest rates', 'Long tenure', 'Easy documentation'],
@@ -54,7 +75,7 @@ export default function LoansPage() {
       time: 'Sanctioned in 5-7 days'
     },
     {
-      icon: TrendingUp,
+      IconComponent: HomeLoanIcon,
       title: 'Transfer Home Loan',
       description: 'Save on interest by transferring your existing home loan to better rates.',
       features: ['Lower interest rates', 'Top-up facility', 'Balance transfer', 'No prepayment charges'],
@@ -64,7 +85,7 @@ export default function LoansPage() {
       time: 'Processed in 7-10 days'
     },
     {
-      icon: Wallet,
+      IconComponent: PersonalLoanIcon,
       title: 'Consumer Durable Loan',
       description: 'Buy your favorite appliances and electronics with easy financing options.',
       features: ['Zero down payment', 'Quick approval', 'Flexible EMI', 'Wide product range'],
@@ -95,57 +116,65 @@ export default function LoansPage() {
     { criterion: 'Work Experience', requirement: '1-2 years+' }
   ]
 
-  const keyFeatures = [
+  const keyFeatures: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+  }> = [
     {
-      icon: Clock,
+      IconComponent: BillPaymentIcon,
       title: 'Easy Repayment Terms',
       description: 'Flexible EMI options. Repay your loan conveniently.'
     },
     {
-      icon: Percent,
+      IconComponent: BestRatesIcon,
       title: 'Competitive Interest Rates',
       description: 'Enjoy attractive rates. Save more on your loan EMIs.'
     },
     {
-      icon: Zap,
+      IconComponent: DigitalProcessIcon,
       title: 'Digital Application',
       description: 'Apply for a loan online in minutes. Quick, paperless, and easy process.'
     },
     {
-      icon: Shield,
+      IconComponent: InstantFundsIcon,
       title: 'Fast Disbursal',
       description: 'Quick loan approval & disbursal. Get your funds swiftly.'
     }
   ]
 
-  const whyChooseUs = [
+  const whyChooseUs: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+  }> = [
     {
-      icon: Percent,
+      IconComponent: BestRatesIcon,
       title: 'Competitive Interest Rates',
       description: 'Enjoy attractive rates. Save more on your loan EMIs.'
     },
     {
-      icon: CheckCircle,
+      IconComponent: PersonalLoanIcon,
       title: 'Zero Foreclosure Charges',
       description: 'Pay off your loan early with no extra fees. Save on interest.'
     },
     {
-      icon: Zap,
+      IconComponent: DigitalProcessIcon,
       title: '100% Digital Process',
       description: 'Apply for a loan online, from start to finish. Quick, easy, paperless.'
     },
     {
-      icon: Shield,
+      IconComponent: SecureIcon,
       title: 'No Credit Score Impact',
       description: 'Check eligibility without affecting your credit score. Apply safely.'
     },
     {
-      icon: Clock,
+      IconComponent: InstantFundsIcon,
       title: 'Instant Funds',
       description: 'Get your emergency funds in as little as a few minutes, depending on your eligibility.'
     },
     {
-      icon: Users,
+      IconComponent: BillPaymentIcon,
       title: 'Easy Instalments',
       description: 'Your loan EMI customised as per your needs and affordability.'
     }
@@ -271,7 +300,6 @@ export default function LoansPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {loanTypes.map((loan, index) => {
-              const Icon = loan.icon
               return (
                 <motion.div
                   key={index}
@@ -287,10 +315,12 @@ export default function LoansPage() {
                   >
                     <div className="flex items-start justify-between mb-4">
                       <motion.div
-                        className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center"
+                        className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center overflow-hidden relative"
                         whileHover={{ rotate: [0, -15, 15, -15, 0], scale: 1.15 }}
                       >
-                        <Icon className="w-7 h-7 text-primary-600" />
+                        <div className="w-full h-full flex items-center justify-center">
+                          <loan.IconComponent />
+                        </div>
                       </motion.div>
                       {loan.badge && (
                         <span className="text-xs font-semibold bg-accent-100 text-accent-700 px-3 py-1 rounded-full">
@@ -304,7 +334,12 @@ export default function LoansPage() {
                     <p className="text-gray-600 mb-4 text-sm">{loan.description}</p>
                     <div className="space-y-2 mb-4">
                       <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <Wallet className="w-4 h-4 text-primary-600" />
+                        <div className="w-4 h-4 relative flex items-center justify-center">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="7" fill="#FBBF24" />
+                            <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#92400E" fontWeight="bold">₹</text>
+                          </svg>
+                        </div>
                         <span className="font-medium">{loan.amount}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm text-gray-700">
@@ -368,7 +403,6 @@ export default function LoansPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {keyFeatures.map((feature, index) => {
-              const Icon = feature.icon
               return (
                 <motion.div
                   key={index}
@@ -380,10 +414,12 @@ export default function LoansPage() {
                   className="bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-xl transition-all text-center"
                 >
                   <motion.div
-                    className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center mx-auto mb-4"
+                    className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center mx-auto mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                    <Icon className="w-8 h-8 text-white" />
+                      <div className="w-full h-full flex items-center justify-center">
+                        <feature.IconComponent />
+                      </div>
                   </motion.div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
                   <p className="text-sm text-gray-600">{feature.description}</p>
@@ -421,7 +457,6 @@ export default function LoansPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {whyChooseUs.map((item, index) => {
-              const Icon = item.icon
               return (
                 <motion.div
                   key={index}
@@ -433,10 +468,12 @@ export default function LoansPage() {
                   className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all"
                 >
                   <motion.div
-                    className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4"
+                    className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                    <Icon className="w-6 h-6" />
+                    <div className="w-full h-full flex items-center justify-center brightness-0 invert">
+                      <item.IconComponent />
+                    </div>
                   </motion.div>
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
                   <p className="text-sm opacity-90">{item.description}</p>

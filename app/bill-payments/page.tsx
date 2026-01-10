@@ -2,15 +2,34 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { CreditCard, Receipt, Zap, Wallet, ArrowRight, CheckCircle, Clock, Shield, Sparkles } from 'lucide-react'
+import type { ComponentType } from 'react'
+import { ArrowRight, CheckCircle, Clock, Shield, Sparkles } from 'lucide-react'
 import { useState } from 'react'
+import {
+  CreditCardIcon,
+  LoanRepaymentIcon,
+  ElectricityBillIcon,
+  BillPaymentIcon,
+  DigitalProcessIcon,
+  InstantFundsIcon,
+  SecureIcon
+} from '@/components/icons/IconLibrary'
 
 export default function BillPaymentsPage() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
-  const billTypes = [
+  const billTypes: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+    features: string[]
+    href: string
+    badge?: string
+    gradient: string
+    iconBg: string
+  }> = [
     {
-      icon: CreditCard,
+      IconComponent: CreditCardIcon,
       title: 'Credit Card Bill Payment',
       description: 'Pay your credit card bills instantly with zero convenience fees and earn rewards.',
       features: ['Zero fees', 'Instant payment', 'Reward points', 'Auto-pay option'],
@@ -20,7 +39,7 @@ export default function BillPaymentsPage() {
       iconBg: 'from-primary-100 to-primary-200'
     },
     {
-      icon: Wallet,
+      IconComponent: LoanRepaymentIcon,
       title: 'Loan Repayment',
       description: 'Repay your loans easily with flexible payment options and instant confirmation.',
       features: ['Flexible payment', 'Instant confirmation', 'Multiple banks', 'Auto-debit'],
@@ -30,7 +49,7 @@ export default function BillPaymentsPage() {
       iconBg: 'from-accent-100 to-accent-200'
     },
     {
-      icon: Zap,
+      IconComponent: ElectricityBillIcon,
       title: 'Electricity Bill',
       description: 'Pay electricity bills online instantly and get instant confirmation.',
       features: ['Instant payment', 'All providers', 'Bill history', 'Auto-pay'],
@@ -40,7 +59,7 @@ export default function BillPaymentsPage() {
       iconBg: 'from-yellow-100 to-orange-100'
     },
     {
-      icon: Receipt,
+      IconComponent: BillPaymentIcon,
       title: 'Gas Bill Payment',
       description: 'Pay your gas bills online with quick processing and confirmation.',
       features: ['Quick processing', 'All providers', 'Bill alerts', 'Payment history'],
@@ -50,7 +69,7 @@ export default function BillPaymentsPage() {
       iconBg: 'from-blue-100 to-blue-200'
     },
     {
-      icon: Receipt,
+      IconComponent: BillPaymentIcon,
       title: 'Water Bill Payment',
       description: 'Pay water bills online with ease and get instant confirmation.',
       features: ['Easy payment', 'All providers', 'Bill tracking', 'Auto-pay'],
@@ -60,7 +79,7 @@ export default function BillPaymentsPage() {
       iconBg: 'from-cyan-100 to-cyan-200'
     },
     {
-      icon: Receipt,
+      IconComponent: DigitalProcessIcon,
       title: 'Mobile & DTH Recharge',
       description: 'Recharge your mobile, DTH, and data cards instantly with exciting offers.',
       features: ['Instant recharge', 'Best offers', 'All operators', 'Auto-recharge'],
@@ -122,8 +141,8 @@ export default function BillPaymentsPage() {
             }}
             className="inline-block mb-6"
           >
-            <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl flex items-center justify-center mx-auto shadow-lg">
-              <Receipt className="w-10 h-10 text-white" />
+            <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl flex items-center justify-center mx-auto shadow-lg overflow-hidden relative brightness-0 invert">
+              <BillPaymentIcon />
             </div>
           </motion.div>
           <motion.h1
@@ -146,7 +165,6 @@ export default function BillPaymentsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {billTypes.map((bill, index) => {
-            const Icon = bill.icon
             const isHovered = hoveredIndex === index
             return (
               <motion.div
@@ -189,13 +207,15 @@ export default function BillPaymentsPage() {
                   <div className="relative z-10">
                     <div className="flex items-start justify-between mb-4">
                       <motion.div
-                        className={`w-16 h-16 bg-gradient-to-br ${bill.iconBg} rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform shadow-lg`}
+                        className={`w-16 h-16 bg-gradient-to-br ${bill.iconBg} rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform shadow-lg overflow-hidden relative`}
                         whileHover={{ 
                           rotate: [0, -10, 10, -10, 0],
                           transition: { duration: 0.5 }
                         }}
                       >
-                        <Icon className={`w-8 h-8 text-primary-600 group-hover:text-white transition-colors`} />
+                        <div className="w-full h-full flex items-center justify-center group-hover:brightness-0 group-hover:invert transition-all">
+                          <bill.IconComponent />
+                        </div>
                       </motion.div>
                       {bill.badge && (
                         <motion.span
@@ -392,11 +412,10 @@ export default function BillPaymentsPage() {
             </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { icon: Clock, title: 'Instant Payment', desc: 'Pay bills instantly and get immediate confirmation' },
-                { icon: Shield, title: 'Secure & Safe', desc: 'Bank-level security to protect your transactions' },
-                { icon: CheckCircle, title: 'Zero Convenience Fees', desc: 'Pay credit card bills and utilities with zero fees' }
+                { IconComponent: InstantFundsIcon, title: 'Instant Payment', desc: 'Pay bills instantly and get immediate confirmation' },
+                { IconComponent: SecureIcon, title: 'Secure & Safe', desc: 'Bank-level security to protect your transactions' },
+                { IconComponent: BillPaymentIcon, title: 'Zero Convenience Fees', desc: 'Pay credit card bills and utilities with zero fees' }
               ].map((benefit, index) => {
-                const Icon = benefit.icon
                 return (
                   <motion.div
                     key={index}
@@ -411,14 +430,16 @@ export default function BillPaymentsPage() {
                     className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all"
                   >
                     <motion.div
-                      className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm"
+                      className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm overflow-hidden relative"
                       whileHover={{ 
                         rotate: [0, -10, 10, -10, 0],
                         scale: 1.1,
                         transition: { duration: 0.5 }
                       }}
                     >
-                      <Icon className="w-10 h-10" />
+                      <div className="w-full h-full flex items-center justify-center brightness-0 invert">
+                        <benefit.IconComponent />
+                      </div>
                     </motion.div>
                     <h3 className="font-bold text-xl mb-2">{benefit.title}</h3>
                     <p className="text-sm opacity-90">{benefit.desc}</p>

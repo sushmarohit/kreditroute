@@ -2,14 +2,32 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Shield, Heart, Car, Bike, Users, ArrowRight, CheckCircle, Percent, Clock, Zap, Target, Globe } from 'lucide-react'
+import type { ComponentType } from 'react'
+import { ArrowRight, CheckCircle, Percent } from 'lucide-react'
+import {
+  HealthInsuranceIcon,
+  TermLifeInsuranceIcon,
+  CarInsuranceIcon,
+  TermLifeInsuranceIcon as TwoWheelerIcon,
+  FixedDepositIcon,
+  TermLifeInsuranceIcon as TravelIcon
+} from '@/components/icons/IconLibrary'
 import { FeatureHighlightsTable } from '@/components/FeatureHighlightsTable'
 import { FAQAccordion } from '@/components/FAQAccordion'
 
 export default function InsurancePage() {
-  const insuranceProducts = [
+  const insuranceProducts: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+    features: string[]
+    href: string
+    badge?: string
+    coverage: string
+    startingFrom: string
+  }> = [
     {
-      icon: Heart,
+      IconComponent: HealthInsuranceIcon,
       title: 'Health Insurance',
       description: 'Comprehensive health coverage with 0% GST. Protect your family\'s health with the best plans.',
       features: ['0% GST', 'Cashless treatment', 'Family coverage', 'Pre & post hospitalization'],
@@ -19,7 +37,7 @@ export default function InsurancePage() {
       startingFrom: '₹500/month'
     },
     {
-      icon: Shield,
+      IconComponent: TermLifeInsuranceIcon,
       title: 'Term Life Insurance',
       description: 'Secure your family\'s future with term life insurance at the lowest prices.',
       features: ['0% GST', 'Lowest price', 'High coverage', 'Flexible tenure'],
@@ -29,7 +47,7 @@ export default function InsurancePage() {
       startingFrom: '₹300/month'
     },
     {
-      icon: Car,
+      IconComponent: CarInsuranceIcon,
       title: 'Car Insurance',
       description: 'Comprehensive car insurance with quick claim settlement and 24/7 support.',
       features: ['Comprehensive coverage', 'Quick claims', '24/7 support', 'Cashless repairs'],
@@ -38,7 +56,7 @@ export default function InsurancePage() {
       startingFrom: '₹2,000/year'
     },
     {
-      icon: Bike,
+      IconComponent: CarInsuranceIcon,
       title: 'Two Wheeler Insurance',
       description: 'Protect your two-wheeler with comprehensive insurance coverage.',
       features: ['Third party & own damage', 'Quick renewal', 'Easy claims', 'Affordable premium'],
@@ -47,7 +65,7 @@ export default function InsurancePage() {
       startingFrom: '₹500/year'
     },
     {
-      icon: Users,
+      IconComponent: FixedDepositIcon,
       title: 'Retirement Plans',
       description: 'Plan for your golden years with retirement insurance plans.',
       features: ['Retirement corpus', 'Tax benefits', 'Regular income', 'Long-term savings'],
@@ -56,7 +74,7 @@ export default function InsurancePage() {
       startingFrom: '₹1,000/month'
     },
     {
-      icon: Shield,
+      IconComponent: TermLifeInsuranceIcon,
       title: 'Travel Insurance',
       description: 'Travel worry-free with comprehensive travel insurance coverage.',
       features: ['Medical coverage', 'Trip cancellation', 'Baggage loss', 'Emergency assistance'],
@@ -78,57 +96,65 @@ export default function InsurancePage() {
     { feature: 'Renewal', details: 'Annual renewal available' }
   ]
 
-  const keyFeatures = [
+  const keyFeatures: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+  }> = [
     {
-      icon: Percent,
+      IconComponent: BestRatesIcon,
       title: 'Best Prices',
       description: 'Get the best insurance rates with 0% GST on health and term life insurance.'
     },
     {
-      icon: Clock,
+      IconComponent: InstantFundsIcon,
       title: 'Quick Claims',
       description: 'Fast and hassle-free claim settlement process.'
     },
     {
-      icon: Shield,
+      IconComponent: SecureIcon,
       title: 'Comprehensive Coverage',
       description: 'Wide range of insurance products to meet all your protection needs.'
     },
     {
-      icon: Zap,
+      IconComponent: DigitalProcessIcon,
       title: '24/7 Support',
       description: 'Round-the-clock customer support for all your insurance needs.'
     }
   ]
 
-  const whyChooseUs = [
+  const whyChooseUs: Array<{
+    IconComponent: ComponentType
+    title: string
+    description: string
+  }> = [
     {
-      icon: Percent,
+      IconComponent: BestRatesIcon,
       title: 'Best Prices',
       description: 'Get the best insurance rates with 0% GST on health and term life insurance.'
     },
     {
-      icon: CheckCircle,
+      IconComponent: InstantFundsIcon,
       title: 'Quick Claims',
       description: 'Fast and hassle-free claim settlement process with minimal documentation.'
     },
     {
-      icon: Shield,
+      IconComponent: SecureIcon,
       title: 'Comprehensive Coverage',
       description: 'Wide range of insurance products to meet all your protection needs.'
     },
     {
-      icon: Zap,
+      IconComponent: DigitalProcessIcon,
       title: '24/7 Support',
       description: 'Round-the-clock customer support for all your insurance queries and claims.'
     },
     {
-      icon: Target,
+      IconComponent: DigitalProcessIcon,
       title: 'Expert Guidance',
       description: 'Get expert advice to choose the right insurance plan for your needs.'
     },
     {
-      icon: Globe,
+      IconComponent: SecureIcon,
       title: 'Trusted Partners',
       description: 'Partnered with top insurance companies for reliable coverage.'
     }
@@ -224,7 +250,6 @@ export default function InsurancePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {insuranceProducts.map((product, index) => {
-              const Icon = product.icon
               return (
                 <motion.div
                   key={index}
@@ -240,10 +265,12 @@ export default function InsurancePage() {
                   >
                     <div className="flex items-start justify-between mb-4">
                       <motion.div
-                        className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center"
+                        className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center overflow-hidden relative"
                         whileHover={{ rotate: [0, -15, 15, -15, 0], scale: 1.15 }}
                       >
-                        <Icon className="w-7 h-7 text-primary-600" />
+                        <div className="w-full h-full flex items-center justify-center">
+                          <product.IconComponent />
+                        </div>
                       </motion.div>
                       {product.badge && (
                         <span className="text-xs font-semibold bg-accent-100 text-accent-700 px-3 py-1 rounded-full">
@@ -257,7 +284,12 @@ export default function InsurancePage() {
                     <p className="text-gray-600 mb-4 text-sm">{product.description}</p>
                     <div className="space-y-2 mb-4">
                       <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <Shield className="w-4 h-4 text-primary-600" />
+                        <div className="w-4 h-4 relative flex items-center justify-center">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="7" fill="#10B981" />
+                            <path d="M 6 8 L 7.5 9.5 L 10 6.5" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                          </svg>
+                        </div>
                         <span className="font-medium">Coverage: {product.coverage}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm text-gray-700">
@@ -317,7 +349,6 @@ export default function InsurancePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {keyFeatures.map((feature, index) => {
-              const Icon = feature.icon
               return (
                 <motion.div
                   key={index}
@@ -329,10 +360,12 @@ export default function InsurancePage() {
                   className="bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-xl transition-all text-center"
                 >
                   <motion.div
-                    className="w-16 h-16 bg-gradient-to-br from-accent-500 to-primary-500 rounded-xl flex items-center justify-center mx-auto mb-4"
+                    className="w-16 h-16 bg-gradient-to-br from-accent-500 to-primary-500 rounded-xl flex items-center justify-center mx-auto mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                    <Icon className="w-8 h-8 text-white" />
+                    <div className="w-full h-full flex items-center justify-center">
+                      <feature.IconComponent />
+                    </div>
                   </motion.div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
                   <p className="text-sm text-gray-600">{feature.description}</p>
@@ -363,7 +396,6 @@ export default function InsurancePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {whyChooseUs.map((item, index) => {
-              const Icon = item.icon
               return (
                 <motion.div
                   key={index}
@@ -375,10 +407,12 @@ export default function InsurancePage() {
                   className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all"
                 >
                   <motion.div
-                    className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4"
+                    className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                    <Icon className="w-6 h-6" />
+                      <div className="w-full h-full flex items-center justify-center brightness-0 invert">
+                        <item.IconComponent />
+                      </div>
                   </motion.div>
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
                   <p className="text-sm opacity-90">{item.description}</p>

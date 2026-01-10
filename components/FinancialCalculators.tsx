@@ -2,10 +2,18 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Calculator, ArrowRight, TrendingUp, Percent, Home, Car, Wallet } from 'lucide-react'
+import type { ComponentType } from 'react'
+import { ArrowRight } from 'lucide-react'
+import {
+  PersonalLoanIcon,
+  HomeLoanIcon,
+  CarInsuranceIcon,
+  MarketLinkedIcon,
+  CalculatorIcon
+} from '@/components/icons/IconLibrary'
 
 interface CalculatorItem {
-  icon: typeof Calculator
+  IconComponent: ComponentType
   title: string
   subtitle: string
   href: string
@@ -14,56 +22,56 @@ interface CalculatorItem {
 
 const calculators: CalculatorItem[] = [
   {
-    icon: Wallet,
+    IconComponent: PersonalLoanIcon,
     title: 'Personal Loan',
     subtitle: 'EMI Calculator',
     href: '/calculators/personal-loan-emi',
     gradient: 'from-primary-500 to-primary-600'
   },
   {
-    icon: Wallet,
+    IconComponent: PersonalLoanIcon,
     title: 'Personal Loan',
     subtitle: 'Eligibility Calculator',
     href: '/calculators/personal-loan-eligibility',
     gradient: 'from-accent-500 to-accent-600'
   },
   {
-    icon: Wallet,
+    IconComponent: PersonalLoanIcon,
     title: 'Personal Loan',
     subtitle: 'Prepayment Calculator',
     href: '/calculators/personal-loan-prepayment',
     gradient: 'from-primary-500 to-accent-500'
   },
   {
-    icon: Home,
+    IconComponent: HomeLoanIcon,
     title: 'Home Loan',
     subtitle: 'EMI Calculator',
     href: '/calculators/home-loan-emi',
     gradient: 'from-accent-500 to-primary-600'
   },
   {
-    icon: Home,
+    IconComponent: HomeLoanIcon,
     title: 'Home Loan',
     subtitle: 'Eligibility Calculator',
     href: '/calculators/home-loan-eligibility',
     gradient: 'from-primary-600 to-accent-600'
   },
   {
-    icon: Home,
+    IconComponent: HomeLoanIcon,
     title: 'Home Loan',
     subtitle: 'Prepayment Calculator',
     href: '/calculators/home-loan-prepayment',
     gradient: 'from-accent-600 to-primary-500'
   },
   {
-    icon: Car,
+    IconComponent: CarInsuranceIcon,
     title: 'Car Loan',
     subtitle: 'EMI Calculator',
     href: '/calculators/car-loan-emi',
     gradient: 'from-primary-500 to-primary-600'
   },
   {
-    icon: TrendingUp,
+    IconComponent: MarketLinkedIcon,
     title: 'SIP Calculator',
     subtitle: 'Investment Planning',
     href: '/calculators/sip',
@@ -93,8 +101,8 @@ export function FinancialCalculators() {
             }}
             className="inline-block mb-4"
           >
-            <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl flex items-center justify-center mx-auto">
-              <Calculator className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl flex items-center justify-center mx-auto overflow-hidden relative brightness-0 invert">
+              <CalculatorIcon />
             </div>
           </motion.div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -107,7 +115,6 @@ export function FinancialCalculators() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {calculators.map((calc, index) => {
-            const Icon = calc.icon
             return (
               <motion.div
                 key={index}
@@ -131,13 +138,15 @@ export function FinancialCalculators() {
 
                   <div className="relative z-10">
                     <motion.div
-                      className={`w-14 h-14 bg-gradient-to-br ${calc.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform`}
+                      className={`w-14 h-14 bg-gradient-to-br ${calc.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform overflow-hidden relative`}
                       whileHover={{ 
                         rotate: [0, -10, 10, -10, 0],
                         transition: { duration: 0.5 }
                       }}
                     >
-                      <Icon className="w-7 h-7 text-white" />
+                      <div className="w-full h-full flex items-center justify-center brightness-0 invert">
+                        <calc.IconComponent />
+                      </div>
                     </motion.div>
 
                     <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-white transition-colors">

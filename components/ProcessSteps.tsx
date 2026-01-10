@@ -1,13 +1,14 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircle, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+import { EligibilityIcon, CompareIcon3D, ApplyIcon, DisbursementIcon } from '@/components/icons/IconLibrary'
 
 interface Step {
   number: string
   title: string
   description: string
-  icon?: React.ReactNode
+  iconSvg: React.ReactNode
 }
 
 const steps: Step[] = [
@@ -15,25 +16,25 @@ const steps: Step[] = [
     number: '01',
     title: 'Eligibility',
     description: 'Tell us your requirement. 2 minutes fill details,',
-    icon: <CheckCircle className="w-6 h-6" />
+    iconSvg: <EligibilityIcon />
   },
   {
     number: '02',
     title: 'Compare',
     description: 'AI matches best banks 90+ criteria 90% success.',
-    icon: <CheckCircle className="w-6 h-6" />
+    iconSvg: <CompareIcon3D />
   },
   {
     number: '03',
     title: 'Apply',
     description: 'Digital bank application complete digitally.',
-    icon: <CheckCircle className="w-6 h-6" />
+    iconSvg: <ApplyIcon />
   },
   {
     number: '04',
     title: 'Disbursement',
     description: 'Get quick sanction minutes not weeks,',
-    icon: <CheckCircle className="w-6 h-6" />
+    iconSvg: <DisbursementIcon />
   }
 ]
 
@@ -120,17 +121,17 @@ export function ProcessSteps() {
                     </motion.div>
 
                     {/* Icon */}
-                    {step.icon && (
-                      <motion.div
-                        initial={{ opacity: 0, rotate: -180 }}
-                        whileInView={{ opacity: 1, rotate: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: index * 0.15 + 0.2 }}
-                        className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4 text-primary-600 group-hover:bg-primary-200 transition-colors"
-                      >
-                        {step.icon}
-                      </motion.div>
-                    )}
+                    <motion.div
+                      initial={{ opacity: 0, rotate: -180 }}
+                      whileInView={{ opacity: 1, rotate: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.15 + 0.2 }}
+                      className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4 text-primary-600 group-hover:bg-primary-200 transition-colors overflow-hidden relative"
+                    >
+                      <div className="w-full h-full flex items-center justify-center">
+                        {step.iconSvg}
+                      </div>
+                    </motion.div>
 
                     <h3 className="text-xl font-bold text-gray-900 mb-3 text-center group-hover:text-primary-600 transition-colors">
                       {step.title}
