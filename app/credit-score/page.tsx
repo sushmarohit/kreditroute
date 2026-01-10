@@ -5,7 +5,16 @@ import Link from 'next/link'
 import type { ComponentType } from 'react'
 import { CheckCircle, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
-import { CreditScoreIcon, DigitalProcessIcon, SecureIcon, InstantFundsIcon } from '@/components/icons/IconLibrary'
+import { 
+  CreditScoreIcon, 
+  DigitalProcessIcon, 
+  SecureIcon, 
+  InstantFundsIcon,
+  CreditReportIcon,
+  CreditInsightsIcon,
+  CreditImprovementIcon,
+  CreditMonitoringIcon
+} from '@/components/icons/IconLibrary'
 import { FeatureHighlightsTable } from '@/components/FeatureHighlightsTable'
 import { FAQAccordion } from '@/components/FAQAccordion'
 
@@ -31,7 +40,7 @@ export default function CreditScorePage() {
       badge: 'Free'
     },
     {
-      IconComponent: CreditScoreIcon,
+      IconComponent: CreditMonitoringIcon,
       title: 'Credit Health Pro',
       description: 'Advanced credit monitoring with detailed insights and personalized recommendations.',
       features: ['Advanced monitoring', 'Detailed insights', 'Personalized tips', 'Score improvement plan'],
@@ -39,14 +48,14 @@ export default function CreditScorePage() {
       badge: 'Pro'
     },
     {
-      IconComponent: CreditScoreIcon,
+      IconComponent: CreditImprovementIcon,
       title: 'Fix your Credit Score',
       description: 'Get expert guidance to improve your credit score with actionable steps.',
       features: ['Expert consultation', 'Action plan', 'Score tracking', 'Improvement tips'],
       href: '/credit-score/fix'
     },
     {
-      IconComponent: CreditScoreIcon,
+      IconComponent: CreditReportIcon,
       title: 'Video Credit Report',
       description: 'Understand your credit report easily with video explanations and insights.',
       features: ['Video explanations', 'Easy to understand', 'Detailed analysis', 'Action items'],
@@ -84,12 +93,12 @@ export default function CreditScorePage() {
       description: 'Check your credit score for free. No credit card required.'
     },
     {
-      IconComponent: DigitalProcessIcon,
+      IconComponent: CreditInsightsIcon,
       title: 'Detailed Insights',
       description: 'Get detailed analysis of your credit profile and factors affecting your score.'
     },
     {
-      IconComponent: DigitalProcessIcon,
+      IconComponent: CreditImprovementIcon,
       title: 'Improvement Tips',
       description: 'Receive personalized recommendations to improve your credit score.'
     },
@@ -121,17 +130,17 @@ export default function CreditScorePage() {
       description: 'Get your credit score instantly. No waiting, no delays.'
     },
     {
-      IconComponent: DigitalProcessIcon,
+      IconComponent: CreditReportIcon,
       title: 'Detailed Analysis',
       description: 'Understand your credit profile with detailed insights and recommendations.'
     },
     {
-      IconComponent: CreditScoreIcon,
+      IconComponent: CreditMonitoringIcon,
       title: 'Monthly Updates',
       description: 'Track your credit score changes with monthly updates.'
     },
     {
-      IconComponent: DigitalProcessIcon,
+      IconComponent: CreditInsightsIcon,
       title: 'Expert Guidance',
       description: 'Get expert advice on how to improve your credit score.'
     }
@@ -278,7 +287,7 @@ export default function CreditScorePage() {
                 )}
               </div>
               <div className="bg-gradient-to-br from-primary-50 to-accent-50 rounded-xl p-8 text-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-primary-600 to-accent-600 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden relative brightness-0 invert">
+                <div className="w-24 h-24 bg-gradient-to-br from-primary-600 to-accent-600 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden relative">
                   <CreditScoreIcon />
                 </div>
                 <h3 className="text-4xl font-bold text-gray-900 mb-2">770</h3>

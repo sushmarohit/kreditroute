@@ -277,45 +277,75 @@ export const CreditScoreIcon = () => (
         <stop offset="50%" stopColor="#FBBF24" stopOpacity="1" />
         <stop offset="100%" stopColor="#EF4444" stopOpacity="1" />
       </linearGradient>
+      <linearGradient id="gaugeSide" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#9CA3AF" stopOpacity="0.6" />
+        <stop offset="100%" stopColor="#6B7280" stopOpacity="0.4" />
+      </linearGradient>
       <filter id="gaugeShadow">
         <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" />
         <feOffset dx="1" dy="2" result="offsetblur" />
         <feComponentTransfer>
           <feFuncA type="linear" slope="0.25" />
         </feComponentTransfer>
+        <feMerge>
+          <feMergeNode />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
       </filter>
     </defs>
-    {/* Gauge/Speedometer - 3D */}
+    {/* Gauge/Speedometer - 3D - Fully Visible */}
+    {/* Gauge Shadow - Ground */}
+    <ellipse cx="26" cy="38" rx="12" ry="3" fill="#000000" opacity="0.2" />
+    
+    {/* Gauge Container - 3D */}
     <g filter="url(#gaugeShadow)">
-      {/* Gauge Shadow */}
-      <ellipse cx="26" cy="26" rx="14" ry="16" fill="#000000" opacity="0.1" />
       {/* Gauge Background Circle - Side */}
-      <ellipse cx="28" cy="24" rx="2" ry="16" fill="#E5E7EB" opacity="0.4" />
-      {/* Gauge Background Circle - Front */}
-      <circle cx="24" cy="24" r="16" fill="#F3F4F6" stroke="#D1D5DB" strokeWidth="1" />
+      <ellipse cx="28" cy="24" rx="2" ry="16" fill="url(#gaugeSide)" />
+      
+      {/* Gauge Background Circle - Front (White for visibility) */}
+      <circle cx="24" cy="24" r="16" fill="#FFFFFF" stroke="#D1D5DB" strokeWidth="2" />
+      <circle cx="24" cy="24" r="15" fill="#F9FAFB" />
+      
       {/* Gauge Inner Ring */}
-      <circle cx="24" cy="24" r="14" fill="none" stroke="#FFFFFF" strokeWidth="1" opacity="0.5" />
-      {/* Gauge Arc - Red - 3D */}
-      <path d="M 24 8 A 14 14 0 0 1 38 24" stroke="#EF4444" strokeWidth="4" fill="none" strokeLinecap="round" />
-      <path d="M 24 9 A 13 13 0 0 1 37 24" stroke="#DC2626" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.7" />
-      {/* Gauge Arc - Yellow - 3D */}
-      <path d="M 38 24 A 14 14 0 0 1 31 36" stroke="#FBBF24" strokeWidth="4" fill="none" strokeLinecap="round" />
-      <path d="M 37 24 A 13 13 0 0 1 31 35" stroke="#F59E0B" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.7" />
-      {/* Gauge Arc - Green - 3D */}
-      <path d="M 31 36 A 14 14 0 0 1 24 8" stroke="#10B981" strokeWidth="4" fill="none" strokeLinecap="round" />
-      <path d="M 31 35 A 13 13 0 0 1 24 9" stroke="#059669" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.7" />
-      {/* Center Circle - 3D */}
-      <circle cx="25" cy="25" r="3" fill="#1F2937" opacity="0.5" />
-      <circle cx="24" cy="24" r="3" fill="#374151" />
-      <circle cx="24" cy="24" r="2" fill="#4B5563" />
-      {/* Needle - 3D */}
-      <line x1="24" y1="24" x2="20" y2="16" stroke="#374151" strokeWidth="3" strokeLinecap="round" opacity="0.5" />
-      <line x1="24" y1="24" x2="20" y2="16" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" />
-      <circle cx="24" cy="24" r="1.5" fill="#10B981" />
-      <circle cx="24" cy="24" r="1" fill="#34D399" />
-      {/* Score Text */}
-      <text x="24" y="34" textAnchor="middle" fontSize="6" fill="#10B981" fontWeight="bold">750</text>
+      <circle cx="24" cy="24" r="14" fill="none" stroke="#D1D5DB" strokeWidth="1.5" opacity="0.8" />
+      
+      {/* Gauge Arc - Red - 3D (Poor: 0-33%) - Visible */}
+      <path d="M 24 10 A 14 14 0 0 1 36 24" stroke="#EF4444" strokeWidth="5" fill="none" strokeLinecap="round" opacity="1" />
+      <path d="M 24 11 A 13 13 0 0 1 35 24" stroke="#DC2626" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.9" />
+      
+      {/* Gauge Arc - Yellow - 3D (Fair: 33-66%) - Visible */}
+      <path d="M 36 24 A 14 14 0 0 1 29 36" stroke="#FBBF24" strokeWidth="5" fill="none" strokeLinecap="round" opacity="1" />
+      <path d="M 35 24 A 13 13 0 0 1 29 35" stroke="#F59E0B" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.9" />
+      
+      {/* Gauge Arc - Green - 3D (Good: 66-100%) - Visible */}
+      <path d="M 29 36 A 14 14 0 0 1 24 10" stroke="#10B981" strokeWidth="5" fill="none" strokeLinecap="round" opacity="1" />
+      <path d="M 29 35 A 13 13 0 0 1 24 11" stroke="#059669" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.9" />
+      
+      {/* Gauge Markers - Visible */}
+      <circle cx="24" cy="10" r="2" fill="#EF4444" />
+      <circle cx="36" cy="24" r="2" fill="#FBBF24" />
+      <circle cx="29" cy="36" r="2" fill="#10B981" />
+      
+      {/* Center Circle - 3D Base - Visible */}
+      <circle cx="25" cy="25" r="4.5" fill="#1F2937" opacity="0.4" />
+      <circle cx="24" cy="24" r="4.5" fill="#374151" />
+      <circle cx="24" cy="24" r="3.5" fill="#4B5563" />
+      <circle cx="24" cy="24" r="2.5" fill="#6B7280" />
+      
+      {/* Needle - 3D (Pointing to Good/Green zone) - Visible */}
+      <line x1="24" y1="24" x2="17" y2="13" stroke="#1F2937" strokeWidth="4.5" strokeLinecap="round" opacity="0.5" />
+      <line x1="24" y1="24" x2="17" y2="13" stroke="#10B981" strokeWidth="3.5" strokeLinecap="round" />
+      <line x1="24" y1="24" x2="18" y2="14" stroke="#34D399" strokeWidth="2.5" strokeLinecap="round" opacity="0.9" />
+      
+      {/* Needle Center - Visible */}
+      <circle cx="24" cy="24" r="3" fill="#10B981" />
+      <circle cx="24" cy="24" r="2" fill="#34D399" />
+      <circle cx="24" cy="24" r="1.2" fill="#FFFFFF" />
     </g>
+    
+    {/* Score Text - Outside filter for clarity and visibility */}
+    <text x="24" y="36" textAnchor="middle" fontSize="8" fill="#10B981" fontWeight="bold" fontFamily="Arial, sans-serif" opacity="1">750</text>
+    <text x="24" y="42" textAnchor="middle" fontSize="4" fill="#6B7280" fontWeight="600" fontFamily="Arial, sans-serif" opacity="0.9">Score</text>
   </svg>
 )
 
@@ -1169,3 +1199,163 @@ export const TransparentIcon = () => (
   </svg>
 )
 
+// Credit Score Specialized Icons
+export const CreditReportIcon = () => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="reportGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#3B82F6" stopOpacity="1" />
+        <stop offset="100%" stopColor="#2563EB" stopOpacity="1" />
+      </linearGradient>
+      <linearGradient id="reportSide" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#1E40AF" stopOpacity="0.7" />
+        <stop offset="100%" stopColor="#1E3A8A" stopOpacity="0.5" />
+      </linearGradient>
+      <filter id="reportShadow">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" />
+        <feOffset dx="1" dy="2" result="offsetblur" />
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.3" />
+        </feComponentTransfer>
+      </filter>
+    </defs>
+    {/* 3D Document/Report */}
+    <g filter="url(#reportShadow)">
+      {/* Report Shadow Side */}
+      <path d="M 34 12 L 36 14 L 36 36 L 34 34 Z" fill="url(#reportSide)" />
+      {/* Report Top Edge */}
+      <path d="M 14 12 L 34 12 L 36 14 L 16 14 Z" fill="#1E40AF" opacity="0.5" />
+      {/* Report Front */}
+      <rect x="14" y="12" width="20" height="24" rx="1" fill="url(#reportGrad)" />
+      {/* Report Lines */}
+      <rect x="16" y="16" width="12" height="1.5" fill="#FFFFFF" opacity="0.8" rx="0.3" />
+      <rect x="16" y="19" width="16" height="1.5" fill="#FFFFFF" opacity="0.6" rx="0.3" />
+      <rect x="16" y="22" width="14" height="1.5" fill="#FFFFFF" opacity="0.6" rx="0.3" />
+      <rect x="16" y="25" width="10" height="1.5" fill="#FFFFFF" opacity="0.6" rx="0.3" />
+      {/* Chart/Graph Section */}
+      <rect x="16" y="28" width="16" height="6" fill="#FFFFFF" opacity="0.3" rx="0.5" />
+      <rect x="18" y="30" width="2" height="4" fill="#10B981" rx="0.3" />
+      <rect x="21" y="31" width="2" height="3" fill="#10B981" rx="0.3" />
+      <rect x="24" y="29" width="2" height="5" fill="#10B981" rx="0.3" />
+      <rect x="27" y="30" width="2" height="4" fill="#10B981" rx="0.3" />
+      {/* Report Highlight */}
+      <rect x="14" y="12" width="20" height="3" fill="rgba(255, 255, 255, 0.15)" rx="1" />
+    </g>
+  </svg>
+)
+
+export const CreditInsightsIcon = () => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="insightsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#8B5CF6" stopOpacity="1" />
+        <stop offset="100%" stopColor="#7C3AED" stopOpacity="1" />
+      </linearGradient>
+      <linearGradient id="insightsSide" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#6D28D9" stopOpacity="0.7" />
+        <stop offset="100%" stopColor="#5B21B6" stopOpacity="0.5" />
+      </linearGradient>
+      <filter id="insightsShadow">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" />
+        <feOffset dx="1" dy="2" result="offsetblur" />
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.3" />
+        </feComponentTransfer>
+      </filter>
+    </defs>
+    {/* 3D Lightbulb/Analytics */}
+    <g filter="url(#insightsShadow)">
+      {/* Bulb Shadow */}
+      <ellipse cx="26" cy="32" rx="10" ry="3" fill="#7C3AED" opacity="0.3" />
+      {/* Bulb Glass - Side */}
+      <ellipse cx="30" cy="22" rx="2" ry="8" fill="url(#insightsSide)" />
+      {/* Bulb Glass - Front */}
+      <path d="M 20 16 Q 20 12 24 12 Q 28 12 28 16 Q 28 18 30 20 L 30 28 Q 30 30 28 30 L 20 30 Q 18 30 18 28 L 18 20 Q 20 18 20 16 Z" fill="url(#insightsGrad)" />
+      {/* Bulb Highlight */}
+      <ellipse cx="22" cy="20" rx="2" ry="3" fill="rgba(255, 255, 255, 0.4)" />
+      {/* Analytics Lines */}
+      <path d="M 18 24 L 20 22 L 22 24 L 24 20 L 26 24 L 28 22 L 30 26" stroke="#FFFFFF" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      {/* Bulb Base */}
+      <rect x="20" y="30" width="8" height="4" rx="1" fill="#374151" />
+      <rect x="21" y="34" width="6" height="2" rx="0.5" fill="#1F2937" />
+    </g>
+  </svg>
+)
+
+export const CreditImprovementIcon = () => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="improveGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+        <stop offset="0%" stopColor="#10B981" stopOpacity="1" />
+        <stop offset="100%" stopColor="#34D399" stopOpacity="1" />
+      </linearGradient>
+      <linearGradient id="improveSide" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#059669" stopOpacity="0.7" />
+        <stop offset="100%" stopColor="#047857" stopOpacity="0.5" />
+      </linearGradient>
+      <filter id="improveShadow">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" />
+        <feOffset dx="1" dy="2" result="offsetblur" />
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.3" />
+        </feComponentTransfer>
+      </filter>
+    </defs>
+    {/* 3D Trending Up Arrow/Chart */}
+    <g filter="url(#improveShadow)">
+      {/* Arrow Shadow */}
+      <ellipse cx="26" cy="36" rx="8" ry="2" fill="#059669" opacity="0.3" />
+      {/* Arrow Side */}
+      <path d="M 32 16 L 34 18 L 28 32 L 26 30 Z" fill="url(#improveSide)" />
+      {/* Arrow Front */}
+      <path d="M 16 32 L 28 32 L 32 24 L 32 16 L 28 12 L 20 12 L 18 20 Z" fill="url(#improveGrad)" />
+      {/* Chart Bars */}
+      <rect x="18" y="28" width="3" height="4" fill="#FFFFFF" opacity="0.8" rx="0.3" />
+      <rect x="22" y="24" width="3" height="8" fill="#FFFFFF" opacity="0.8" rx="0.3" />
+      <rect x="26" y="20" width="3" height="12" fill="#FFFFFF" opacity="0.9" rx="0.3" />
+      {/* Arrow Head */}
+      <path d="M 28 12 L 32 16 L 30 16 L 30 20 L 26 20 L 26 16 Z" fill="#FFFFFF" opacity="0.9" />
+      {/* Highlight */}
+      <path d="M 20 14 L 28 14 L 30 16" stroke="rgba(255, 255, 255, 0.5)" strokeWidth="1" fill="none" />
+    </g>
+  </svg>
+)
+
+export const CreditMonitoringIcon = () => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="monitorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#6366F1" stopOpacity="1" />
+        <stop offset="100%" stopColor="#4F46E5" stopOpacity="1" />
+      </linearGradient>
+      <linearGradient id="monitorSide" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#4338CA" stopOpacity="0.7" />
+        <stop offset="100%" stopColor="#3730A3" stopOpacity="0.5" />
+      </linearGradient>
+      <filter id="monitorShadow">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" />
+        <feOffset dx="1" dy="2" result="offsetblur" />
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.3" />
+        </feComponentTransfer>
+      </filter>
+    </defs>
+    {/* 3D Monitor/Screen */}
+    <g filter="url(#monitorShadow)">
+      {/* Monitor Stand */}
+      <ellipse cx="24" cy="38" rx="6" ry="2" fill="#4338CA" opacity="0.5" />
+      {/* Monitor Side */}
+      <path d="M 32 14 L 34 16 L 34 28 L 32 26 Z" fill="url(#monitorSide)" />
+      {/* Monitor Top */}
+      <path d="M 14 14 L 32 14 L 34 16 L 16 16 Z" fill="#4338CA" opacity="0.6" />
+      {/* Monitor Screen Front */}
+      <rect x="14" y="14" width="18" height="14" rx="1" fill="url(#monitorGrad)" />
+      {/* Screen Content */}
+      <rect x="16" y="16" width="14" height="10" rx="0.5" fill="#1E293B" />
+      {/* Graph Lines */}
+      <path d="M 18 24 L 20 22 L 22 24 L 24 20 L 26 24 L 28 22 L 30 24" stroke="#10B981" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      {/* Monitor Base */}
+      <rect x="20" y="28" width="8" height="2" rx="0.5" fill="#3730A3" />
+    </g>
+  </svg>
+)

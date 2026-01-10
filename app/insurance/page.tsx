@@ -10,7 +10,11 @@ import {
   CarInsuranceIcon,
   TermLifeInsuranceIcon as TwoWheelerIcon,
   FixedDepositIcon,
-  TermLifeInsuranceIcon as TravelIcon
+  TermLifeInsuranceIcon as TravelIcon,
+  BestRatesIcon,
+  InstantFundsIcon,
+  SecureIcon,
+  DigitalProcessIcon
 } from '@/components/icons/IconLibrary'
 import { FeatureHighlightsTable } from '@/components/FeatureHighlightsTable'
 import { FAQAccordion } from '@/components/FAQAccordion'
