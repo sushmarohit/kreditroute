@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import type { ComponentType } from 'react'
-import { ArrowRight, CheckCircle, Percent } from 'lucide-react'
 import { useState } from 'react'
 import {
   InvestmentBondsIcon,
@@ -52,67 +51,39 @@ export default function InvestmentsPage() {
   const investmentProducts: Array<{
     IconComponent: ComponentType
     title: string
-    description: string
-    features: string[]
     href: string
     badge?: string
-    returns: string
-    minInvestment: string
   }> = [
     {
       IconComponent: InvestmentBondsIcon,
       title: 'Bonds',
-      description: 'SEBI Regulated investment products with fixed returns and low risk.',
-      features: ['SEBI Regulated', 'Fixed returns', 'Low risk', 'Regular income'],
       href: '/investments/bonds',
-      badge: 'Newly Launched',
-      returns: '7-9% p.a.',
-      minInvestment: '₹10,000'
+      badge: 'Newly Launched'
     },
     {
       IconComponent: FixedDepositIcon,
       title: 'Fixed Deposits',
-      description: 'Earn up to 8% returns with secure fixed deposit investments.',
-      features: ['Up to 8% returns', 'Safe investment', 'Flexible tenure', 'Tax benefits'],
-      href: '/investments/fixed-deposits',
-      returns: 'Up to 8% p.a.',
-      minInvestment: '₹5,000'
+      href: '/investments/fixed-deposits'
     },
     {
       IconComponent: MarketLinkedIcon,
       title: 'Market Linked Plans',
-      description: 'Invest in market-linked products for potential higher returns.',
-      features: ['Market linked', 'Growth potential', 'Diversified portfolio', 'Professional management'],
-      href: '/investments/market-linked',
-      returns: 'Market linked',
-      minInvestment: '₹1,000'
+      href: '/investments/market-linked'
     },
     {
       IconComponent: FixedDepositIcon,
       title: 'National Pension Scheme (NPS)',
-      description: 'Plan for your retirement with tax benefits and long-term wealth creation.',
-      features: ['Tax benefits', 'Retirement planning', 'Long-term growth', 'Government backed'],
-      href: '/investments/nps',
-      returns: '8-12% p.a.',
-      minInvestment: '₹500'
+      href: '/investments/nps'
     },
     {
       IconComponent: MarketLinkedIcon,
       title: 'Mutual Funds',
-      description: 'Diversify your portfolio with professionally managed mutual funds.',
-      features: ['Diversified', 'Professional management', 'Liquidity', 'Flexible SIP'],
-      href: '/investments/mutual-funds',
-      returns: 'Market linked',
-      minInvestment: '₹500'
+      href: '/investments/mutual-funds'
     },
     {
       IconComponent: MarketLinkedIcon,
       title: 'Stocks & Equity',
-      description: 'Invest in stocks and equity for long-term wealth creation.',
-      features: ['Direct equity', 'Long-term growth', 'Dividend income', 'Portfolio building'],
-      href: '/investments/stocks',
-      returns: 'Market linked',
-      minInvestment: '₹1,000'
+      href: '/investments/stocks'
     }
   ]
 
@@ -293,7 +264,7 @@ export default function InvestmentsPage() {
                 >
                   <Link
                     href={product.href}
-                    className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full group"
+                    className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full flex flex-col group"
                   >
                     <div className="flex items-start justify-between mb-4">
                       <motion.div
@@ -310,42 +281,9 @@ export default function InvestmentsPage() {
                         </span>
                       )}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors flex-grow">
                       {product.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 text-sm">{product.description}</p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <Percent className="w-4 h-4 text-primary-600" />
-                        <span className="font-medium">Returns: {product.returns}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <div className="w-4 h-4 relative flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="8" cy="8" r="7" fill="#FBBF24" />
-                            <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#92400E" fontWeight="bold">₹</text>
-                          </svg>
-                        </div>
-                        <span>Min Investment: {product.minInvestment}</span>
-                      </div>
-                    </div>
-                    <div className="border-t border-gray-200 pt-4 mb-4">
-                      <div className="flex flex-wrap gap-2">
-                        {product.features.slice(0, 2).map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-1 text-xs text-gray-600">
-                            <CheckCircle className="w-3 h-3 text-primary-600" />
-                            <span>{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <motion.div
-                      className="flex items-center text-primary-600 font-semibold"
-                      whileHover={{ x: 4 }}
-                    >
-                      <span>Invest Now</span>
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </motion.div>
                   </Link>
                 </motion.div>
               )

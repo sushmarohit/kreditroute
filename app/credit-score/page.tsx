@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import type { ComponentType } from 'react'
-import { CheckCircle, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import { 
   CreditScoreIcon, 
@@ -26,39 +25,29 @@ export default function CreditScorePage() {
   const services: Array<{
     IconComponent: ComponentType
     title: string
-    description: string
-    features: string[]
     href: string
     badge?: string
   }> = [
     {
       IconComponent: CreditScoreIcon,
       title: 'Free Credit Score',
-      description: 'Check your credit score for free and understand your credit health instantly.',
-      features: ['Free credit score', 'Credit report access', 'Score insights', 'Monthly updates'],
       href: '/credit-score/check',
       badge: 'Free'
     },
     {
       IconComponent: CreditMonitoringIcon,
       title: 'Credit Health Pro',
-      description: 'Advanced credit monitoring with detailed insights and personalized recommendations.',
-      features: ['Advanced monitoring', 'Detailed insights', 'Personalized tips', 'Score improvement plan'],
       href: '/credit-score/pro',
       badge: 'Pro'
     },
     {
       IconComponent: CreditImprovementIcon,
       title: 'Fix your Credit Score',
-      description: 'Get expert guidance to improve your credit score with actionable steps.',
-      features: ['Expert consultation', 'Action plan', 'Score tracking', 'Improvement tips'],
       href: '/credit-score/fix'
     },
     {
       IconComponent: CreditReportIcon,
       title: 'Video Credit Report',
-      description: 'Understand your credit report easily with video explanations and insights.',
-      features: ['Video explanations', 'Easy to understand', 'Detailed analysis', 'Action items'],
       href: '/credit-score/report'
     }
   ]
@@ -336,7 +325,7 @@ export default function CreditScorePage() {
                 >
                   <Link
                     href={service.href}
-                    className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full group"
+                    className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full flex flex-col group"
                   >
                     <div className="flex items-start justify-between mb-4">
                       <motion.div
@@ -353,27 +342,9 @@ export default function CreditScorePage() {
                         </span>
                       )}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors flex-grow">
                       {service.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 text-sm">{service.description}</p>
-                    <div className="border-t border-gray-200 pt-4 mb-4">
-                      <div className="flex flex-wrap gap-2">
-                        {service.features.slice(0, 2).map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-1 text-xs text-gray-600">
-                            <CheckCircle className="w-3 h-3 text-primary-600" />
-                            <span>{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <motion.div
-                      className="flex items-center text-primary-600 font-semibold"
-                      whileHover={{ x: 4 }}
-                    >
-                      <span>Learn More</span>
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </motion.div>
                   </Link>
                 </motion.div>
               )

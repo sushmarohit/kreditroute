@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle, Clock, Percent, Shield, Zap, Users } from 'lucide-react'
+import { Shield, Zap, Users } from 'lucide-react'
 import type { ComponentType } from 'react'
 import { 
   PersonalLoanIcon, 
@@ -25,74 +25,39 @@ export default function LoansPage() {
   const loanTypes: Array<{
     IconComponent: ComponentType
     title: string
-    description: string
-    features: string[]
     href: string
     badge?: string
-    amount: string
-    rate: string
-    time: string
   }> = [
     {
       IconComponent: PersonalLoanIcon,
       title: 'Personal Loan',
-      description: 'Get instant personal loans up to ₹40 Lakhs with quick approval and flexible repayment options.',
-      features: ['Quick approval', 'No collateral required', 'Flexible tenure', 'Competitive interest rates'],
       href: '/instant-loan',
-      badge: '₹500 Cashback',
-      amount: 'Up to ₹40 Lakhs',
-      rate: 'Starting from 10.5% p.a.',
-      time: 'Approved in 24 hours'
+      badge: '₹500 Cashback'
     },
     {
       IconComponent: HomeLoanIcon,
       title: 'Home Loan',
-      description: 'Fulfill your dream of owning a home with our attractive home loan offers and easy documentation.',
-      features: ['Long repayment tenure', 'Low interest rates', 'Tax benefits', 'Quick processing'],
-      href: '/instant-loan',
-      amount: 'Up to ₹5 Crores',
-      rate: 'Starting from 8.5% p.a.',
-      time: 'Sanctioned in 3-5 days'
+      href: '/instant-loan'
     },
     {
       IconComponent: BusinessLoanIcon,
       title: 'Business Loan',
-      description: 'Fuel your business growth with flexible business loans tailored to your needs.',
-      features: ['No collateral required', 'Quick disbursal', 'Flexible repayment', 'Competitive rates'],
-      href: '/instant-loan',
-      amount: 'Up to ₹50 Lakhs',
-      rate: 'Starting from 12% p.a.',
-      time: 'Approved in 48 hours'
+      href: '/instant-loan'
     },
     {
       IconComponent: BusinessLoanIcon,
       title: 'Loan Against Property',
-      description: 'Unlock the value of your property and get funds for your financial needs.',
-      features: ['High loan amount', 'Low interest rates', 'Long tenure', 'Easy documentation'],
-      href: '/instant-loan',
-      amount: 'Up to ₹10 Crores',
-      rate: 'Starting from 9% p.a.',
-      time: 'Sanctioned in 5-7 days'
+      href: '/instant-loan'
     },
     {
       IconComponent: HomeLoanIcon,
       title: 'Transfer Home Loan',
-      description: 'Save on interest by transferring your existing home loan to better rates.',
-      features: ['Lower interest rates', 'Top-up facility', 'Balance transfer', 'No prepayment charges'],
-      href: '/instant-loan',
-      amount: 'Balance Transfer',
-      rate: 'Starting from 8.25% p.a.',
-      time: 'Processed in 7-10 days'
+      href: '/instant-loan'
     },
     {
       IconComponent: PersonalLoanIcon,
       title: 'Consumer Durable Loan',
-      description: 'Buy your favorite appliances and electronics with easy financing options.',
-      features: ['Zero down payment', 'Quick approval', 'Flexible EMI', 'Wide product range'],
-      href: '/instant-loan',
-      amount: 'Up to ₹5 Lakhs',
-      rate: 'Starting from 14% p.a.',
-      time: 'Approved instantly'
+      href: '/instant-loan'
     }
   ]
 
@@ -311,7 +276,7 @@ export default function LoansPage() {
                 >
                   <Link
                     href={loan.href}
-                    className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full group"
+                    className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full flex flex-col group"
                   >
                     <div className="flex items-start justify-between mb-4">
                       <motion.div
@@ -328,46 +293,9 @@ export default function LoansPage() {
                         </span>
                       )}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors flex-grow">
                       {loan.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 text-sm">{loan.description}</p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <div className="w-4 h-4 relative flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="8" cy="8" r="7" fill="#FBBF24" />
-                            <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#92400E" fontWeight="bold">₹</text>
-                          </svg>
-                        </div>
-                        <span className="font-medium">{loan.amount}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <Percent className="w-4 h-4 text-primary-600" />
-                        <span>{loan.rate}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <Clock className="w-4 h-4 text-primary-600" />
-                        <span>{loan.time}</span>
-                      </div>
-                    </div>
-                    <div className="border-t border-gray-200 pt-4 mb-4">
-                      <div className="flex flex-wrap gap-2">
-                        {loan.features.slice(0, 2).map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-1 text-xs text-gray-600">
-                            <CheckCircle className="w-3 h-3 text-primary-600" />
-                            <span>{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <motion.div
-                      className="flex items-center text-primary-600 font-semibold"
-                      whileHover={{ x: 4 }}
-                    >
-                      <span>Apply Now</span>
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </motion.div>
                   </Link>
                 </motion.div>
               )

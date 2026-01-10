@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import type { ComponentType } from 'react'
-import { ArrowRight, CheckCircle, Percent } from 'lucide-react'
 import {
   HealthInsuranceIcon,
   TermLifeInsuranceIcon,
@@ -23,68 +22,40 @@ export default function InsurancePage() {
   const insuranceProducts: Array<{
     IconComponent: ComponentType
     title: string
-    description: string
-    features: string[]
     href: string
     badge?: string
-    coverage: string
-    startingFrom: string
   }> = [
     {
       IconComponent: HealthInsuranceIcon,
       title: 'Health Insurance',
-      description: 'Comprehensive health coverage with 0% GST. Protect your family\'s health with the best plans.',
-      features: ['0% GST', 'Cashless treatment', 'Family coverage', 'Pre & post hospitalization'],
       href: '/insurance/health',
-      badge: '0% GST',
-      coverage: 'Up to ₹1 Crore',
-      startingFrom: '₹500/month'
+      badge: '0% GST'
     },
     {
       IconComponent: TermLifeInsuranceIcon,
       title: 'Term Life Insurance',
-      description: 'Secure your family\'s future with term life insurance at the lowest prices.',
-      features: ['0% GST', 'Lowest price', 'High coverage', 'Flexible tenure'],
       href: '/insurance/term-life',
-      badge: '0% GST',
-      coverage: 'Up to ₹2 Crores',
-      startingFrom: '₹300/month'
+      badge: '0% GST'
     },
     {
       IconComponent: CarInsuranceIcon,
       title: 'Car Insurance',
-      description: 'Comprehensive car insurance with quick claim settlement and 24/7 support.',
-      features: ['Comprehensive coverage', 'Quick claims', '24/7 support', 'Cashless repairs'],
-      href: '/insurance/car',
-      coverage: 'Full coverage',
-      startingFrom: '₹2,000/year'
+      href: '/insurance/car'
     },
     {
       IconComponent: CarInsuranceIcon,
       title: 'Two Wheeler Insurance',
-      description: 'Protect your two-wheeler with comprehensive insurance coverage.',
-      features: ['Third party & own damage', 'Quick renewal', 'Easy claims', 'Affordable premium'],
-      href: '/insurance/two-wheeler',
-      coverage: 'Full coverage',
-      startingFrom: '₹500/year'
+      href: '/insurance/two-wheeler'
     },
     {
       IconComponent: FixedDepositIcon,
       title: 'Retirement Plans',
-      description: 'Plan for your golden years with retirement insurance plans.',
-      features: ['Retirement corpus', 'Tax benefits', 'Regular income', 'Long-term savings'],
-      href: '/insurance/retirement',
-      coverage: 'Lifetime coverage',
-      startingFrom: '₹1,000/month'
+      href: '/insurance/retirement'
     },
     {
       IconComponent: TermLifeInsuranceIcon,
       title: 'Travel Insurance',
-      description: 'Travel worry-free with comprehensive travel insurance coverage.',
-      features: ['Medical coverage', 'Trip cancellation', 'Baggage loss', 'Emergency assistance'],
-      href: '/insurance/travel',
-      coverage: 'Trip coverage',
-      startingFrom: '₹200/trip'
+      href: '/insurance/travel'
     }
   ]
 
@@ -265,7 +236,7 @@ export default function InsurancePage() {
                 >
                   <Link
                     href={product.href}
-                    className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full group"
+                    className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full flex flex-col group"
                   >
                     <div className="flex items-start justify-between mb-4">
                       <motion.div
@@ -282,42 +253,9 @@ export default function InsurancePage() {
                         </span>
                       )}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors flex-grow">
                       {product.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 text-sm">{product.description}</p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <div className="w-4 h-4 relative flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="8" cy="8" r="7" fill="#10B981" />
-                            <path d="M 6 8 L 7.5 9.5 L 10 6.5" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                          </svg>
-                        </div>
-                        <span className="font-medium">Coverage: {product.coverage}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <Percent className="w-4 h-4 text-primary-600" />
-                        <span>Starting from: {product.startingFrom}</span>
-                      </div>
-                    </div>
-                    <div className="border-t border-gray-200 pt-4 mb-4">
-                      <div className="flex flex-wrap gap-2">
-                        {product.features.slice(0, 2).map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-1 text-xs text-gray-600">
-                            <CheckCircle className="w-3 h-3 text-primary-600" />
-                            <span>{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <motion.div
-                      className="flex items-center text-primary-600 font-semibold"
-                      whileHover={{ x: 4 }}
-                    >
-                      <span>Get Quote</span>
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </motion.div>
                   </Link>
                 </motion.div>
               )

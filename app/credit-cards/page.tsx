@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import type { ComponentType } from 'react'
-import { ArrowRight, CheckCircle, Percent } from 'lucide-react'
 import { CreditCardIcon, BestRatesIcon, SecureIcon, InstantFundsIcon, DigitalProcessIcon } from '@/components/icons/IconLibrary'
 import { FeatureHighlightsTable } from '@/components/FeatureHighlightsTable'
 import { EligibilityTable } from '@/components/EligibilityTable'
@@ -15,68 +14,40 @@ export default function CreditCardsPage() {
   const cardTypes: Array<{
     IconComponent: ComponentType
     title: string
-    description: string
-    features: string[]
     href: string
     badge?: string
-    cashback: string
-    joiningFee: string
   }> = [
     {
       IconComponent: CreditCardIcon,
       title: 'Rewards Credit Cards',
-      description: 'Earn reward points on every purchase and redeem them for exciting gifts and vouchers.',
-      features: ['5X reward points', 'Welcome bonus', 'Airport lounge access', 'Zero annual fee'],
       href: '/credit-cards/rewards',
-      badge: 'Cashback Offer',
-      cashback: 'Up to 5% cashback',
-      joiningFee: '₹0 - ₹1,500'
+      badge: 'Cashback Offer'
     },
     {
       IconComponent: CreditCardIcon,
       title: 'Travel Credit Cards',
-      description: 'Make your travel dreams come true with exclusive travel benefits and miles.',
-      features: ['Air miles', 'Travel insurance', 'Lounge access', 'Hotel discounts'],
-      href: '/credit-cards/travel',
-      cashback: 'Up to 10X miles',
-      joiningFee: '₹500 - ₹5,000'
+      href: '/credit-cards/travel'
     },
     {
       IconComponent: CreditCardIcon,
       title: 'Shopping Credit Cards',
-      description: 'Shop more, save more with exclusive discounts and cashback on shopping.',
-      features: ['Shopping discounts', 'EMI options', 'Brand offers', 'Cashback rewards'],
       href: '/credit-cards/shopping',
-      badge: 'Cashback Offer',
-      cashback: 'Up to 10% cashback',
-      joiningFee: '₹0 - ₹2,000'
+      badge: 'Cashback Offer'
     },
     {
       IconComponent: CreditCardIcon,
       title: 'Premium Credit Cards',
-      description: 'Experience luxury with premium credit cards offering exclusive privileges.',
-      features: ['Concierge service', 'Premium rewards', 'Exclusive events', 'Priority support'],
-      href: '/credit-cards/premium',
-      cashback: 'Premium benefits',
-      joiningFee: '₹5,000 - ₹15,000'
+      href: '/credit-cards/premium'
     },
     {
       IconComponent: CreditCardIcon,
       title: 'Fuel Credit Cards',
-      description: 'Save on fuel expenses with dedicated fuel credit cards.',
-      features: ['Fuel surcharge waiver', 'Cashback on fuel', 'Reward points', 'Low annual fee'],
-      href: '/credit-cards/fuel',
-      cashback: 'Up to 5% on fuel',
-      joiningFee: '₹0 - ₹1,000'
+      href: '/credit-cards/fuel'
     },
     {
       IconComponent: CreditCardIcon,
       title: 'Secured Credit Cards',
-      description: 'Build or rebuild your credit score with secured credit cards.',
-      features: ['Easy approval', 'Credit building', 'Flexible limit', 'Low fees'],
-      href: '/credit-cards/secured',
-      cashback: 'Standard rewards',
-      joiningFee: '₹0 - ₹500'
+      href: '/credit-cards/secured'
     }
   ]
 
@@ -293,7 +264,7 @@ export default function CreditCardsPage() {
                 >
                   <Link
                     href={card.href}
-                    className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full group"
+                    className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full flex flex-col group"
                   >
                     <div className="flex items-start justify-between mb-4">
                       <motion.div
@@ -310,42 +281,9 @@ export default function CreditCardsPage() {
                         </span>
                       )}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors flex-grow">
                       {card.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 text-sm">{card.description}</p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <Percent className="w-4 h-4 text-primary-600" />
-                        <span className="font-medium">{card.cashback}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <div className="w-4 h-4 relative flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="8" cy="8" r="7" fill="#FBBF24" />
-                            <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#92400E" fontWeight="bold">₹</text>
-                          </svg>
-                        </div>
-                        <span>Joining Fee: {card.joiningFee}</span>
-                      </div>
-                    </div>
-                    <div className="border-t border-gray-200 pt-4 mb-4">
-                      <div className="flex flex-wrap gap-2">
-                        {card.features.slice(0, 2).map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-1 text-xs text-gray-600">
-                            <CheckCircle className="w-3 h-3 text-primary-600" />
-                            <span>{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <motion.div
-                      className="flex items-center text-primary-600 font-semibold"
-                      whileHover={{ x: 4 }}
-                    >
-                      <span>Apply Now</span>
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </motion.div>
                   </Link>
                 </motion.div>
               )
