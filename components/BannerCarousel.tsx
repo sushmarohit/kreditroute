@@ -24,7 +24,7 @@ const banners: BannerSlide[] = [
     title: 'Upgrade the Way You Choose',
     subtitle: 'Loans & Credit Cards',
     description: 'Get instant approval at lowest interest rates',
-    gradient: 'from-primary-600 via-primary-500 to-accent-500',
+    gradient: 'from-gray-900 via-gray-800 to-black',
     ctaText: 'Apply Now',
     ctaLink: '/apply',
     badge: 'Quick Sanction',
@@ -35,7 +35,7 @@ const banners: BannerSlide[] = [
     title: 'Quick Disbursal',
     subtitle: 'Personal Loan',
     description: 'Paperless process at low rate',
-    gradient: 'from-accent-600 via-accent-500 to-primary-500',
+    gradient: 'from-black via-gray-900 to-gray-800',
     ctaText: 'Apply Now',
     ctaLink: '/loans',
     badge: 'Instant',
@@ -46,7 +46,7 @@ const banners: BannerSlide[] = [
     title: 'Lowest EMI Ride',
     subtitle: 'New Car Loan',
     description: 'Drive away your dream car today',
-    gradient: 'from-primary-500 via-accent-500 to-primary-600',
+    gradient: 'from-gray-800 via-black to-gray-900',
     ctaText: 'Apply Now',
     ctaLink: '/loans',
     badge: 'Best Rates',
@@ -57,7 +57,7 @@ const banners: BannerSlide[] = [
     title: 'Rewards Unlimited',
     subtitle: 'Credit Card',
     description: 'Choose cards from all top banks',
-    gradient: 'from-accent-500 via-primary-500 to-accent-600',
+    gradient: 'from-black via-gray-800 to-gray-900',
     ctaText: 'Apply Now',
     ctaLink: '/credit-cards',
     badge: 'Exclusive',
@@ -115,7 +115,7 @@ export function BannerCarousel() {
   }
 
   return (
-    <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden bg-gradient-to-br from-primary-50 to-accent-50">
+    <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden bg-gradient-to-br from-gray-100 via-white to-gray-200">
       <AnimatePresence initial={false} custom={direction} mode="wait">
         <motion.div
           key={currentIndex}
@@ -141,12 +141,17 @@ export function BannerCarousel() {
             }
           }}
           className={`absolute inset-0 bg-gradient-to-br ${banners[currentIndex].gradient} flex items-center justify-center`}
+          style={{
+            boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.5), 0 20px 60px rgba(0, 0, 0, 0.3)'
+          }}
         >
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          {/* Background Pattern - 3D Effect */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
           </div>
+          {/* 3D Border Shadow Effect */}
+          <div className="absolute inset-0 border-4 border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.1),inset_0_0_40px_rgba(0,0,0,0.3)]"></div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -162,7 +167,7 @@ export function BannerCarousel() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4 }}
-                    className="inline-block bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold mb-4"
+                    className="inline-block bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]"
                   >
                     {banners[currentIndex].badge}
                   </motion.span>
@@ -203,13 +208,13 @@ export function BannerCarousel() {
                       whileHover={{ 
                         scale: 1.05,
                         y: -2,
-                        boxShadow: "0 10px 25px rgba(249, 115, 22, 0.4)"
+                        boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5), 0 5px 15px rgba(255, 255, 255, 0.1)"
                       }}
                       whileTap={{ scale: 0.95 }}
-                      className="bg-gradient-to-r from-accent-600 to-primary-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:from-accent-700 hover:to-primary-700 transition-all relative overflow-hidden group"
+                      className="bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-lg font-bold text-lg border-2 border-white/30 shadow-[0_8px_25px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)] hover:bg-white/20 hover:border-white/40 transition-all relative overflow-hidden group"
                     >
                       <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-primary-600 to-accent-600 opacity-0 group-hover:opacity-100"
+                        className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100"
                         initial={{ x: "-100%" }}
                         whileHover={{ x: "100%" }}
                         transition={{ duration: 0.5 }}
@@ -241,7 +246,11 @@ export function BannerCarousel() {
                       repeat: Infinity,
                       ease: "easeInOut"
                     }}
-                    className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl"
+                    className="absolute inset-0 rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5),inset_0_0_40px_rgba(0,0,0,0.3)] border-2 border-white/20"
+                    style={{
+                      transform: 'perspective(1000px) rotateY(-2deg) rotateX(2deg)',
+                      transformStyle: 'preserve-3d'
+                    }}
                   >
                     <Image
                       src={banners[currentIndex].image || 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop'}
@@ -251,11 +260,11 @@ export function BannerCarousel() {
                       priority
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    {/* Overlay Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/20 backdrop-blur-[2px]" />
+                    {/* Overlay Gradient - Black and White */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/30 backdrop-blur-[1px]" />
                   </motion.div>
                   
-                  {/* Floating Decorative Element */}
+                  {/* Floating Decorative Element - 3D */}
                   <motion.div
                     animate={{
                       rotate: [0, -10, 10, 0],
@@ -268,10 +277,14 @@ export function BannerCarousel() {
                       ease: "easeInOut",
                       delay: 1
                     }}
-                    className="absolute -top-4 -right-4 w-32 h-32 bg-white/30 backdrop-blur-sm rounded-2xl border-2 border-white/40"
+                    className="absolute -top-4 -right-4 w-32 h-32 bg-white/10 backdrop-blur-md rounded-2xl border-2 border-white/20 shadow-[0_8px_25px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]"
+                    style={{
+                      transform: 'perspective(500px) rotateY(5deg)',
+                      transformStyle: 'preserve-3d'
+                    }}
                   />
                   
-                  {/* Bottom Decorative Element */}
+                  {/* Bottom Decorative Element - 3D */}
                   <motion.div
                     animate={{
                       rotate: [0, 15, -15, 0],
@@ -283,7 +296,11 @@ export function BannerCarousel() {
                       ease: "easeInOut",
                       delay: 2
                     }}
-                    className="absolute -bottom-4 -left-4 w-24 h-24 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30"
+                    className="absolute -bottom-4 -left-4 w-24 h-24 bg-black/20 backdrop-blur-md rounded-xl border border-white/10 shadow-[0_8px_25px_rgba(0,0,0,0.4)]"
+                    style={{
+                      transform: 'perspective(500px) rotateY(-5deg)',
+                      transformStyle: 'preserve-3d'
+                    }}
                   />
                 </div>
               </motion.div>
@@ -292,17 +309,17 @@ export function BannerCarousel() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - 3D */}
       <button
         onClick={() => paginate(-1)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white p-3 rounded-full transition-all border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={() => paginate(1)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white p-3 rounded-full transition-all border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]"
         aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6" />

@@ -132,11 +132,15 @@ export function FinancialServices() {
                     >
                       <Link
                         href={item.href}
-                        className="group flex flex-col bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-primary-500 hover:shadow-xl transition-all duration-300 h-full"
+                        className="group flex flex-col bg-white/60 backdrop-blur-md border-2 border-black/10 rounded-xl p-6 hover:border-black/30 hover:shadow-[0_15px_35px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.5)] transition-all duration-300 h-full shadow-[0_8px_25px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)]"
+                        style={{
+                          transform: 'perspective(1000px) rotateX(1deg)',
+                          transformStyle: 'preserve-3d'
+                        }}
                       >
                         <div className="flex items-start justify-between mb-4">
                           <motion.div 
-                            className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center overflow-hidden relative"
+                            className="w-14 h-14 bg-black/10 backdrop-blur-sm rounded-lg flex items-center justify-center overflow-hidden relative border border-black/20 shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.2)]"
                             whileHover={{ 
                               rotate: [0, -15, 15, -15, 0],
                               scale: 1.15,
@@ -149,14 +153,14 @@ export function FinancialServices() {
                           </motion.div>
                           {item.badge && (
                             <motion.span 
-                              className="text-xs font-semibold bg-accent-100 text-accent-700 px-2 py-1 rounded-full"
+                              className="text-xs font-semibold bg-white/80 backdrop-blur-sm text-black px-2 py-1 rounded-full border border-black/20 shadow-[0_2px_8px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.3)]"
                               whileHover={{ scale: 1.1 }}
                             >
                               {item.badge}
                             </motion.span>
                           )}
                         </div>
-                        <h4 className="text-lg font-bold text-gray-900 group-hover:text-primary-600 transition-colors flex-grow">
+                        <h4 className="text-lg font-bold text-gray-900 group-hover:text-black transition-colors flex-grow">
                           {item.title}
                         </h4>
                       </Link>

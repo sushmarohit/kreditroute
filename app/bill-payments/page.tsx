@@ -59,7 +59,7 @@ export default function BillPaymentsPage() {
   ]
 
   return (
-    <div className="pt-16 md:pt-20 min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50 relative overflow-hidden">
+    <div className="pt-16 md:pt-20 min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -73,7 +73,7 @@ export default function BillPaymentsPage() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-20 left-10 w-72 h-72 bg-primary-300 rounded-full blur-3xl opacity-20"
+          className="absolute top-20 left-10 w-72 h-72 bg-black/5 rounded-full blur-3xl opacity-20"
         />
         <motion.div
           animate={{
@@ -87,7 +87,7 @@ export default function BillPaymentsPage() {
             ease: "easeInOut",
             delay: 1
           }}
-          className="absolute bottom-20 right-10 w-96 h-96 bg-accent-400 rounded-full blur-3xl opacity-20"
+          className="absolute bottom-20 right-10 w-96 h-96 bg-gray-900/5 rounded-full blur-3xl opacity-20"
         />
       </div>
 
@@ -109,7 +109,7 @@ export default function BillPaymentsPage() {
             }}
             className="inline-block mb-6"
           >
-            <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl flex items-center justify-center mx-auto shadow-lg overflow-hidden relative brightness-0 invert">
+            <div className="w-20 h-20 bg-black/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto shadow-[0_8px_25px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.2)] overflow-hidden relative border border-black/20">
               <BillPaymentIcon />
             </div>
           </motion.div>
@@ -144,11 +144,15 @@ export default function BillPaymentsPage() {
               >
                 <Link
                   href={bill.href}
-                  className="block bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-primary-500 hover:shadow-2xl transition-all duration-300 h-full flex flex-col group"
+                  className="block bg-white/60 backdrop-blur-md rounded-xl p-6 border-2 border-black/10 hover:border-black/30 hover:shadow-[0_15px_35px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.5)] transition-all duration-300 h-full flex flex-col group shadow-[0_8px_25px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)]"
+                  style={{
+                    transform: 'perspective(1000px) rotateX(1deg)',
+                    transformStyle: 'preserve-3d'
+                  }}
                 >
                   <div className="flex items-start justify-between mb-4">
                     <motion.div
-                      className="w-14 h-14 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center overflow-hidden relative"
+                      className="w-14 h-14 bg-black/10 backdrop-blur-sm rounded-lg flex items-center justify-center overflow-hidden relative border border-black/20 shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.2)]"
                       whileHover={{ rotate: [0, -15, 15, -15, 0], scale: 1.15 }}
                     >
                       <div className="w-full h-full flex items-center justify-center">
@@ -156,12 +160,12 @@ export default function BillPaymentsPage() {
                       </div>
                     </motion.div>
                     {bill.badge && (
-                      <span className="text-xs font-semibold bg-accent-100 text-accent-700 px-3 py-1 rounded-full">
+                      <span className="text-xs font-semibold bg-white/80 backdrop-blur-sm text-black px-3 py-1 rounded-full border border-black/20 shadow-[0_2px_8px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.3)]">
                         {bill.badge}
                       </span>
                     )}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors flex-grow">
+                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-black transition-colors flex-grow">
                     {bill.title}
                   </h3>
                 </Link>
@@ -175,11 +179,15 @@ export default function BillPaymentsPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="bg-white rounded-2xl p-8 md:p-12 border-2 border-gray-200 mb-12 shadow-xl relative overflow-hidden"
+          className="bg-white/60 backdrop-blur-md rounded-2xl p-8 md:p-12 border-2 border-black/10 mb-12 shadow-[0_20px_60px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.5)] relative overflow-hidden"
+          style={{
+            transform: 'perspective(1000px) rotateX(1deg)',
+            transformStyle: 'preserve-3d'
+          }}
         >
           {/* Decorative Background */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary-100 rounded-full blur-3xl opacity-30" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent-100 rounded-full blur-3xl opacity-30" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-black/5 rounded-full blur-3xl opacity-30" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-gray-900/5 rounded-full blur-3xl opacity-30" />
 
           <div className="relative z-10">
             <motion.div
@@ -199,7 +207,7 @@ export default function BillPaymentsPage() {
                   transition={{ duration: 0.6, delay: 0.9 }}
                 >
                   <label className="block text-sm font-medium text-gray-700 mb-2">Select Bill Type</label>
-                  <select className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none text-black transition-all hover:border-primary-400">
+                  <select className="w-full px-4 py-3 border-2 border-black/20 rounded-lg focus:ring-2 focus:ring-black/30 focus:border-black/40 outline-none text-black transition-all hover:border-black/30 bg-white/50 backdrop-blur-sm shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
                     <option>Credit Card Bill</option>
                     <option>Electricity Bill</option>
                     <option>Gas Bill</option>
@@ -217,7 +225,7 @@ export default function BillPaymentsPage() {
                   <input
                     type="number"
                     placeholder="Enter amount"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none text-black transition-all hover:border-primary-400"
+                    className="w-full px-4 py-3 border-2 border-black/20 rounded-lg focus:ring-2 focus:ring-black/30 focus:border-black/40 outline-none text-black transition-all hover:border-black/30 bg-white/50 backdrop-blur-sm shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]"
                   />
                 </motion.div>
               </div>
@@ -234,7 +242,7 @@ export default function BillPaymentsPage() {
                     boxShadow: "0 10px 25px rgba(249, 115, 22, 0.4)"
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-lg font-bold text-lg hover:from-accent-600 hover:to-accent-700 transition-colors relative overflow-hidden group"
+                  className="px-8 py-4 bg-black text-white rounded-lg font-bold text-lg hover:bg-gray-900 transition-colors relative overflow-hidden group border border-white/10 shadow-[0_8px_25px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)]"
                 >
                   <motion.div
                     className="absolute inset-0 bg-white/20"
@@ -254,8 +262,12 @@ export default function BillPaymentsPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="bg-gradient-to-br from-primary-600 via-primary-500 to-accent-600 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden"
+          className="bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden"
+          style={{
+            boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.5), 0 20px 60px rgba(0, 0, 0, 0.3)'
+          }}
         >
+          <div className="absolute inset-0 border-4 border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.1),inset_0_0_40px_rgba(0,0,0,0.3)] rounded-3xl"></div>
           {/* Animated Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <motion.div
