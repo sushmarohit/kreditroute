@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -42,7 +43,7 @@ export function Footer() {
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-8 h-8 relative flex-shrink-0">
                 {/* Top chevron - Orange/Yellow, elongated, angled upwards and to the right */}
-                <svg 
+                {/* <svg 
                   width="32" 
                   height="32" 
                   viewBox="0 0 40 40" 
@@ -51,9 +52,9 @@ export function Footer() {
                   className="absolute inset-0"
                 >
                   <path d="M4 4 L28 4 L20 18 L4 18 Z" fill="#f97316" />
-                  {/* Bottom chevron - Deep Green, elongated, angled downwards and to the right */}
                   <path d="M4 18 L20 18 L28 36 L4 36 Z" fill="#16a34a" />
-                </svg>
+                </svg> */}
+                <Image src="/KRLOGO.jpeg" alt="KreditRoute" width={40} height={40} />
               </div>
               <h3 className="text-2xl font-bold italic bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 KreditRoute
