@@ -81,7 +81,7 @@ const calculators: CalculatorItem[] = [
 
 export function FinancialCalculators() {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-primary-50/30">
+    <section className="py-16 md:py-0 bg-gradient-to-br from-gray-50 via-white to-primary-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -113,7 +113,7 @@ export function FinancialCalculators() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
           {calculators.map((calc, index) => {
             return (
               <motion.div
@@ -136,7 +136,7 @@ export function FinancialCalculators() {
                     className={`absolute inset-0 bg-gradient-to-br ${calc.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                   />
 
-                  <div className="relative z-10">
+                  <div className="relative z-10 align-middle">
                     <motion.div
                       className={`w-14 h-14 bg-gradient-to-br ${calc.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform overflow-hidden relative`}
                       whileHover={{ 

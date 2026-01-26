@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import type { ComponentType } from 'react'
 import { CreditCardIcon, BestRatesIcon, SecureIcon, InstantFundsIcon, DigitalProcessIcon } from '@/components/icons/IconLibrary'
 import { FeatureHighlightsTable } from '@/components/FeatureHighlightsTable'
@@ -9,6 +8,7 @@ import { EligibilityTable } from '@/components/EligibilityTable'
 import { ProcessSteps } from '@/components/ProcessSteps'
 import { DocumentsChecklist } from '@/components/DocumentsChecklist'
 import { FAQAccordion } from '@/components/FAQAccordion'
+import { ServiceCard } from '@/components/ServiceCard'
 
 export default function CreditCardsPage() {
   const cardTypes: Array<{
@@ -256,47 +256,17 @@ export default function CreditCardsPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {cardTypes.map((card, index) => {
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                >
-                  <Link
-                    href={card.href}
-                    className="block bg-white/60 backdrop-blur-md rounded-xl p-6 border-2 border-black/10 hover:border-black/30 hover:shadow-[0_15px_35px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.5)] transition-all duration-300 h-full flex flex-col group shadow-[0_8px_25px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)]"
-                    style={{
-                      transform: 'perspective(1000px) rotateX(1deg)',
-                      transformStyle: 'preserve-3d'
-                    }}
-                  >
-                    <div className="flex items-start justify-between mb-4">
-                      <motion.div
-                        className="w-14 h-14 bg-black/10 backdrop-blur-sm rounded-lg flex items-center justify-center overflow-hidden relative border border-black/20 shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.2)]"
-                        whileHover={{ rotate: [0, -15, 15, -15, 0], scale: 1.15 }}
-                      >
-                        <div className="w-full h-full flex items-center justify-center">
-                          <card.IconComponent />
-                        </div>
-                      </motion.div>
-                      {card.badge && (
-                        <span className="text-xs font-semibold bg-white/80 backdrop-blur-sm text-black px-3 py-1 rounded-full border border-black/20 shadow-[0_2px_8px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.3)]">
-                          {card.badge}
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-black transition-colors flex-grow">
-                      {card.title}
-                    </h3>
-                  </Link>
-                </motion.div>
-              )
-            })}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+            {cardTypes.map((card, index) => (
+              <ServiceCard
+                key={index}
+                IconComponent={card.IconComponent}
+                title={card.title}
+                href={card.href}
+                badge={card.badge}
+                index={index}
+              />
+            ))}
           </div>
         </div>
       </section>

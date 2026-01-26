@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import type { ComponentType } from 'react'
 import {
   PersonalLoanIcon,
@@ -25,6 +24,7 @@ import {
   TwoWheelerInsuranceIcon,
   RetirementPlansIcon
 } from '@/components/icons/IconLibrary'
+import { ServiceCard } from '@/components/ServiceCard'
 
 export function FinancialServices() {
   const services: Array<{
@@ -76,7 +76,7 @@ export function FinancialServices() {
   ]
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-4 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -102,71 +102,18 @@ export function FinancialServices() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">{service.category}</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {service.items.map((item, index) => {
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      whileHover={{ 
-                        y: -8,
-                        scale: 1.03
-                      }}
-                      animate={{
-                        y: [0, -4, 0],
-                        opacity: 1
-                      }}
-                      transition={{
-                        opacity: { duration: 0.5, delay: index * 0.05 },
-                        y: {
-                          duration: 4,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                          delay: index * 0.15,
-                          repeatType: "reverse"
-                        }
-                      }}
-                    >
-                      <Link
-                        href={item.href}
-                        className="group flex flex-col bg-white/60 backdrop-blur-md border-2 border-black/10 rounded-xl p-6 hover:border-black/30 hover:shadow-[0_15px_35px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.5)] transition-all duration-300 h-full shadow-[0_8px_25px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)]"
-                        style={{
-                          transform: 'perspective(1000px) rotateX(1deg)',
-                          transformStyle: 'preserve-3d'
-                        }}
-                      >
-                        <div className="flex items-start justify-between mb-4">
-                          <motion.div 
-                            className="w-14 h-14 bg-black/10 backdrop-blur-sm rounded-lg flex items-center justify-center overflow-hidden relative border border-black/20 shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.2)]"
-                            whileHover={{ 
-                              rotate: [0, -15, 15, -15, 0],
-                              scale: 1.15,
-                              transition: { duration: 0.5 }
-                            }}
-                          >
-                            <div className="w-full h-full flex items-center justify-center">
-                              <item.IconComponent />
-                            </div>
-                          </motion.div>
-                          {item.badge && (
-                            <motion.span 
-                              className="text-xs font-semibold bg-white/80 backdrop-blur-sm text-black px-2 py-1 rounded-full border border-black/20 shadow-[0_2px_8px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.3)]"
-                              whileHover={{ scale: 1.1 }}
-                            >
-                              {item.badge}
-                            </motion.span>
-                          )}
-                        </div>
-                        <h4 className="text-lg font-bold text-gray-900 group-hover:text-black transition-colors flex-grow">
-                          {item.title}
-                        </h4>
-                      </Link>
-                    </motion.div>
-                  )
-                })}
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">{service.category}</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+                {service.items.map((item, index) => (
+                  <ServiceCard
+                    key={index}
+                    IconComponent={item.IconComponent}
+                    title={item.title}
+                    href={item.href}
+                    badge={item.badge}
+                    index={index}
+                  />
+                ))}
               </div>
             </motion.div>
           ))}
