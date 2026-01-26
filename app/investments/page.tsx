@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import type { ComponentType } from 'react'
 import { useState } from 'react'
 import {

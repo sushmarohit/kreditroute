@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Shield, Zap, Users } from 'lucide-react'
+import Link from 'next/link'
 import type { ComponentType } from 'react'
 import { 
   PersonalLoanIcon, 

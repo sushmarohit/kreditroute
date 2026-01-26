@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import type { ComponentType } from 'react'
+import Link from 'next/link'
 import { CreditCardIcon, BestRatesIcon, SecureIcon, InstantFundsIcon, DigitalProcessIcon } from '@/components/icons/IconLibrary'
 import { FeatureHighlightsTable } from '@/components/FeatureHighlightsTable'
 import { EligibilityTable } from '@/components/EligibilityTable'
