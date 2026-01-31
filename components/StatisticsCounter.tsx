@@ -43,12 +43,15 @@ const stats: Stat[] = [
   }
 ]
 
+
 function useCounter(end: number, duration: number = 2, suffix: string = '', formatComma: boolean = false) {
   const [count, setCount] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+  const hasRunRef = useRef(false)
 
   useEffect(() => {
-    if (!isAnimating) return
+    if (!isAnimating || hasRunRef.current) return
+    hasRunRef.current = true
 
     let startTime: number | null = null
     const isDecimal = end % 1 !== 0
@@ -56,10 +59,8 @@ function useCounter(end: number, duration: number = 2, suffix: string = '', form
     const animate = (currentTime: number) => {
       if (startTime === null) startTime = currentTime
       const progress = Math.min((currentTime - startTime) / (duration * 1000), 1)
-
-      // Easing function for smooth animation
       const easeOutQuart = 1 - Math.pow(1 - progress, 4)
-      
+
       if (isDecimal) {
         setCount(parseFloat((end * easeOutQuart).toFixed(1)))
       } else {
@@ -77,8 +78,17 @@ function useCounter(end: number, duration: number = 2, suffix: string = '', form
     requestAnimationFrame(animate)
   }, [end, duration, isAnimating])
 
-  return { count, startAnimation: () => setIsAnimating(true), formatComma }
+  return {
+    count,
+    startAnimation: () => {
+      if (!hasRunRef.current) {
+        setIsAnimating(true)
+      }
+    },
+    formatComma
+  }
 }
+
 
 function Counter({ end, duration, suffix, formatComma }: { end: number; duration: number; suffix: string; formatComma?: boolean }) {
   const { count, startAnimation } = useCounter(end, duration, suffix, formatComma)
@@ -111,7 +121,7 @@ function Counter({ end, duration, suffix, formatComma }: { end: number; duration
 
 export function StatisticsCounter() {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-white via-primary-50/30 to-accent-50/30">
+    <section className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

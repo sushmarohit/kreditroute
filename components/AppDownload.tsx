@@ -6,9 +6,9 @@ import { DigitalProcessIcon } from '@/components/icons/IconLibrary'
 
 export function AppDownload() {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-primary-600 via-primary-500 to-accent-600 text-white overflow-hidden relative">
+    <section className="py-16 md:py-24 bg-white text-black overflow-hidden relative">
       {/* Background Elements */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
       </div>
@@ -23,7 +23,7 @@ export function AppDownload() {
             transition={{ duration: 0.8 }}
           >
             <motion.div
-              className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6"
+              className="w-20 h-20 bg-gray-200 rounded-2xl flex items-center justify-center mb-6"
               whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
               transition={{ duration: 0.5 }}
             >
@@ -69,7 +69,7 @@ export function AppDownload() {
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-3 px-6 py-4 bg-white text-primary-600 rounded-xl font-bold hover:bg-gray-100 transition-colors"
+                className="flex items-center gap-3 px-6 py-4 bg-gray-200 text-black rounded-xl font-bold hover:bg-gray-300 transition-colors border border-gray-300"
               >
                 <Download className="w-6 h-6" />
                 <span>Download App</span>
@@ -77,7 +77,7 @@ export function AppDownload() {
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-3 px-6 py-4 bg-white/20 backdrop-blur-sm text-white rounded-xl font-bold hover:bg-white/30 transition-colors border border-white/30"
+                className="flex items-center gap-3 px-6 py-4 bg-gray-200 backdrop-blur-sm text-black rounded-xl font-bold hover:bg-gray-300 transition-colors border border-gray-300"
               >
                 <QrCode className="w-6 h-6" />
                 <span>Scan QR Code</span>
@@ -114,14 +114,14 @@ export function AppDownload() {
                   <div className="h-full bg-gradient-to-br from-primary-50 to-accent-50 p-6 flex flex-col">
                     <div className="flex items-center justify-between mb-6 mt-8">
                       <h4 className="text-xl font-bold text-gray-900">KreditRoute</h4>
-                      <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center">
-                        <Smartphone className="w-5 h-5 text-white" />
+                      <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                        <Smartphone className="w-5 h-5 text-black" />
                       </div>
                     </div>
                     
                     <div className="space-y-3 flex-grow">
                       {[1, 2, 3].map((item) => (
-                        <div key={item} className="bg-white rounded-xl p-4 shadow-md">
+                        <div key={item} className="bg-white/20 rounded-xl p-4 shadow-md">
                           <div className="h-3 bg-gray-200 rounded w-3/4 mb-2"></div>
                           <div className="h-2 bg-gray-100 rounded w-1/2"></div>
                         </div>

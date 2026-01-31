@@ -9,7 +9,7 @@ export function CTA() {
   const { title, description, button } = ctaContent
 
   return (
-    <section className="py-20 bg-gradient-to-r from-primary-600 to-accent-600">
+    <section className="py-20 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -17,10 +17,10 @@ export function CTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
             {title}
           </h2>
-          <p className="text-xl text-primary-100 mb-8">
+          <p className="text-xl text-black mb-8">
             {description}
           </p>
           <motion.div
@@ -43,10 +43,10 @@ export function CTA() {
           >
             <Link
               href={button.href}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-600 rounded-lg text-lg font-semibold hover:bg-gray-50 transition-colors shadow-lg hover:shadow-xl relative overflow-hidden group"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gray-200 text-black rounded-lg text-lg font-semibold hover:bg-gray-300 transition-colors shadow-lg hover:shadow-xl relative overflow-hidden group border border-gray-300"
             >
               <motion.span
-                className="absolute inset-0 bg-gradient-to-r from-primary-600/10 to-accent-600/10"
+                className="absolute inset-0 bg-gray-200/10"
                 initial={{ x: "-100%" }}
                 whileHover={{ x: "100%" }}
                 transition={{ duration: 0.5 }}

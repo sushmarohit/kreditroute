@@ -54,7 +54,7 @@ export function Footer() {
                   <path d="M4 4 L28 4 L20 18 L4 18 Z" fill="#f97316" />
                   <path d="M4 18 L20 18 L28 36 L4 36 Z" fill="#16a34a" />
                 </svg> */}
-                <Image src="/KRLOGO.jpeg" alt="KreditRoute" width={40} height={40} />
+                <Image src="/KR_LOGO_no_bg.png" alt="KreditRoute" width={40} height={40} />
               </div>
               <h3 className="text-2xl font-bold italic bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 KreditRoute

@@ -169,18 +169,14 @@ export default function CreditScorePage() {
   }
 
   return (
-    <div className="pt-16 md:pt-20 min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
+    <div className="pt-16 md:pt-20 min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-12 md:py-20 bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white overflow-hidden"
+      <section className="relative py-12 md:py-20 bg-white text-black overflow-hidden"
         style={{
-          boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.5), 0 20px 60px rgba(0, 0, 0, 0.3)'
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.08)'
         }}
       >
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        </div>
-        <div className="absolute inset-0 border-4 border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.1),inset_0_0_40px_rgba(0,0,0,0.3)]"></div>
+        <div className="absolute inset-0 "></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -197,7 +193,7 @@ export default function CreditScorePage() {
             <motion.button
               whileHover={{ scale: 1.05, y: -2, boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5), 0 5px 15px rgba(255, 255, 255, 0.1)" }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white/10 backdrop-blur-md text-white rounded-lg font-bold text-lg hover:bg-white/20 transition-colors border-2 border-white/30 shadow-[0_8px_25px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]"
+              className="px-8 py-4 bg-gray-200 text-black rounded-lg font-bold text-lg hover:bg-gray-300 transition-colors border border-gray-300"
             >
               Get Free Credit Score
             </motion.button>
@@ -213,7 +209,7 @@ export default function CreditScorePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white/60 backdrop-blur-md rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.5)] p-8 md:p-12 border-2 border-black/10"
+            className="bg-white/60 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.5)] p-8 md:p-12 border-2 border-black/10"
             style={{
               transform: 'perspective(1000px) rotateX(1deg)',
               transformStyle: 'preserve-3d'
@@ -284,7 +280,7 @@ export default function CreditScorePage() {
                   </div>
                 )}
               </div>
-              <div className="bg-white/40 backdrop-blur-md rounded-xl p-8 text-center border-2 border-black/10 shadow-[0_8px_25px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)]">
+              <div className="bg-white/40 rounded-xl p-8 text-center border-2 border-black/10 shadow-[0_8px_25px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)]">
                 <div className="w-24 h-24 bg-black/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden relative border border-black/20 shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.2)]">
                   <CreditScoreIcon />
                 </div>
@@ -304,7 +300,7 @@ export default function CreditScorePage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -334,7 +330,7 @@ export default function CreditScorePage() {
                 >
                   <Link
                     href={service.href}
-                    className="block bg-white/60 backdrop-blur-md rounded-xl p-6 border-2 border-black/10 hover:border-black/30 hover:shadow-[0_15px_35px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.5)] transition-all duration-300 h-full flex flex-col group shadow-[0_8px_25px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)]"
+                    className="block bg-white/60 rounded-xl p-6 border-2 border-black/10 hover:border-black/30 hover:shadow-[0_15px_35px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.5)] transition-all duration-300 h-full flex flex-col group shadow-[0_8px_25px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)]"
                     style={{
                       transform: 'perspective(1000px) rotateX(1deg)',
                       transformStyle: 'preserve-3d'
@@ -425,12 +421,12 @@ export default function CreditScorePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white relative"
+      <section className="py-12 md:py-16 bg-white text-black relative"
         style={{
-          boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.5), 0 20px 60px rgba(0, 0, 0, 0.3)'
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.08)'
         }}
       >
-        <div className="absolute inset-0 border-4 border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.1),inset_0_0_40px_rgba(0,0,0,0.3)]"></div>
+        <div className="absolute inset-0 "></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -192,18 +192,14 @@ export default function CreditCardsPage() {
   ]
 
   return (
-    <div className="pt-16 md:pt-20 min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
+    <div className="pt-16 md:pt-20 min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-12 md:py-20 bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white overflow-hidden"
+      <section className="relative py-12 md:py-20 bg-white text-black overflow-hidden"
         style={{
-          boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.5), 0 20px 60px rgba(0, 0, 0, 0.3)'
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.08)'
         }}
       >
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        </div>
-        <div className="absolute inset-0 border-4 border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.1),inset_0_0_40px_rgba(0,0,0,0.3)]"></div>
+        <div className="absolute inset-0 "></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -222,7 +218,7 @@ export default function CreditCardsPage() {
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2, boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5), 0 5px 15px rgba(255, 255, 255, 0.1)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white/10 backdrop-blur-md text-white rounded-lg font-bold text-lg hover:bg-white/20 transition-colors border-2 border-white/30 shadow-[0_8px_25px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]"
+                  className="px-8 py-4 bg-gray-200 text-black rounded-lg font-bold text-lg hover:bg-gray-300 transition-colors border border-gray-300"
                 >
                   Apply Now
                 </motion.button>
@@ -230,7 +226,7 @@ export default function CreditCardsPage() {
               <motion.button
                 whileHover={{ scale: 1.05, y: -2, boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5), 0 5px 15px rgba(255, 255, 255, 0.1)" }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white/10 backdrop-blur-md text-white rounded-lg font-bold text-lg hover:bg-white/20 transition-colors border-2 border-white/30 shadow-[0_8px_25px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]"
+                className="px-8 py-4 bg-gray-200 text-black rounded-lg font-bold text-lg hover:bg-gray-300 transition-colors border border-gray-300"
               >
                 Explore More
               </motion.button>
@@ -280,7 +276,7 @@ export default function CreditCardsPage() {
       />
 
       {/* Key Features Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -307,7 +303,7 @@ export default function CreditCardsPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ y: -8, scale: 1.05 }}
-                  className="bg-white/60 backdrop-blur-md rounded-xl p-6 border-2 border-black/10 hover:border-black/30 hover:shadow-[0_15px_35px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.5)] transition-all text-center shadow-[0_8px_25px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)]"
+                  className="bg-white/60 rounded-xl p-6 border-2 border-black/10 hover:border-black/30 hover:shadow-[0_15px_35px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.5)] transition-all text-center shadow-[0_8px_25px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)]"
                   style={{
                     transform: 'perspective(1000px) rotateX(1deg)',
                     transformStyle: 'preserve-3d'
@@ -338,12 +334,12 @@ export default function CreditCardsPage() {
       />
 
       {/* Why Choose Us */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white relative"
+      <section className="py-12 md:py-16 bg-white text-black relative"
         style={{
-          boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.5), 0 20px 60px rgba(0, 0, 0, 0.3)'
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.08)'
         }}
       >
-        <div className="absolute inset-0 border-4 border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.1),inset_0_0_40px_rgba(0,0,0,0.3)]"></div>
+        <div className="absolute inset-0 "></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -370,13 +366,13 @@ export default function CreditCardsPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ y: -8, scale: 1.05 }}
-                  className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all shadow-[0_8px_25px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)]"
+                  className="bg-white/10 rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all shadow-[0_8px_25px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)]"
                 >
                   <motion.div
-                    className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
+                    className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                      <div className="w-full h-full flex items-center justify-center brightness-0 invert">
+                      <div className="w-full h-full flex items-center justify-center">
                         <item.IconComponent />
                       </div>
                   </motion.div>

@@ -59,7 +59,7 @@ export default function BillPaymentsPage() {
   ]
 
   return (
-    <div className="pt-16 md:pt-20 min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+    <div className="pt-16 md:pt-20 min-h-screen bg-white relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -232,12 +232,12 @@ export default function BillPaymentsPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden"
+          className="bg-white rounded-3xl p-8 md:p-12 text-black relative overflow-hidden"
           style={{
-            boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.5), 0 20px 60px rgba(0, 0, 0, 0.3)'
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.08)'
           }}
         >
-          <div className="absolute inset-0 border-4 border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.1),inset_0_0_40px_rgba(0,0,0,0.3)] rounded-3xl"></div>
+          <div className="absolute inset-0 "></div>
           {/* Animated Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <motion.div
@@ -295,7 +295,7 @@ export default function BillPaymentsPage() {
                       scale: 1.05,
                       transition: { duration: 0.3 }
                     }}
-                    className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all"
+                    className="text-center bg-white/10 rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all"
                   >
                     <motion.div
                       className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm overflow-hidden relative"

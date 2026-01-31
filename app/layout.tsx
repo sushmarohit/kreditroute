@@ -14,10 +14,10 @@ export const metadata: Metadata = {
   authors: [{ name: 'KreditRoute' }],
   icons: {
     icon: [
-      { url: '/KRLOGO.jpeg', type: 'image/jpeg' },
+      { url: '/kr_LOGO_no_bg.png', type: 'image/png' },
     ],
-    shortcut: '/KRLOGO.jpeg',
-    apple: '/KRLOGO.jpeg',
+    shortcut: '/kr_LOGO_no_bg.png',
+    apple: '/kr_LOGO_no_bg.png',
   },
   openGraph: {
     title: 'KreditRoute - India\'s Best Platform for Loans, Cards & Investments',

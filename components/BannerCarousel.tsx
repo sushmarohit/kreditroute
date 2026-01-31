@@ -115,7 +115,7 @@ export function BannerCarousel() {
   }
 
   return (
-    <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden bg-gradient-to-br from-gray-100 via-white to-gray-200">
+    <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden bg-white">
       <AnimatePresence initial={false} custom={direction} mode="wait">
         <motion.div
           key={currentIndex}
@@ -140,18 +140,18 @@ export function BannerCarousel() {
               paginate(-1)
             }
           }}
-          className={`absolute inset-0 bg-gradient-to-br ${banners[currentIndex].gradient} flex items-center justify-center`}
+          className={`absolute inset-0 bg-white ${banners[currentIndex].gradient} flex items-center justify-center`}
           style={{
-            boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.5), 0 20px 60px rgba(0, 0, 0, 0.3)'
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.08)'
           }}
         >
           {/* Background Pattern - 3D Effect */}
-          <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 opacity-5">
             <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
           </div>
           {/* 3D Border Shadow Effect */}
-          <div className="absolute inset-0 border-4 border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.1),inset_0_0_40px_rgba(0,0,0,0.3)]"></div>
+          <div className="absolute inset-0 "></div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -160,14 +160,14 @@ export function BannerCarousel() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-white"
+                className="text-black"
               >
                 {banners[currentIndex].badge && (
                   <motion.span
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4 }}
-                    className="inline-block bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]"
+                    className="inline-block bg-white/10 backdrop-blur-md text-black px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]"
                   >
                     {banners[currentIndex].badge}
                   </motion.span>
@@ -208,10 +208,10 @@ export function BannerCarousel() {
                       whileHover={{ 
                         scale: 1.05,
                         y: -2,
-                        boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5), 0 5px 15px rgba(255, 255, 255, 0.1)"
+                        boxShadow: "0 20px 60px rgba(0, 0, 0, 0.08)"
                       }}
                       whileTap={{ scale: 0.95 }}
-                      className="bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-lg font-bold text-lg border-2 border-white/30 shadow-[0_8px_25px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)] hover:bg-white/20 hover:border-white/40 transition-all relative overflow-hidden group"
+                      className="bg-white/10 backdrop-blur-md text-black px-8 py-4 rounded-lg font-bold text-lg border-2 border-white/30 shadow-[0_8px_25px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)] hover:bg-white/20 hover:border-white/40 transition-all relative overflow-hidden group"
                     >
                       <motion.div
                         className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100"
@@ -219,7 +219,7 @@ export function BannerCarousel() {
                         whileHover={{ x: "100%" }}
                         transition={{ duration: 0.5 }}
                       />
-                      <span className="relative z-10 text-white">
+                        <span className="relative z-10 text-black">
                         {banners[currentIndex].ctaText}
                       </span>
                     </motion.button>
@@ -246,7 +246,7 @@ export function BannerCarousel() {
                       repeat: Infinity,
                       ease: "easeInOut"
                     }}
-                    className="absolute inset-0 rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5),inset_0_0_40px_rgba(0,0,0,0.3)] border-2 border-white/20"
+                    className="absolute inset-0 rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5),inset_0_0_40px_rgba(0,0,0,0.3)] border-2 border-transparent"
                     style={{
                       transform: 'perspective(1000px) rotateY(-2deg) rotateX(2deg)',
                       transformStyle: 'preserve-3d'
@@ -261,7 +261,7 @@ export function BannerCarousel() {
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     {/* Overlay Gradient - Black and White */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/30 backdrop-blur-[1px]" />
+                    <div className="absolute inset-0  bg-white/10" />
                   </motion.div>
                   
                   {/* Floating Decorative Element - 3D */}
@@ -277,7 +277,7 @@ export function BannerCarousel() {
                       ease: "easeInOut",
                       delay: 1
                     }}
-                    className="absolute -top-4 -right-4 w-32 h-32 bg-white/10 backdrop-blur-md rounded-2xl border-2 border-white/20 shadow-[0_8px_25px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]"
+                    className="absolute -top-4 -right-4 w-32 h-32 bg-transparent backdrop-blur-md rounded-2xl border-2 border-transparent shadow-[0_8px_25px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]"
                     style={{
                       transform: 'perspective(500px) rotateY(5deg)',
                       transformStyle: 'preserve-3d'
@@ -296,7 +296,7 @@ export function BannerCarousel() {
                       ease: "easeInOut",
                       delay: 2
                     }}
-                    className="absolute -bottom-4 -left-4 w-24 h-24 bg-black/20 backdrop-blur-md rounded-xl border border-white/10 shadow-[0_8px_25px_rgba(0,0,0,0.4)]"
+                    className="absolute -bottom-4 -left-4 w-24 h-24 bg-transparent backdrop-blur-md rounded-xl border border-transparent shadow-[0_8px_25px_rgba(0,0,0,0.4)]"
                     style={{
                       transform: 'perspective(500px) rotateY(-5deg)',
                       transformStyle: 'preserve-3d'
@@ -310,7 +310,7 @@ export function BannerCarousel() {
       </AnimatePresence>
 
       {/* Navigation Arrows - 3D */}
-      <button
+      {/* <button
         onClick={() => paginate(-1)}
         className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white p-3 rounded-full transition-all border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]"
         aria-label="Previous slide"
@@ -323,7 +323,7 @@ export function BannerCarousel() {
         aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6" />
-      </button>
+      </button> */}
 
       {/* Dots Indicator */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
@@ -333,8 +333,8 @@ export function BannerCarousel() {
             onClick={() => goToSlide(index)}
             className={`transition-all duration-300 rounded-full ${
               index === currentIndex
-                ? 'w-8 h-3 bg-white'
-                : 'w-3 h-3 bg-white/50 hover:bg-white/75'
+                ? 'w-8 h-3 bg-black'
+                : 'w-3 h-3 bg-black/50 hover:bg-black/75'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
