@@ -1,21 +1,78 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { Building2, Shield, Award, Users } from 'lucide-react'
 
 export function PartnersSection() {
   const partners = [
-    { name: 'Top Banks', icon: Building2, count: '50+', description: 'Partner Banks' },
-    { name: 'NBFCs', icon: Building2, count: '30+', description: 'Lending Partners' },
-    { name: 'ISO Certified', icon: Shield, count: 'ISO 27001', description: 'Data Security' },
-    { name: 'Trusted By', icon: Users, count: '5.8M+', description: 'Happy Customers' },
+    {
+      name: 'Top Banks',
+      icon: Building2,
+      count: '50+',
+      description: 'Partner Banks',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-dashboard-panel-layout-3d-icon-png-download-12430978@0.png?f=webp&h=700',
+      imageAlt: '3D bank dashboard icon'
+    },
+    {
+      name: 'NBFCs',
+      icon: Building2,
+      count: '30+',
+      description: 'Lending Partners',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-wallet-3d-icon-png-download-3723123.png?f=webp&h=700',
+      imageAlt: '3D wallet icon'
+    },
+    {
+      name: 'ISO Certified',
+      icon: Shield,
+      count: 'ISO 27001',
+      description: 'Data Security',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
+    },
+    {
+      name: 'Trusted By',
+      icon: Users,
+      count: '5.8M+',
+      description: 'Happy Customers',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-checklist-3d-icon-png-download-12470135.png?f=webp&h=700',
+      imageAlt: '3D verified checklist icon'
+    },
   ]
 
   const trustBadges = [
-    { name: 'Banking Partners', icon: Building2 },
-    { name: 'Security Certified', icon: Shield },
-    { name: 'Award Winning', icon: Award },
-    { name: 'Customer Trusted', icon: Users },
+    {
+      name: 'Banking Partners',
+      icon: Building2,
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-dashboard-panel-layout-3d-icon-png-download-12430978@0.png?f=webp&h=700',
+      imageAlt: '3D bank dashboard icon'
+    },
+    {
+      name: 'Security Certified',
+      icon: Shield,
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
+    },
+    {
+      name: 'Award Winning',
+      icon: Award,
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-star-badge-3d-icon-png-download-3286975.png?f=webp&h=700',
+      imageAlt: '3D award badge icon'
+    },
+    {
+      name: 'Customer Trusted',
+      icon: Users,
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-checklist-3d-icon-png-download-12470135.png?f=webp&h=700',
+      imageAlt: '3D verified checklist icon'
+    },
   ]
 
   return (
@@ -55,7 +112,19 @@ export function PartnersSection() {
                   whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Icon className="w-7 h-7 text-primary-600" />
+                  <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
+                    {partner.imageSrc ? (
+                      <Image
+                        src={partner.imageSrc}
+                        alt={partner.imageAlt ?? partner.name}
+                        fill
+                        sizes="56px"
+                        className="object-contain p-2"
+                      />
+                    ) : (
+                      <Icon className="w-7 h-7 text-primary-600" />
+                    )}
+                  </div>
                 </motion.div>
                 <div className="text-3xl font-bold text-gray-900 mb-1">{partner.count}</div>
                 <div className="text-sm font-semibold text-gray-700 mb-1">{partner.name}</div>
@@ -87,7 +156,19 @@ export function PartnersSection() {
                   className="flex flex-col items-center p-6 bg-white rounded-xl border border-gray-200 hover:border-primary-300 hover:shadow-lg transition-all"
                 >
                   <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center mb-3">
-                    <Icon className="w-6 h-6 text-white" />
+                    <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
+                      {badge.imageSrc ? (
+                        <Image
+                          src={badge.imageSrc}
+                          alt={badge.imageAlt ?? badge.name}
+                          fill
+                          sizes="48px"
+                          className="object-contain p-2"
+                        />
+                      ) : (
+                        <Icon className="w-6 h-6 text-white" />
+                      )}
+                    </div>
                   </div>
                   <span className="text-sm font-semibold text-gray-700 text-center">{badge.name}</span>
                 </motion.div>

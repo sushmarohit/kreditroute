@@ -9,6 +9,12 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn3d.iconscout.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 }

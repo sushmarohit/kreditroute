@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import type { ComponentType } from 'react'
+import Image from 'next/image'
 import {
   HealthInsuranceIcon,
   TermLifeInsuranceIcon,
@@ -25,38 +26,58 @@ export default function InsurancePage() {
     title: string
     href: string
     badge?: string
+    imageSrc?: string
+    imageAlt?: string
   }> = [
     {
       IconComponent: HealthInsuranceIcon,
       title: 'Health Insurance',
       href: '/insurance/health',
-      badge: '0% GST'
+      badge: '0% GST',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
     },
     {
       IconComponent: TermLifeInsuranceIcon,
       title: 'Term Life Insurance',
       href: '/insurance/term-life',
-      badge: '0% GST'
+      badge: '0% GST',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
     },
     {
       IconComponent: CarInsuranceIcon,
       title: 'Car Insurance',
-      href: '/insurance/car'
+      href: '/insurance/car',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-police-car-3d-icon-png-download-12885259.png?f=webp&h=700',
+      imageAlt: '3D car icon'
     },
     {
       IconComponent: CarInsuranceIcon,
       title: 'Two Wheeler Insurance',
-      href: '/insurance/two-wheeler'
+      href: '/insurance/two-wheeler',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-police-car-3d-icon-png-download-12885259.png?f=webp&h=700',
+      imageAlt: '3D two wheeler icon'
     },
     {
       IconComponent: FixedDepositIcon,
       title: 'Retirement Plans',
-      href: '/insurance/retirement'
+      href: '/insurance/retirement',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-wallet-3d-icon-png-download-3723123.png?f=webp&h=700',
+      imageAlt: '3D retirement savings icon'
     },
     {
       IconComponent: TermLifeInsuranceIcon,
       title: 'Travel Insurance',
-      href: '/insurance/travel'
+      href: '/insurance/travel',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-aeroplane-3d-icon-png-download-4459650.png?f=webp&h=700',
+      imageAlt: '3D airplane icon'
     }
   ]
 
@@ -76,26 +97,40 @@ export default function InsurancePage() {
     IconComponent: ComponentType
     title: string
     description: string
+    imageSrc?: string
+    imageAlt?: string
   }> = [
     {
       IconComponent: BestRatesIcon,
       title: 'Best Prices',
-      description: 'Get the best insurance rates with 0% GST on health and term life insurance.'
+      description: 'Get the best insurance rates with 0% GST on health and term life insurance.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-star-badge-3d-icon-png-download-3286975.png?f=webp&h=700',
+      imageAlt: '3D best prices badge icon'
     },
     {
       IconComponent: InstantFundsIcon,
       title: 'Quick Claims',
-      description: 'Fast and hassle-free claim settlement process.'
+      description: 'Fast and hassle-free claim settlement process.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-rocket-3d-icon-png-download-14103655.png?f=webp&h=700',
+      imageAlt: '3D rocket icon'
     },
     {
       IconComponent: SecureIcon,
       title: 'Comprehensive Coverage',
-      description: 'Wide range of insurance products to meet all your protection needs.'
+      description: 'Wide range of insurance products to meet all your protection needs.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
     },
     {
       IconComponent: DigitalProcessIcon,
       title: '24/7 Support',
-      description: 'Round-the-clock customer support for all your insurance needs.'
+      description: 'Round-the-clock customer support for all your insurance needs.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-headphone-3d-icon-png-download-14103654.png?f=webp&h=700',
+      imageAlt: '3D support headset icon'
     }
   ]
 
@@ -103,36 +138,56 @@ export default function InsurancePage() {
     IconComponent: ComponentType
     title: string
     description: string
+    imageSrc?: string
+    imageAlt?: string
   }> = [
     {
       IconComponent: BestRatesIcon,
       title: 'Best Prices',
-      description: 'Get the best insurance rates with 0% GST on health and term life insurance.'
+      description: 'Get the best insurance rates with 0% GST on health and term life insurance.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-star-badge-3d-icon-png-download-3286975.png?f=webp&h=700',
+      imageAlt: '3D best prices badge icon'
     },
     {
       IconComponent: InstantFundsIcon,
       title: 'Quick Claims',
-      description: 'Fast and hassle-free claim settlement process with minimal documentation.'
+      description: 'Fast and hassle-free claim settlement process with minimal documentation.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-rocket-3d-icon-png-download-14103655.png?f=webp&h=700',
+      imageAlt: '3D rocket icon'
     },
     {
       IconComponent: SecureIcon,
       title: 'Comprehensive Coverage',
-      description: 'Wide range of insurance products to meet all your protection needs.'
+      description: 'Wide range of insurance products to meet all your protection needs.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
     },
     {
       IconComponent: DigitalProcessIcon,
       title: '24/7 Support',
-      description: 'Round-the-clock customer support for all your insurance queries and claims.'
+      description: 'Round-the-clock customer support for all your insurance queries and claims.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-headphone-3d-icon-png-download-14103654.png?f=webp&h=700',
+      imageAlt: '3D support headset icon'
     },
     {
       IconComponent: DigitalProcessIcon,
       title: 'Expert Guidance',
-      description: 'Get expert advice to choose the right insurance plan for your needs.'
+      description: 'Get expert advice to choose the right insurance plan for your needs.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-checklist-3d-icon-png-download-12470135.png?f=webp&h=700',
+      imageAlt: '3D checklist icon'
     },
     {
       IconComponent: SecureIcon,
       title: 'Trusted Partners',
-      description: 'Partnered with top insurance companies for reliable coverage.'
+      description: 'Partnered with top insurance companies for reliable coverage.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
     }
   ]
 
@@ -234,6 +289,8 @@ export default function InsurancePage() {
                 href={product.href}
                 badge={product.badge}
                 index={index}
+                imageSrc={product.imageSrc}
+                imageAlt={product.imageAlt}
               />
             ))}
           </div>
@@ -286,7 +343,17 @@ export default function InsurancePage() {
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
                     <div className="w-full h-full flex items-center justify-center">
-                      <feature.IconComponent />
+                      {feature.imageSrc ? (
+                        <Image
+                          src={feature.imageSrc}
+                          alt={feature.imageAlt ?? feature.title}
+                          fill
+                          sizes="64px"
+                          className="object-contain p-1"
+                        />
+                      ) : (
+                        <feature.IconComponent />
+                      )}
                     </div>
                   </motion.div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
@@ -337,9 +404,19 @@ export default function InsurancePage() {
                     className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
+                    {item.imageSrc ? (
+                      <Image
+                        src={item.imageSrc}
+                        alt={item.imageAlt ?? item.title}
+                        fill
+                        sizes="48px"
+                        className="object-contain p-1"
+                      />
+                    ) : (
                       <div className="w-full h-full flex items-center justify-center brightness-0 invert">
                         <item.IconComponent />
                       </div>
+                    )}
                   </motion.div>
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
                   <p className="text-sm opacity-90">{item.description}</p>

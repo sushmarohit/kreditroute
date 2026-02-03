@@ -67,82 +67,58 @@ export function Navigation() {
             </motion.div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
-            {navItems.slice(0, 7).map((item, index) => (
-              <motion.div
-                key={item.href}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                whileHover={{ y: -2 }}
-              >
-                <Link
-                  href={item.href}
-                  className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors relative group"
+          {/* Desktop Navigation - nav links and CTA in separate containers to prevent hover bleed */}
+          <div className="hidden lg:flex items-center gap-0">
+            {/* Nav links only - no shared hover context with CTA */}
+            <div className="flex items-center space-x-1" style={{ isolation: 'isolate' }}>
+              {navItems.slice(0, 7).map((item, index) => (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  className="hover:-translate-y-0.5 transition-transform"
                 >
-                  {item.label}
-                  <motion.span
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600"
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </Link>
-              </motion.div>
-            ))}
-            <div className="relative group">
-              <motion.button 
-                className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors relative"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 7 * 0.05 }}
-                whileHover={{ y: -2 }}
-              >
-                More
-                <motion.span
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600"
-                  initial={{ scaleX: 0 }}
-                  whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.button>
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-1">
-                {navItems.slice(7).map((item, index) => (
                   <Link
-                    key={item.href}
                     href={item.href}
-                    className="block px-4 py-2 text-sm text-gray-900 hover:bg-primary-50 hover:text-primary-600 first:rounded-t-md last:rounded-b-md transition-colors"
+                    className="group/link px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors relative block"
                   >
                     {item.label}
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600 scale-x-0 origin-left transition-transform duration-300 group-hover/link:scale-x-100 pointer-events-none" aria-hidden />
                   </Link>
-                ))}
+                </motion.div>
+              ))}
+              <div className="relative group/more" style={{ isolation: 'isolate' }}>
+                <button
+                  type="button"
+                  className="group/morebtn px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 relative hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  More
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600 scale-x-0 origin-left transition-transform duration-300 group-hover/morebtn:scale-x-100 pointer-events-none" aria-hidden />
+                </button>
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 opacity-0 invisible group-hover/more:opacity-100 group-hover/more:visible transition-all duration-200 z-40 py-1 min-w-max">
+                  {navItems.slice(7).map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block px-4 py-2 text-sm text-gray-900 hover:bg-primary-50 hover:text-primary-600 first:rounded-t-md last:rounded-b-md transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-              whileHover={{ 
-                scale: 1.05,
-                y: -2,
-                transition: { duration: 0.2 }
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
+            {/* CTA - isolated so nav hover never affects it */}
+            <div className="relative z-[100] ml-4" style={{ isolation: 'isolate' }}>
               <Link
                 href="/apply"
-                className="ml-4 px-6 py-2 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-lg hover:from-accent-600 hover:to-accent-700 transition-colors font-medium relative overflow-hidden group"
+                className="inline-flex items-center px-6 py-2 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-lg hover:from-accent-600 hover:to-accent-700 transition-colors font-medium relative overflow-hidden group/cta"
               >
-                <motion.div
-                  className="absolute inset-0 bg-white/20"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.5 }}
-                />
+                <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/cta:translate-x-[100%] transition-transform duration-500" aria-hidden />
                 <span className="relative z-10">Check Offers</span>
               </Link>
-            </motion.div>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}

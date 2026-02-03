@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Shield, Zap, Users } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { ComponentType } from 'react'
 import { 
   PersonalLoanIcon, 
@@ -28,37 +29,57 @@ export default function LoansPage() {
     title: string
     href: string
     badge?: string
+    imageSrc?: string
+    imageAlt?: string
   }> = [
     {
       IconComponent: PersonalLoanIcon,
       title: 'Personal Loan',
       href: '/instant-loan',
-      badge: '₹500 Cashback'
+      badge: '₹500 Cashback',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-wallet-3d-icon-png-download-3723123.png?f=webp&h=700',
+      imageAlt: '3D wallet icon'
     },
     {
       IconComponent: HomeLoanIcon,
       title: 'Home Loan',
-      href: '/instant-loan'
+      href: '/instant-loan',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-home-3d-icon-png-download-6158668.png?f=webp&h=700',
+      imageAlt: '3D home icon'
     },
     {
       IconComponent: BusinessLoanIcon,
       title: 'Business Loan',
-      href: '/instant-loan'
+      href: '/instant-loan',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-dashboard-panel-layout-3d-icon-png-download-12430978@0.png?f=webp&h=700',
+      imageAlt: '3D business dashboard icon'
     },
     {
       IconComponent: BusinessLoanIcon,
       title: 'Loan Against Property',
-      href: '/instant-loan'
+      href: '/instant-loan',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-home-3d-icon-png-download-6158668.png?f=webp&h=700',
+      imageAlt: '3D property icon'
     },
     {
       IconComponent: HomeLoanIcon,
       title: 'Transfer Home Loan',
-      href: '/instant-loan'
+      href: '/instant-loan',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-home-3d-icon-png-download-6158668.png?f=webp&h=700',
+      imageAlt: '3D home transfer icon'
     },
     {
       IconComponent: PersonalLoanIcon,
       title: 'Consumer Durable Loan',
-      href: '/instant-loan'
+      href: '/instant-loan',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-credit-card-3d-icon-png-download-6380709.png?f=webp&h=700',
+      imageAlt: '3D consumer finance icon'
     }
   ]
 
@@ -86,26 +107,40 @@ export default function LoansPage() {
     IconComponent: ComponentType
     title: string
     description: string
+    imageSrc?: string
+    imageAlt?: string
   }> = [
     {
       IconComponent: BillPaymentIcon,
       title: 'Easy Repayment Terms',
-      description: 'Flexible EMI options. Repay your loan conveniently.'
+      description: 'Flexible EMI options. Repay your loan conveniently.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-card-payment-3d-icon-png-download-6380717.png?f=webp&h=700',
+      imageAlt: '3D bill payment icon'
     },
     {
       IconComponent: BestRatesIcon,
       title: 'Competitive Interest Rates',
-      description: 'Enjoy attractive rates. Save more on your loan EMIs.'
+      description: 'Enjoy attractive rates. Save more on your loan EMIs.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-star-badge-3d-icon-png-download-3286975.png?f=webp&h=700',
+      imageAlt: '3D best rates badge icon'
     },
     {
       IconComponent: DigitalProcessIcon,
       title: 'Digital Application',
-      description: 'Apply for a loan online in minutes. Quick, paperless, and easy process.'
+      description: 'Apply for a loan online in minutes. Quick, paperless, and easy process.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-phone-3d-icon-png-download-13516637.png?f=webp&h=700',
+      imageAlt: '3D phone icon'
     },
     {
       IconComponent: InstantFundsIcon,
       title: 'Fast Disbursal',
-      description: 'Quick loan approval & disbursal. Get your funds swiftly.'
+      description: 'Quick loan approval & disbursal. Get your funds swiftly.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-rocket-3d-icon-png-download-14103655.png?f=webp&h=700',
+      imageAlt: '3D rocket icon'
     }
   ]
 
@@ -113,36 +148,56 @@ export default function LoansPage() {
     IconComponent: ComponentType
     title: string
     description: string
+    imageSrc?: string
+    imageAlt?: string
   }> = [
     {
       IconComponent: BestRatesIcon,
       title: 'Competitive Interest Rates',
-      description: 'Enjoy attractive rates. Save more on your loan EMIs.'
+      description: 'Enjoy attractive rates. Save more on your loan EMIs.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-star-badge-3d-icon-png-download-3286975.png?f=webp&h=700',
+      imageAlt: '3D best rates badge icon'
     },
     {
       IconComponent: PersonalLoanIcon,
       title: 'Zero Foreclosure Charges',
-      description: 'Pay off your loan early with no extra fees. Save on interest.'
+      description: 'Pay off your loan early with no extra fees. Save on interest.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-checklist-3d-icon-png-download-12470135.png?f=webp&h=700',
+      imageAlt: '3D checklist icon'
     },
     {
       IconComponent: DigitalProcessIcon,
       title: '100% Digital Process',
-      description: 'Apply for a loan online, from start to finish. Quick, easy, paperless.'
+      description: 'Apply for a loan online, from start to finish. Quick, easy, paperless.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-phone-3d-icon-png-download-13516637.png?f=webp&h=700',
+      imageAlt: '3D phone icon'
     },
     {
       IconComponent: SecureIcon,
       title: 'No Credit Score Impact',
-      description: 'Check eligibility without affecting your credit score. Apply safely.'
+      description: 'Check eligibility without affecting your credit score. Apply safely.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
     },
     {
       IconComponent: InstantFundsIcon,
       title: 'Instant Funds',
-      description: 'Get your emergency funds in as little as a few minutes, depending on your eligibility.'
+      description: 'Get your emergency funds in as little as a few minutes, depending on your eligibility.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-rocket-3d-icon-png-download-14103655.png?f=webp&h=700',
+      imageAlt: '3D rocket icon'
     },
     {
       IconComponent: BillPaymentIcon,
       title: 'Easy Instalments',
-      description: 'Your loan EMI customised as per your needs and affordability.'
+      description: 'Your loan EMI customised as per your needs and affordability.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-card-payment-3d-icon-png-download-6380717.png?f=webp&h=700',
+      imageAlt: '3D bill payment icon'
     }
   ]
 
@@ -274,6 +329,8 @@ export default function LoansPage() {
                 href={loan.href}
                 badge={loan.badge}
                 index={index}
+                imageSrc={loan.imageSrc}
+                imageAlt={loan.imageAlt}
               />
             ))}
           </div>
@@ -325,9 +382,19 @@ export default function LoansPage() {
                     className="w-16 h-16 bg-black/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-4 overflow-hidden relative border border-black/20 shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.2)]"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                      <div className="w-full h-full flex items-center justify-center">
+                    <div className="w-full h-full flex items-center justify-center">
+                      {feature.imageSrc ? (
+                        <Image
+                          src={feature.imageSrc}
+                          alt={feature.imageAlt ?? feature.title}
+                          fill
+                          sizes="64px"
+                          className="object-contain p-1"
+                        />
+                      ) : (
                         <feature.IconComponent />
-                      </div>
+                      )}
+                    </div>
                   </motion.div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
                   <p className="text-sm text-gray-600">{feature.description}</p>
@@ -384,9 +451,19 @@ export default function LoansPage() {
                     className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                    <div className="w-full h-full flex items-center justify-center brightness-0 invert">
-                      <item.IconComponent />
-                    </div>
+                    {item.imageSrc ? (
+                      <Image
+                        src={item.imageSrc}
+                        alt={item.imageAlt ?? item.title}
+                        fill
+                        sizes="48px"
+                        className="object-contain p-1"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center brightness-0 invert">
+                        <item.IconComponent />
+                      </div>
+                    )}
                   </motion.div>
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
                   <p className="text-sm opacity-90">{item.description}</p>

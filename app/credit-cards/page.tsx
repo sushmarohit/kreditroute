@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import type { ComponentType } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { CreditCardIcon, BestRatesIcon, SecureIcon, InstantFundsIcon, DigitalProcessIcon } from '@/components/icons/IconLibrary'
 import { FeatureHighlightsTable } from '@/components/FeatureHighlightsTable'
 import { EligibilityTable } from '@/components/EligibilityTable'
@@ -17,38 +18,58 @@ export default function CreditCardsPage() {
     title: string
     href: string
     badge?: string
+    imageSrc?: string
+    imageAlt?: string
   }> = [
     {
       IconComponent: CreditCardIcon,
       title: 'Rewards Credit Cards',
       href: '/credit-cards/rewards',
-      badge: 'Cashback Offer'
+      badge: 'Cashback Offer',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-star-badge-3d-icon-png-download-3286975.png?f=webp&h=700',
+      imageAlt: '3D rewards badge icon'
     },
     {
       IconComponent: CreditCardIcon,
       title: 'Travel Credit Cards',
-      href: '/credit-cards/travel'
+      href: '/credit-cards/travel',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-aeroplane-3d-icon-png-download-4459650.png?f=webp&h=700',
+      imageAlt: '3D airplane icon'
     },
     {
       IconComponent: CreditCardIcon,
       title: 'Shopping Credit Cards',
       href: '/credit-cards/shopping',
-      badge: 'Cashback Offer'
+      badge: 'Cashback Offer',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-shopping-cart-3d-icon-png-download-3663911@0.png?f=webp&h=700',
+      imageAlt: '3D shopping cart icon'
     },
     {
       IconComponent: CreditCardIcon,
       title: 'Premium Credit Cards',
-      href: '/credit-cards/premium'
+      href: '/credit-cards/premium',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-credit-card-3d-icon-png-download-6380709.png?f=webp&h=700',
+      imageAlt: '3D premium credit card icon'
     },
     {
       IconComponent: CreditCardIcon,
       title: 'Fuel Credit Cards',
-      href: '/credit-cards/fuel'
+      href: '/credit-cards/fuel',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-petrol-station-location-3d-icon-png-download-5665160@0.png?f=webp&h=700',
+      imageAlt: '3D fuel station icon'
     },
     {
       IconComponent: CreditCardIcon,
       title: 'Secured Credit Cards',
-      href: '/credit-cards/secured'
+      href: '/credit-cards/secured',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
     }
   ]
 
@@ -76,26 +97,40 @@ export default function CreditCardsPage() {
     IconComponent: ComponentType
     title: string
     description: string
+    imageSrc?: string
+    imageAlt?: string
   }> = [
     {
       IconComponent: CreditCardIcon,
       title: 'Global Acceptance',
-      description: 'Use your card anywhere in the world with wide acceptance.'
+      description: 'Use your card anywhere in the world with wide acceptance.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-globe-3d-icon-png-download-3960638@0.png?f=webp&h=700',
+      imageAlt: '3D globe icon'
     },
     {
       IconComponent: DigitalProcessIcon,
       title: '24/7 Concierge Service',
-      description: 'Personal travel assistance anytime, anywhere.'
+      description: 'Personal travel assistance anytime, anywhere.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-headphone-3d-icon-png-download-14103654.png?f=webp&h=700',
+      imageAlt: '3D support headset icon'
     },
     {
       IconComponent: BestRatesIcon,
       title: 'Accelerated Rewards',
-      description: 'Double points on flight & hotel bookings.'
+      description: 'Double points on flight & hotel bookings.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-star-badge-3d-icon-png-download-3286975.png?f=webp&h=700',
+      imageAlt: '3D rewards badge icon'
     },
     {
       IconComponent: SecureIcon,
       title: 'Secure Transactions',
-      description: 'Advanced security features to protect your transactions.'
+      description: 'Advanced security features to protect your transactions.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
     }
   ]
 
@@ -103,36 +138,56 @@ export default function CreditCardsPage() {
     IconComponent: ComponentType
     title: string
     description: string
+    imageSrc?: string
+    imageAlt?: string
   }> = [
     {
       IconComponent: BestRatesIcon,
       title: 'Best Rewards',
-      description: 'Earn maximum rewards and cashback on every purchase.'
+      description: 'Earn maximum rewards and cashback on every purchase.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-star-badge-3d-icon-png-download-3286975.png?f=webp&h=700',
+      imageAlt: '3D rewards badge icon'
     },
     {
       IconComponent: InstantFundsIcon,
       title: 'Quick Approval',
-      description: 'Get instant approval and start using your card immediately.'
+      description: 'Get instant approval and start using your card immediately.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-rocket-3d-icon-png-download-14103655.png?f=webp&h=700',
+      imageAlt: '3D rocket icon'
     },
     {
       IconComponent: SecureIcon,
       title: 'Secure & Safe',
-      description: 'Advanced security features to protect your transactions.'
+      description: 'Advanced security features to protect your transactions.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
     },
     {
       IconComponent: SecureIcon,
       title: 'Zero Credit Score Impact',
-      description: 'Check eligibility without affecting your credit score.'
+      description: 'Check eligibility without affecting your credit score.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-checklist-3d-icon-png-download-12470135.png?f=webp&h=700',
+      imageAlt: '3D checklist icon'
     },
     {
       IconComponent: InstantFundsIcon,
       title: 'Instant Activation',
-      description: 'Activate and start using your card within minutes of approval.'
+      description: 'Activate and start using your card within minutes of approval.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-rocket-3d-icon-png-download-14103655.png?f=webp&h=700',
+      imageAlt: '3D rocket icon'
     },
     {
       IconComponent: DigitalProcessIcon,
       title: '24/7 Customer Support',
-      description: 'Round-the-clock support for all your card-related queries.'
+      description: 'Round-the-clock support for all your card-related queries.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-headphone-3d-icon-png-download-14103654.png?f=webp&h=700',
+      imageAlt: '3D support headset icon'
     }
   ]
 
@@ -262,6 +317,8 @@ export default function CreditCardsPage() {
                 href={card.href}
                 badge={card.badge}
                 index={index}
+                imageSrc={card.imageSrc}
+                imageAlt={card.imageAlt}
               />
             ))}
           </div>
@@ -314,7 +371,17 @@ export default function CreditCardsPage() {
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
                     <div className="w-full h-full flex items-center justify-center">
-                      <feature.IconComponent />
+                      {feature.imageSrc ? (
+                        <Image
+                          src={feature.imageSrc}
+                          alt={feature.imageAlt ?? feature.title}
+                          fill
+                          sizes="64px"
+                          className="object-contain p-1"
+                        />
+                      ) : (
+                        <feature.IconComponent />
+                      )}
                     </div>
                   </motion.div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
@@ -373,7 +440,17 @@ export default function CreditCardsPage() {
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
                       <div className="w-full h-full flex items-center justify-center">
-                        <item.IconComponent />
+                        {item.imageSrc ? (
+                          <Image
+                            src={item.imageSrc}
+                            alt={item.imageAlt ?? item.title}
+                            fill
+                            sizes="48px"
+                            className="object-contain p-1"
+                          />
+                        ) : (
+                          <item.IconComponent />
+                        )}
                       </div>
                   </motion.div>
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>

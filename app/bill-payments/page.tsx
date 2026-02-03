@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import type { ComponentType } from 'react'
+import Image from 'next/image'
 import {
   CreditCardIcon,
   LoanRepaymentIcon,
@@ -19,42 +20,62 @@ export default function BillPaymentsPage() {
     title: string
     href: string
     badge?: string
+    imageSrc?: string
+    imageAlt?: string
   }> = [
     {
       IconComponent: CreditCardIcon,
       title: 'Credit Card Bill Payment',
       href: '/bill-payments/credit-card',
-      badge: 'Zero Fees'
+      badge: 'Zero Fees',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-credit-card-3d-icon-png-download-6380709.png?f=webp&h=700',
+      imageAlt: '3D credit card icon'
     },
     {
       IconComponent: LoanRepaymentIcon,
       title: 'Loan Repayment',
       href: '/bill-payments/loan',
-      badge: 'Easy'
+      badge: 'Easy',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-wallet-3d-icon-png-download-3723123.png?f=webp&h=700',
+      imageAlt: '3D wallet icon'
     },
     {
       IconComponent: ElectricityBillIcon,
       title: 'Electricity Bill',
       href: '/bill-payments/electricity',
-      badge: 'Instant'
+      badge: 'Instant',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-light-bulb-3d-icon-png-download-6558781.png?f=webp&h=700',
+      imageAlt: '3D light bulb icon'
     },
     {
       IconComponent: BillPaymentIcon,
       title: 'Gas Bill Payment',
       href: '/bill-payments/gas',
-      badge: 'Quick'
+      badge: 'Quick',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-stove-3d-icon-png-download-5122366.png?f=webp&h=700',
+      imageAlt: '3D gas stove icon'
     },
     {
       IconComponent: BillPaymentIcon,
       title: 'Water Bill Payment',
       href: '/bill-payments/water',
-      badge: 'Easy'
+      badge: 'Easy',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-save-water-3d-icon-png-download-6558773.png?f=webp&h=700',
+      imageAlt: '3D water drop icon'
     },
     {
       IconComponent: DigitalProcessIcon,
       title: 'Mobile & DTH Recharge',
       href: '/bill-payments/recharge',
-      badge: 'Best Offers'
+      badge: 'Best Offers',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-phone-3d-icon-png-download-13516637.png?f=webp&h=700',
+      imageAlt: '3D phone icon'
     }
   ]
 
@@ -110,7 +131,13 @@ export default function BillPaymentsPage() {
             className="inline-block mb-6"
           >
             <div className="w-20 h-20 bg-black/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto shadow-[0_8px_25px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.2)] overflow-hidden relative border border-black/20">
-              <BillPaymentIcon />
+              <Image
+                src="https://cdn3d.iconscout.com/3d/free/preview/free-card-payment-3d-icon-png-download-6380717.png?f=webp&h=700"
+                alt="3D bill payment icon"
+                fill
+                sizes="80px"
+                className="object-contain p-2"
+              />
             </div>
           </motion.div>
           <motion.h1
@@ -140,6 +167,8 @@ export default function BillPaymentsPage() {
               href={bill.href}
               badge={bill.badge}
               index={index}
+              imageSrc={bill.imageSrc}
+              imageAlt={bill.imageAlt}
             />
           ))}
         </div>
@@ -280,9 +309,30 @@ export default function BillPaymentsPage() {
             </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { IconComponent: InstantFundsIcon, title: 'Instant Payment', desc: 'Pay bills instantly and get immediate confirmation' },
-                { IconComponent: SecureIcon, title: 'Secure & Safe', desc: 'Bank-level security to protect your transactions' },
-                { IconComponent: BillPaymentIcon, title: 'Zero Convenience Fees', desc: 'Pay credit card bills and utilities with zero fees' }
+                {
+                  IconComponent: InstantFundsIcon,
+                  title: 'Instant Payment',
+                  desc: 'Pay bills instantly and get immediate confirmation',
+                  imageSrc:
+                    'https://cdn3d.iconscout.com/3d/free/preview/free-rocket-3d-icon-png-download-14103655.png?f=webp&h=700',
+                  imageAlt: '3D rocket icon'
+                },
+                {
+                  IconComponent: SecureIcon,
+                  title: 'Secure & Safe',
+                  desc: 'Bank-level security to protect your transactions',
+                  imageSrc:
+                    'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+                  imageAlt: '3D secure shield icon'
+                },
+                {
+                  IconComponent: BillPaymentIcon,
+                  title: 'Zero Convenience Fees',
+                  desc: 'Pay credit card bills and utilities with zero fees',
+                  imageSrc:
+                    'https://cdn3d.iconscout.com/3d/free/preview/free-card-payment-3d-icon-png-download-6380717.png?f=webp&h=700',
+                  imageAlt: '3D bill payment icon'
+                }
               ].map((benefit, index) => {
                 return (
                   <motion.div
@@ -305,9 +355,19 @@ export default function BillPaymentsPage() {
                         transition: { duration: 0.5 }
                       }}
                     >
-                      <div className="w-full h-full flex items-center justify-center brightness-0 invert">
-                        <benefit.IconComponent />
-                      </div>
+                      {benefit.imageSrc ? (
+                        <Image
+                          src={benefit.imageSrc}
+                          alt={benefit.imageAlt ?? benefit.title}
+                          fill
+                          sizes="80px"
+                          className="object-contain p-2"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center brightness-0 invert">
+                          <benefit.IconComponent />
+                        </div>
+                      )}
                     </motion.div>
                     <h3 className="font-bold text-xl mb-2">{benefit.title}</h3>
                     <p className="text-sm opacity-90">{benefit.desc}</p>

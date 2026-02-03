@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { ComponentType } from 'react'
 import { ArrowRight } from 'lucide-react'
 import {
@@ -18,6 +19,8 @@ interface CalculatorItem {
   subtitle: string
   href: string
   gradient: string
+  imageSrc?: string
+  imageAlt?: string
 }
 
 const calculators: CalculatorItem[] = [
@@ -26,56 +29,80 @@ const calculators: CalculatorItem[] = [
     title: 'Personal Loan',
     subtitle: 'EMI Calculator',
     href: '/calculators/personal-loan-emi',
-    gradient: 'from-primary-500 to-primary-600'
+    gradient: 'from-primary-500 to-primary-600',
+    imageSrc:
+      'https://cdn3d.iconscout.com/3d/free/preview/free-wallet-3d-icon-png-download-3723123.png?f=webp&h=700',
+    imageAlt: '3D wallet icon'
   },
   {
     IconComponent: PersonalLoanIcon,
     title: 'Personal Loan',
     subtitle: 'Eligibility Calculator',
     href: '/calculators/personal-loan-eligibility',
-    gradient: 'from-accent-500 to-accent-600'
+    gradient: 'from-accent-500 to-accent-600',
+    imageSrc:
+      'https://cdn3d.iconscout.com/3d/free/preview/free-checklist-3d-icon-png-download-12470135.png?f=webp&h=700',
+    imageAlt: '3D checklist icon'
   },
   {
     IconComponent: PersonalLoanIcon,
     title: 'Personal Loan',
     subtitle: 'Prepayment Calculator',
     href: '/calculators/personal-loan-prepayment',
-    gradient: 'from-primary-500 to-accent-500'
+    gradient: 'from-primary-500 to-accent-500',
+    imageSrc:
+      'https://cdn3d.iconscout.com/3d/free/preview/free-cashback-3d-icon-png-download-6380713.png?f=webp&h=700',
+    imageAlt: '3D cashback icon'
   },
   {
     IconComponent: HomeLoanIcon,
     title: 'Home Loan',
     subtitle: 'EMI Calculator',
     href: '/calculators/home-loan-emi',
-    gradient: 'from-accent-500 to-primary-600'
+    gradient: 'from-accent-500 to-primary-600',
+    imageSrc:
+      'https://cdn3d.iconscout.com/3d/free/preview/free-home-3d-icon-png-download-6158668.png?f=webp&h=700',
+    imageAlt: '3D home icon'
   },
   {
     IconComponent: HomeLoanIcon,
     title: 'Home Loan',
     subtitle: 'Eligibility Calculator',
     href: '/calculators/home-loan-eligibility',
-    gradient: 'from-primary-600 to-accent-600'
+    gradient: 'from-primary-600 to-accent-600',
+    imageSrc:
+      'https://cdn3d.iconscout.com/3d/free/preview/free-checklist-3d-icon-png-download-12470135.png?f=webp&h=700',
+    imageAlt: '3D checklist icon'
   },
   {
     IconComponent: HomeLoanIcon,
     title: 'Home Loan',
     subtitle: 'Prepayment Calculator',
     href: '/calculators/home-loan-prepayment',
-    gradient: 'from-accent-600 to-primary-500'
+    gradient: 'from-accent-600 to-primary-500',
+    imageSrc:
+      'https://cdn3d.iconscout.com/3d/free/preview/free-wallet-3d-icon-png-download-3723123.png?f=webp&h=700',
+    imageAlt: '3D wallet icon'
   },
   {
     IconComponent: CarInsuranceIcon,
     title: 'Car Loan',
     subtitle: 'EMI Calculator',
     href: '/calculators/car-loan-emi',
-    gradient: 'from-primary-500 to-primary-600'
+    gradient: 'from-primary-500 to-primary-600',
+    imageSrc:
+      'https://cdn3d.iconscout.com/3d/free/preview/free-police-car-3d-icon-png-download-12885259.png?f=webp&h=700',
+    imageAlt: '3D car icon'
   },
   {
     IconComponent: MarketLinkedIcon,
     title: 'SIP Calculator',
     subtitle: 'Investment Planning',
     href: '/calculators/sip',
-    gradient: 'from-accent-500 to-accent-600'
+    gradient: 'from-accent-500 to-accent-600',
+    imageSrc:
+      'https://cdn3d.iconscout.com/3d/free/preview/free-growth-chart-3d-icon-png-download-3187507.png?f=webp&h=700',
+    imageAlt: '3D growth chart icon'
   }
 ]
 
@@ -144,9 +171,19 @@ export function FinancialCalculators() {
                         transition: { duration: 0.5 }
                       }}
                     >
+                    {calc.imageSrc ? (
+                      <Image
+                        src={calc.imageSrc}
+                        alt={calc.imageAlt ?? calc.title}
+                        fill
+                        sizes="56px"
+                        className="object-contain p-1"
+                      />
+                    ) : (
                       <div className="w-full h-full flex items-center justify-center brightness-0 invert">
                         <calc.IconComponent />
                       </div>
+                    )}
                     </motion.div>
 
                     <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-white transition-colors">

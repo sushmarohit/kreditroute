@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { featuresContent } from '@/constants'
 
 export function Features() {
@@ -56,7 +57,17 @@ export function Features() {
                 }}
               >
                 <div className="w-full h-full flex items-center justify-center">
-                  <feature.IconComponent />
+                  {feature.imageSrc ? (
+                    <Image
+                      src={feature.imageSrc}
+                      alt={feature.imageAlt ?? feature.title}
+                      fill
+                      sizes="48px"
+                      className="object-contain p-1"
+                    />
+                  ) : (
+                    <feature.IconComponent />
+                  )}
                 </div>
               </motion.div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">

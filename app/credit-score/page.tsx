@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import type { ComponentType } from 'react'
 import { useState } from 'react'
+import Image from 'next/image'
 import { 
   CreditScoreIcon, 
   DigitalProcessIcon, 
@@ -27,28 +28,42 @@ export default function CreditScorePage() {
     title: string
     href: string
     badge?: string
+    imageSrc?: string
+    imageAlt?: string
   }> = [
     {
       IconComponent: CreditScoreIcon,
       title: 'Free Credit Score',
       href: '/credit-score/check',
-      badge: 'Free'
+      badge: 'Free',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-growth-chart-3d-icon-png-download-3187507.png?f=webp&h=700',
+      imageAlt: '3D growth chart icon'
     },
     {
       IconComponent: CreditMonitoringIcon,
       title: 'Credit Health Pro',
       href: '/credit-score/pro',
-      badge: 'Pro'
+      badge: 'Pro',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-dashboard-panel-layout-3d-icon-png-download-12430978@0.png?f=webp&h=700',
+      imageAlt: '3D dashboard icon'
     },
     {
       IconComponent: CreditImprovementIcon,
       title: 'Fix your Credit Score',
-      href: '/credit-score/fix'
+      href: '/credit-score/fix',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-checklist-3d-icon-png-download-12470135.png?f=webp&h=700',
+      imageAlt: '3D checklist icon'
     },
     {
       IconComponent: CreditReportIcon,
       title: 'Video Credit Report',
-      href: '/credit-score/report'
+      href: '/credit-score/report',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-dashboard-panel-layout-3d-icon-png-download-12430978@0.png?f=webp&h=700',
+      imageAlt: '3D report dashboard icon'
     }
   ]
 
@@ -75,26 +90,40 @@ export default function CreditScorePage() {
     IconComponent: ComponentType
     title: string
     description: string
+    imageSrc?: string
+    imageAlt?: string
   }> = [
     {
       IconComponent: CreditScoreIcon,
       title: 'Free Credit Score',
-      description: 'Check your credit score for free. No credit card required.'
+      description: 'Check your credit score for free. No credit card required.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-growth-chart-3d-icon-png-download-3187507.png?f=webp&h=700',
+      imageAlt: '3D growth chart icon'
     },
     {
       IconComponent: CreditInsightsIcon,
       title: 'Detailed Insights',
-      description: 'Get detailed analysis of your credit profile and factors affecting your score.'
+      description: 'Get detailed analysis of your credit profile and factors affecting your score.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-dashboard-panel-layout-3d-icon-png-download-12430978@0.png?f=webp&h=700',
+      imageAlt: '3D dashboard icon'
     },
     {
       IconComponent: CreditImprovementIcon,
       title: 'Improvement Tips',
-      description: 'Receive personalized recommendations to improve your credit score.'
+      description: 'Receive personalized recommendations to improve your credit score.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-checklist-3d-icon-png-download-12470135.png?f=webp&h=700',
+      imageAlt: '3D checklist icon'
     },
     {
       IconComponent: SecureIcon,
       title: 'Secure & Private',
-      description: 'Your credit information is protected with bank-level security.'
+      description: 'Your credit information is protected with bank-level security.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
     }
   ]
 
@@ -102,36 +131,56 @@ export default function CreditScorePage() {
     IconComponent: ComponentType
     title: string
     description: string
+    imageSrc?: string
+    imageAlt?: string
   }> = [
     {
       IconComponent: CreditScoreIcon,
       title: 'Free Credit Score',
-      description: 'Get your CIBIL credit report worth ₹500 for FREE. No hidden charges.'
+      description: 'Get your CIBIL credit report worth ₹500 for FREE. No hidden charges.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-growth-chart-3d-icon-png-download-3187507.png?f=webp&h=700',
+      imageAlt: '3D growth chart icon'
     },
     {
       IconComponent: SecureIcon,
       title: 'No Credit Score Impact',
-      description: 'Check your credit score without affecting it. Safe and secure.'
+      description: 'Check your credit score without affecting it. Safe and secure.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
     },
     {
       IconComponent: InstantFundsIcon,
       title: 'Instant Results',
-      description: 'Get your credit score instantly. No waiting, no delays.'
+      description: 'Get your credit score instantly. No waiting, no delays.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-rocket-3d-icon-png-download-14103655.png?f=webp&h=700',
+      imageAlt: '3D rocket icon'
     },
     {
       IconComponent: CreditReportIcon,
       title: 'Detailed Analysis',
-      description: 'Understand your credit profile with detailed insights and recommendations.'
+      description: 'Understand your credit profile with detailed insights and recommendations.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-dashboard-panel-layout-3d-icon-png-download-12430978@0.png?f=webp&h=700',
+      imageAlt: '3D dashboard icon'
     },
     {
       IconComponent: CreditMonitoringIcon,
       title: 'Monthly Updates',
-      description: 'Track your credit score changes with monthly updates.'
+      description: 'Track your credit score changes with monthly updates.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-checklist-3d-icon-png-download-12470135.png?f=webp&h=700',
+      imageAlt: '3D checklist icon'
     },
     {
       IconComponent: CreditInsightsIcon,
       title: 'Expert Guidance',
-      description: 'Get expert advice on how to improve your credit score.'
+      description: 'Get expert advice on how to improve your credit score.',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-headphone-3d-icon-png-download-14103654.png?f=webp&h=700',
+      imageAlt: '3D support headset icon'
     }
   ]
 
@@ -282,7 +331,13 @@ export default function CreditScorePage() {
               </div>
               <div className="bg-white/40 rounded-xl p-8 text-center border-2 border-black/10 shadow-[0_8px_25px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)]">
                 <div className="w-24 h-24 bg-black/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden relative border border-black/20 shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.2)]">
-                  <CreditScoreIcon />
+                  <Image
+                    src="https://cdn3d.iconscout.com/3d/free/preview/free-growth-chart-3d-icon-png-download-3187507.png?f=webp&h=700"
+                    alt="3D credit score chart icon"
+                    fill
+                    sizes="96px"
+                    className="object-contain p-2"
+                  />
                 </div>
                 <h3 className="text-4xl font-bold text-gray-900 mb-2">770</h3>
                 <p className="text-xl text-gray-600 mb-6">Excellent</p>
@@ -330,7 +385,7 @@ export default function CreditScorePage() {
                 >
                   <Link
                     href={service.href}
-                    className="block bg-white/60 rounded-xl p-6 border-2 border-black/10 hover:border-black/30 hover:shadow-[0_15px_35px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.5)] transition-all duration-300 h-full flex flex-col group shadow-[0_8px_25px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)]"
+                    className="bg-white/60 rounded-xl p-6 border-2 border-black/10 hover:border-black/30 hover:shadow-[0_15px_35px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.5)] transition-all duration-300 h-full flex flex-col group shadow-[0_8px_25px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)]"
                     style={{
                       transform: 'perspective(1000px) rotateX(1deg)',
                       transformStyle: 'preserve-3d'
@@ -342,7 +397,17 @@ export default function CreditScorePage() {
                         whileHover={{ rotate: [0, -15, 15, -15, 0], scale: 1.15 }}
                       >
                         <div className="w-full h-full flex items-center justify-center">
-                          <service.IconComponent />
+                          {service.imageSrc ? (
+                            <Image
+                              src={service.imageSrc}
+                              alt={service.imageAlt ?? service.title}
+                              fill
+                              sizes="56px"
+                              className="object-contain p-1"
+                            />
+                          ) : (
+                            <service.IconComponent />
+                          )}
                         </div>
                       </motion.div>
                       {service.badge && (
@@ -408,7 +473,17 @@ export default function CreditScorePage() {
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
                     <div className="w-full h-full flex items-center justify-center">
-                      <feature.IconComponent />
+                      {feature.imageSrc ? (
+                        <Image
+                          src={feature.imageSrc}
+                          alt={feature.imageAlt ?? feature.title}
+                          fill
+                          sizes="64px"
+                          className="object-contain p-1"
+                        />
+                      ) : (
+                        <feature.IconComponent />
+                      )}
                     </div>
                   </motion.div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
@@ -459,9 +534,19 @@ export default function CreditScorePage() {
                     className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   >
-                    <div className="w-full h-full flex items-center justify-center brightness-0 invert">
-                      <item.IconComponent />
-                    </div>
+                    {item.imageSrc ? (
+                      <Image
+                        src={item.imageSrc}
+                        alt={item.imageAlt ?? item.title}
+                        fill
+                        sizes="48px"
+                        className="object-contain p-1"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center brightness-0 invert">
+                        <item.IconComponent />
+                      </div>
+                    )}
                   </motion.div>
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
                   <p className="text-sm opacity-90">{item.description}</p>

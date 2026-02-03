@@ -7,6 +7,7 @@ import { Send, Loader2 } from 'lucide-react'
 import { EmailIcon, PhoneIcon, MapIcon } from '@/components/icons/IconLibrary'
 import axios from 'axios'
 import { useState } from 'react'
+import Image from 'next/image'
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -65,7 +66,13 @@ export default function ContactUs() {
             <div className="lg:col-span-1 space-y-6">
               <div className="bg-white rounded-xl p-6 border border-gray-200">
                 <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative">
-                  <EmailIcon />
+                  <Image
+                    src="https://cdn3d.iconscout.com/3d/free/preview/free-email-3d-icon-png-download-3463358@0.png?f=webp&h=700"
+                    alt="3D email icon"
+                    fill
+                    sizes="48px"
+                    className="object-contain p-1"
+                  />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Email</h3>
                 <p className="text-gray-600">support@kreditroute.com</p>
@@ -73,7 +80,13 @@ export default function ContactUs() {
 
               <div className="bg-white rounded-xl p-6 border border-gray-200">
                 <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative">
-                  <PhoneIcon />
+                  <Image
+                    src="https://cdn3d.iconscout.com/3d/free/preview/free-phone-3d-icon-png-download-13516637.png?f=webp&h=700"
+                    alt="3D phone icon"
+                    fill
+                    sizes="48px"
+                    className="object-contain p-1"
+                  />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Phone</h3>
                 <p className="text-gray-600">+91-1800-XXX-XXXX</p>
@@ -82,7 +95,13 @@ export default function ContactUs() {
 
               <div className="bg-white rounded-xl p-6 border border-gray-200">
                 <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 overflow-hidden relative">
-                  <MapIcon />
+                  <Image
+                    src="https://cdn3d.iconscout.com/3d/free/preview/free-location-3d-icon-png-download-2969395.png?f=webp&h=700"
+                    alt="3D location pin icon"
+                    fill
+                    sizes="48px"
+                    className="object-contain p-1"
+                  />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Address</h3>
                 <p className="text-gray-600">

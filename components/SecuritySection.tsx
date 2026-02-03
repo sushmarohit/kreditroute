@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { Shield, Lock, Award, CheckCircle, FileCheck, Eye } from 'lucide-react'
 import { SecureIcon } from '@/components/icons/IconLibrary'
 
@@ -10,25 +11,37 @@ export function SecuritySection() {
       icon: Shield,
       title: 'ISO 27001 Certified',
       description: 'Bank-level security with ISO certification for data protection',
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-blue-500 to-blue-600',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-star-badge-3d-icon-png-download-3286975.png?f=webp&h=700',
+      imageAlt: '3D certification badge icon'
     },
     {
       icon: Lock,
       title: '256-bit SSL Encryption',
       description: 'Your data is encrypted with industry-standard SSL security',
-      color: 'from-green-500 to-green-600'
+      color: 'from-green-500 to-green-600',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+      imageAlt: '3D secure shield icon'
     },
     {
       icon: FileCheck,
       title: 'GDPR Compliant',
       description: 'Fully compliant with data protection and privacy regulations',
-      color: 'from-purple-500 to-purple-600'
+      color: 'from-purple-500 to-purple-600',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-checklist-3d-icon-png-download-12470135.png?f=webp&h=700',
+      imageAlt: '3D checklist icon'
     },
     {
       icon: Eye,
       title: '24/7 Monitoring',
       description: 'Round-the-clock security monitoring and threat detection',
-      color: 'from-orange-500 to-orange-600'
+      color: 'from-orange-500 to-orange-600',
+      imageSrc:
+        'https://cdn3d.iconscout.com/3d/free/preview/free-dashboard-panel-layout-3d-icon-png-download-12430978@0.png?f=webp&h=700',
+      imageAlt: '3D monitoring dashboard icon'
     }
   ]
 
@@ -54,8 +67,14 @@ export function SecuritySection() {
             whileHover={{ scale: 1.1, rotate: [0, -5, 5, -5, 0] }}
             transition={{ duration: 0.5 }}
           >
-            <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl flex items-center justify-center mx-auto shadow-lg">
-              <SecureIcon />
+            <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl flex items-center justify-center mx-auto shadow-lg relative overflow-hidden">
+              <Image
+                src="https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700"
+                alt="3D secure shield icon"
+                fill
+                sizes="80px"
+                className="object-contain p-2"
+              />
             </div>
           </motion.div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -85,7 +104,19 @@ export function SecuritySection() {
                   whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Icon className="w-8 h-8 text-white" />
+                  <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
+                    {feature.imageSrc ? (
+                      <Image
+                        src={feature.imageSrc}
+                        alt={feature.imageAlt ?? feature.title}
+                        fill
+                        sizes="64px"
+                        className="object-contain p-2"
+                      />
+                    ) : (
+                      <Icon className="w-8 h-8 text-white" />
+                    )}
+                  </div>
                 </motion.div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
                   {feature.title}
@@ -141,36 +172,54 @@ export function SecuritySection() {
           className="mt-12 bg-gradient-to-r from-primary-600 to-accent-600 rounded-2xl p-8 md:p-12 text-white"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center"
-            >
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
-                <Shield className="w-8 h-8" />
-              </div>
-              <h4 className="text-xl font-bold mb-2">Secure Transactions</h4>
-              <p className="text-sm opacity-90">All transactions are protected with advanced encryption</p>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center border-l border-r md:border-l md:border-r md:border-y-0 border-y md:py-0 py-8 border-white/20"
-            >
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
-                <Lock className="w-8 h-8" />
-              </div>
-              <h4 className="text-xl font-bold mb-2">Privacy Protected</h4>
-              <p className="text-sm opacity-90">Your personal information is never shared without consent</p>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center"
-            >
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
-                <CheckCircle className="w-8 h-8" />
-              </div>
-              <h4 className="text-xl font-bold mb-2">Verified Platform</h4>
-              <p className="text-sm opacity-90">Trusted by millions of customers across India</p>
-            </motion.div>
+            {[
+              {
+                title: 'Secure Transactions',
+                description: 'All transactions are protected with advanced encryption',
+                imageSrc:
+                  'https://cdn3d.iconscout.com/3d/free/preview/free-card-payment-3d-icon-png-download-6380717.png?f=webp&h=700',
+                imageAlt: '3D card payment icon',
+                bordered: false
+              },
+              {
+                title: 'Privacy Protected',
+                description: 'Your personal information is never shared without consent',
+                imageSrc:
+                  'https://cdn3d.iconscout.com/3d/free/preview/free-secure-shield-3d-icon-png-download-4715757.png?f=webp&h=700',
+                imageAlt: '3D secure shield icon',
+                bordered: true
+              },
+              {
+                title: 'Verified Platform',
+                description: 'Trusted by millions of customers across India',
+                imageSrc:
+                  'https://cdn3d.iconscout.com/3d/free/preview/free-checklist-3d-icon-png-download-12470135.png?f=webp&h=700',
+                imageAlt: '3D verification checklist icon',
+                bordered: false
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                whileHover={{ scale: 1.05 }}
+                className={`flex flex-col items-center${
+                  item.bordered
+                    ? ' border-l border-r md:border-l md:border-r md:border-y-0 border-y md:py-0 py-8 border-white/20'
+                    : ''
+                }`}
+              >
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 relative overflow-hidden">
+                  <Image
+                    src={item.imageSrc}
+                    alt={item.imageAlt}
+                    fill
+                    sizes="64px"
+                    className="object-contain p-2"
+                  />
+                </div>
+                <h4 className="text-xl font-bold mb-2">{item.title}</h4>
+                <p className="text-sm opacity-90">{item.description}</p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>

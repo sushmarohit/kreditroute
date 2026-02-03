@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { ComponentType } from 'react'
 
 interface ServiceCardProps {
@@ -10,9 +11,19 @@ interface ServiceCardProps {
   href: string
   badge?: string
   index?: number
+  imageSrc?: string
+  imageAlt?: string
 }
 
-export function ServiceCard({ IconComponent, title, href, badge, index = 0 }: ServiceCardProps) {
+export function ServiceCard({
+  IconComponent,
+  title,
+  href,
+  badge,
+  index = 0,
+  imageSrc,
+  imageAlt
+}: ServiceCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -59,7 +70,17 @@ export function ServiceCard({ IconComponent, title, href, badge, index = 0 }: Se
           }}
         >
           <div className="w-full h-full flex items-center justify-center p-2 [&>svg]:w-full [&>svg]:h-full [&>svg]:max-w-none [&>svg]:max-h-none">
-            <IconComponent />
+            {imageSrc ? (
+              <Image
+                src={imageSrc}
+                alt={imageAlt ?? title}
+                fill
+                sizes="64px"
+                className="object-contain p-1"
+              />
+            ) : (
+              <IconComponent />
+            )}
           </div>
         </motion.div>
         
