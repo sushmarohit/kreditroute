@@ -46,7 +46,7 @@ export function Navigation() {
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-2"
             >
-              <div className="w-10 h-[5.5rem] relative flex-shrink-0">
+              <div className="w-10 h-12 relative flex-shrink-0">
                 {/* Top chevron - Orange/Yellow, elongated, angled upwards and to the right */}
                 {/* <svg 
                   width="40" 
@@ -58,7 +58,7 @@ export function Navigation() {
                 >
                   <path d="M4 4 L28 4 L20 18 L4 18 Z" fill="#f97316" />
                   <path d="M4 18 L20 18 L28 36 L4 36 Z" fill="#16a34a" />
-                </svg> */}/
+                </svg> */}
                 <Image src="/KR_LOGO_no_bg.png" alt="KreditRoute" width={40} height={40} />
               </div>
               <span className="text-2xl md:text-3xl font-bold italic bg-gradient-to-r from-accent-600 to-primary-700 bg-clip-text text-transparent">

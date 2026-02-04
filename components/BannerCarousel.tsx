@@ -30,39 +30,39 @@ const banners: BannerSlide[] = [
     badge: 'Quick Sanction',
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop'
   },
-  {
-    id: 2,
-    title: 'Quick Disbursal',
-    subtitle: 'Personal Loan',
-    description: 'Paperless process at low rate',
-    gradient: 'from-black via-gray-900 to-gray-800',
-    ctaText: 'Apply Now',
-    ctaLink: '/loans',
-    badge: 'Instant',
-    image: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=600&fit=crop'
-  },
-  {
-    id: 3,
-    title: 'Lowest EMI Ride',
-    subtitle: 'New Car Loan',
-    description: 'Drive away your dream car today',
-    gradient: 'from-gray-800 via-black to-gray-900',
-    ctaText: 'Apply Now',
-    ctaLink: '/loans',
-    badge: 'Best Rates',
-    image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&h=600&fit=crop'
-  },
-  {
-    id: 4,
-    title: 'Rewards Unlimited',
-    subtitle: 'Credit Card',
-    description: 'Choose cards from all top banks',
-    gradient: 'from-black via-gray-800 to-gray-900',
-    ctaText: 'Apply Now',
-    ctaLink: '/credit-cards',
-    badge: 'Exclusive',
-    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop'
-  }
+  // {
+  //   id: 2,
+  //   title: 'Quick Disbursal',
+  //   subtitle: 'Personal Loan',
+  //   description: 'Paperless process at low rate',
+  //   gradient: 'from-black via-gray-900 to-gray-800',
+  //   ctaText: 'Apply Now',
+  //   ctaLink: '/loans',
+  //   badge: 'Instant',
+  //   image: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=600&fit=crop'
+  // },
+  // {
+  //   id: 3,
+  //   title: 'Lowest EMI Ride',
+  //   subtitle: 'New Car Loan',
+  //   description: 'Drive away your dream car today',
+  //   gradient: 'from-gray-800 via-black to-gray-900',
+  //   ctaText: 'Apply Now',
+  //   ctaLink: '/loans',
+  //   badge: 'Best Rates',
+  //   image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&h=600&fit=crop'
+  // },
+  // {
+  //   id: 4,
+  //   title: 'Rewards Unlimited',
+  //   subtitle: 'Credit Card',
+  //   description: 'Choose cards from all top banks',
+  //   gradient: 'from-black via-gray-800 to-gray-900',
+  //   ctaText: 'Apply Now',
+  //   ctaLink: '/credit-cards',
+  //   badge: 'Exclusive',
+  //   image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop'
+  // }
 ]
 
 export function BannerCarousel() {
@@ -140,7 +140,7 @@ export function BannerCarousel() {
               paginate(-1)
             }
           }}
-          className={`absolute inset-0 bg-white ${banners[currentIndex].gradient} flex items-center justify-center`}
+          className={`absolute inset-0 bg-white ${banners[currentIndex]?.gradient} flex items-center justify-center`}
           style={{
             boxShadow: '0 20px 60px rgba(0, 0, 0, 0.08)'
           }}

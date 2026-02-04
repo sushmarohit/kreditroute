@@ -80,17 +80,17 @@ export function FinancialServices() {
           title: 'Loan Against Property',
           href: '/loans',
           imageSrc:
-            'https://cdn3d.iconscout.com/3d/free/preview/free-home-3d-icon-png-download-6158668.png?f=webp&h=700',
-          imageAlt: '3D property icon'
+            'https://cdn3d.iconscout.com/3d/premium/preview/debt-revenue-balance-3d-icon-5603340.png?f=webp&h=700',
+          imageAlt: '3D property balance icon'
         },
-        {
-          IconComponent: HomeLoanIcon,
-          title: 'Transfer Home Loan',
-          href: '/loans',
-          imageSrc:
-            'https://cdn3d.iconscout.com/3d/free/preview/free-home-3d-icon-png-download-6158668.png?f=webp&h=700',
-          imageAlt: '3D home transfer icon'
-        },
+        // {
+        //   IconComponent: HomeLoanIcon,
+        //   title: 'Transfer Home Loan',
+        //   href: '/loans',
+        //   imageSrc:
+        //     'https://cdn3d.iconscout.com/3d/free/preview/free-home-3d-icon-png-download-6158668.png?f=webp&h=700',
+        //   imageAlt: '3D home transfer icon'
+        // },
       ]
     },
     {
